@@ -1,0 +1,105 @@
+{
+  "version": "0.2.0",
+  "files": [
+    {
+      "path": ".github/workflows/contracts.yml",
+      "sha256": "66be65070b5c51419f2e0551bda75923c05aedc8162d8e08a4938b8fd748595f"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "7a91371e1ad9526c36c08ea780bb79e4ca2e8e0b0b47de3814d6297babf5a68d"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "bf179d49ec0897c7db698324f3e5dc456de571c1303347bd877725aea4cd8994"
+    },
+    {
+      "path": "LICENSING.md",
+      "sha256": "80a479ea3e3347941c16c14f970262fba8cd99a5c0170ffa67481551f2092637"
+    },
+    {
+      "path": "MECHANISM-RESEARCH.md",
+      "sha256": "fa912df7d7befb522e9dd8d90015c6b67d0faa818ea2d4b6e71f6f64a2024db9"
+    },
+    {
+      "path": "README.md",
+      "sha256": "e0e9d41367b4b2b6e313c61c91d5b74207e66bfc9ce2bc1a60221e2ac4fbfcb7"
+    },
+    {
+      "path": "SOLUTION-V2.md",
+      "sha256": "afae9287ab839f0b6b0eca3abec54e77ea85c6207f7e144d9bc868abe305bc79"
+    },
+    {
+      "path": "VALIDATION-REPORT.json",
+      "sha256": "d59b79a6509060a87b6d2528da152a9ce4a71055b2ecb3f18bbe3d4df0c5f32e"
+    },
+    {
+      "path": "build_training_research.py",
+      "sha256": "c2d3c56d145bf961efb9d1ac146d39be102b79c62e9f41da0e069b058704f6d5"
+    },
+    {
+      "path": "catalog.html",
+      "sha256": "04ea70fb1f2bc67e79cbaa96b84f86ad9d36dad6027b22a3e1eb74c12e9a8906"
+    },
+    {
+      "path": "catalog.json",
+      "sha256": "16a16df35cb79b4c90a499174f236e6aae63489ed9cbd284312e81634b7b17c6"
+    },
+    {
+      "path": "compile_example.py",
+      "sha256": "a747d16809b697b44b1b3a99e6a24e7907c27d71b5877a93b4d8ccedde8c87a5"
+    },
+    {
+      "path": "contracts/episode.schema.json",
+      "sha256": "c9b8920118d33a17b7b313c12ebcd3eb1170775744585400b601366cb006d385"
+    },
+    {
+      "path": "example.json",
+      "sha256": "394ae8fee80a332e2221ee54e920c6c64af14ae3795bd54dc9c7876df6c1b367"
+    },
+    {
+      "path": "example.mjcf.xml",
+      "sha256": "e5ebc216f0c7cca5c84d2d1e6caa032cde9cdf154d38c2468bb0ab2ca7469764"
+    },
+    {
+      "path": "example.urdf",
+      "sha256": "a8daa48ae64147f8dfa5b057fd35c180fee31fbfe8620f8d7ed82441eef2e305"
+    },
+    {
+      "path": "fixtures/episode.json",
+      "sha256": "44aca11c0d9706b138cf5a436963b31561f71d22da3274a54d525f28285954d2"
+    },
+    {
+      "path": "fixtures/release.json",
+      "sha256": "5b35882f693ac41586ec8fa475c8482662f391cd5d39abfa55c2e7a776e0d895"
+    },
+    {
+      "path": "physics_ir.schema.json",
+      "sha256": "391793dc7472ec27d2deceef1b84f7a1e080e56504f95c0853b1cd5a298b8d8d"
+    },
+    {
+      "path": "smoke_sim.py",
+      "sha256": "e5c640b51fe90c1aef52f2e7c5bb1d8f237c42e8106a2b6b3887437cf3044c44"
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "sha256": "178a4c22e73249c00458e104223c0db0e894b0be532b0b64c813c1f3cf5d7e68"
+    },
+    {
+      "path": "training_findings.html",
+      "sha256": "967623e1e85df39df22f4134c82ddff411a8794163071578ecd7004dd06a4c76"
+    },
+    {
+      "path": "training_findings.json",
+      "sha256": "770279f3220253d236182eaadcc214ac4ba71d1d3947d4173c6434f45ac0888b"
+    },
+    {
+      "path": "validate.py",
+      "sha256": "bed09a956d80758868a9befe7440cbbf8b6534d8ff67e6230c13b3b6893eff65"
+    },
+    {
+      "path": "verify_release.py",
+      "sha256": "e06c15b69eea161bc28b85a41d522125581e2b088763b2dac904ecf881f4b9bc"
+    }
+  ]
+}

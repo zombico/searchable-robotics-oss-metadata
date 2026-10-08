@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.1.0",
+  "catalog_record": "M13",
+  "status": "proposed_demonstrator_not_validated_hardware",
+  "base_size_mm": [100, 50, 20],
+  "jaw_size_mm": [12, 20, 60],
+  "closed_gap_mm": 10,
+  "jaw_travel_mm": 25,
+  "base_mass_kg": 0.2,
+  "jaw_mass_kg": 0.04,
+  "effort_limit_N": 5,
+  "velocity_limit_m_s": 0.1,
+  "damping_N_s_m": 1,
+  "joint_friction_N": 0.1,
+  "contact_friction": 0.7,
+  "assumption_scope": "All masses, drive forces, damping and friction are demonstration choices. No payload, material, fabrication tolerance, or commercial gripper equivalence claimed."
+}

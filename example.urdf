@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="proposed_parallel_gripper">
+  <link name="world" />
+  <link name="base">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.2" />
+      <inertia ixx="4.833333333333334e-05" iyy="0.00017333333333333336" izz="0.00020833333333333337" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.1 0.05 0.02" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.1 0.05 0.02" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="mount" type="fixed">
+    <parent link="world" />
+    <child link="base" />
+    <origin xyz="0 0 0.01" rpy="0 0 0" />
+  </joint>
+  <link name="left">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.04" />
+      <inertia ixx="1.3333333333333335e-05" iyy="1.248e-05" izz="1.8133333333333335e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.012 0.02 0.06" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.012 0.02 0.06" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_slide" type="prismatic">
+    <parent link="base" />
+    <child link="left" />
+    <origin xyz="-0.011 0 0.04" rpy="0 0 0" />
+    <axis xyz="-1 0 0" />
+    <limit lower="0" upper="0.025" effort="5" velocity="0.1" />
+    <dynamics damping="1" friction="0.1" />
+  </joint>
+  <link name="right">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.04" />
+      <inertia ixx="1.3333333333333335e-05" iyy="1.248e-05" izz="1.8133333333333335e-06" ixy="0" ixz="0" iyz="0" />
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="0.012 0.02 0.06" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.012 0.02 0.06" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_slide" type="prismatic">
+    <parent link="base" />
+    <child link="right" />
+    <origin xyz="0.011 0 0.04" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <limit lower="0" upper="0.025" effort="5" velocity="0.1" />
+    <dynamics damping="1" friction="0.1" />
+    <mimic joint="left_slide" multiplier="1" offset="0" />
+  </joint>
+</robot>

@@ -1,0 +1,329 @@
+{
+  "schema_version": "0.2.0",
+  "researched_on": "2026-10-08",
+  "sources": {
+    "R01": {
+      "title": "MuJoCo system identification",
+      "url": "https://github.com/google-deepmind/mujoco/blob/main/python/mujoco/sysid/README.md",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R02": {
+      "title": "Contact Models in Robotics: a Comparative Analysis",
+      "url": "https://arxiv.org/abs/2304.06372",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R03": {
+      "title": "Validating Robotics Simulators on Real-World Impacts",
+      "url": "https://arxiv.org/abs/2110.00541",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R04": {
+      "title": "MuJoCo Menagerie",
+      "url": "https://github.com/google-deepmind/mujoco_menagerie",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R05": {
+      "title": "Isaac Lab actuator models",
+      "url": "https://isaac-sim.github.io/IsaacLab/main/source/api/lab/isaaclab.actuators.html",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R06": {
+      "title": "robosuite controller semantics",
+      "url": "https://robosuite.ai/docs/modules/controllers.html",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R07": {
+      "title": "ManiSkill trajectory replay",
+      "url": "https://maniskill.readthedocs.io/en/latest/user_guide/datasets/replay.html",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R08": {
+      "title": "LeRobotDataset v3",
+      "url": "https://huggingface.co/docs/lerobot/main/lerobot-dataset-v3",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R09": {
+      "title": "robomimic dataset structure",
+      "url": "https://robomimic.github.io/docs/datasets/overview.html",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R10": {
+      "title": "MimicGen CoRL paper",
+      "url": "https://proceedings.mlr.press/v229/mandlekar23a.html",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R11": {
+      "title": "DROID paper",
+      "url": "https://arxiv.org/abs/2403.12945",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R12": {
+      "title": "Isaac Lab randomization implementation",
+      "url": "https://isaac-sim.github.io/IsaacLab/main/_modules/isaaclab/envs/mdp/events.html",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R13": {
+      "title": "Isaac Lab cross-engine transfer guidance",
+      "url": "https://isaac-sim.github.io/IsaacLab/develop/source/how-to/transfer_policies_between_physx_and_newton.html",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R14": {
+      "title": "Isaac Lab sensor scheduling",
+      "url": "https://isaac-sim.github.io/IsaacLab/v2.1.1/source/overview/core-concepts/sensors/index.html",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R15": {
+      "title": "MuJoCo state and numerical reproducibility",
+      "url": "https://mujoco.readthedocs.io/en/3.2.0/computation/index.html",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "R16": {
+      "title": "robomimic multiple datasets",
+      "url": "https://robomimic.github.io/docs/tutorials/multi_dataset_training.html",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    }
+  },
+  "findings": [
+    {
+      "id": "F01",
+      "title": "Task-bounded physical fidelity",
+      "source_finding": "Contact models make different physical and numerical approximations.",
+      "proposed_solution_change": "Qualify accuracy by interaction, material, load and speed, not by engine name.",
+      "verification_gate": "Publish an applicability envelope and held-out physical errors.",
+      "source_ids": [
+        "R02",
+        "R03"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F02",
+      "title": "Fit parameters against measured trajectories",
+      "source_finding": "MuJoCo sysid fits model parameters using recorded sensor data and bounded optimization.",
+      "proposed_solution_change": "Add a calibration module with separate fitting and held-out evaluation sequences.",
+      "verification_gate": "Report baseline versus fitted prediction errors on unseen measurements.",
+      "source_ids": [
+        "R01"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F03",
+      "title": "Physically realizable inertial estimates",
+      "source_finding": "MuJoCo sysid supports physically consistent inertia parameterization.",
+      "proposed_solution_change": "Fit mass/COM/inertia jointly when observable; retain parameter uncertainty.",
+      "verification_gate": "Reject nonphysical inertia; examine sensitivity and identification ambiguity.",
+      "source_ids": [
+        "R01"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F04",
+      "title": "Sensor delay is not joint friction",
+      "source_finding": "Sysid distinguishes measurement corrections from physical model parameters.",
+      "proposed_solution_change": "Model sensor bias/delay independently to avoid fitting timing errors as dynamics.",
+      "verification_gate": "Validate synchronized timestamps and delay estimates.",
+      "source_ids": [
+        "R01"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F05",
+      "title": "Asset provenance before reconstruction",
+      "source_finding": "Menagerie proposes parameter-provenance grades; its README does not guarantee every model has an assigned grade.",
+      "proposed_solution_change": "Use native models as comparison baselines; record a published grade only where available.",
+      "verification_gate": "Record asset revision, parameter origins, unknown grade and unresolved properties.",
+      "source_ids": [
+        "R04"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F06",
+      "title": "Actuator models need more than joint limits",
+      "source_finding": "Isaac Lab exposes several actuator models and separates model limits from solver limits.",
+      "proposed_solution_change": "Store controller, saturation, delay, motor inertia and speed-dependent behavior.",
+      "verification_gate": "Step/load sweeps must respect actual driver and continuous limits.",
+      "source_ids": [
+        "R05"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F07",
+      "title": "Action semantics are part of the environment",
+      "source_finding": "robosuite distinguishes action/controller modes and simulation versus policy rates.",
+      "proposed_solution_change": "Version units, frames, absolute/delta commands, gains, hold rules and action scaling.",
+      "verification_gate": "Replay the same action under the same controller contract.",
+      "source_ids": [
+        "R06"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F08",
+      "title": "Action replay and state replay differ",
+      "source_finding": "ManiSkill can replay recorded states to recover observations, or replay controls.",
+      "proposed_solution_change": "Label render-only state playback separately from forward-dynamics rollouts.",
+      "verification_gate": "Reject state-forced videos as evidence of forward-dynamics accuracy.",
+      "source_ids": [
+        "R07"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F09",
+      "title": "Synchronization survives dataset export",
+      "source_finding": "LeRobot organizes multimodal signals, video and episode metadata.",
+      "proposed_solution_change": "Use a canonical timed transition record; keep capture/release times and export mappings.",
+      "verification_gate": "Round-trip timestamps, shapes, units and episode boundaries.",
+      "source_ids": [
+        "R08"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F10",
+      "title": "Preserve state for debugging",
+      "source_finding": "robomimic datasets can store simulator states and environment metadata.",
+      "proposed_solution_change": "Save state checkpoints and metadata beside policy-visible observations.",
+      "verification_gate": "Restore a checkpoint under a pinned runtime and compare within tolerance.",
+      "source_ids": [
+        "R09",
+        "R15"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F11",
+      "title": "Demonstration generation needs task structure",
+      "source_finding": "MimicGen generates demonstrations by adapting source demonstrations to new scenes.",
+      "proposed_solution_change": "Track source demo, task phases, object frames, attempts and generator configuration.",
+      "verification_gate": "Hold out source demonstrations and object families; report generation failures.",
+      "source_ids": [
+        "R10"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F12",
+      "title": "Scene diversity must be designed",
+      "source_finding": "DROID was collected across many real-world scenes and tasks.",
+      "proposed_solution_change": "Specify object, layout, camera and interaction coverage; do not equate frame count with diversity.",
+      "verification_gate": "Evaluate on held-out scene/object families rather than adjacent frames.",
+      "source_ids": [
+        "R11"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F13",
+      "title": "Randomized mass and inertia must agree",
+      "source_finding": "Isaac Lab includes mass randomization with inertia recomputation/scaling options.",
+      "proposed_solution_change": "Sample physically coupled parameters; fixed-geometry mass scaling scales inertia too.",
+      "verification_gate": "Verify positive inertia and correct COM reference after every sampled reset.",
+      "source_ids": [
+        "R12"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F14",
+      "title": "Cross-engine comparison is diagnostic",
+      "source_finding": "Isaac Lab documents policy transfer between engines and targeted randomization.",
+      "proposed_solution_change": "Use a second engine only after a pinned nominal baseline; investigate disagreement.",
+      "verification_gate": "Compare trajectories/events; agreement alone is not physical validation.",
+      "source_ids": [
+        "R13"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F15",
+      "title": "Sensors have independent clocks",
+      "source_finding": "Isaac Lab sensors use their own update periods in simulated time.",
+      "proposed_solution_change": "Separate physics, controller, camera and sensor rates; record latency and exposure.",
+      "verification_gate": "Policy observations cannot include measurements released after decision time.",
+      "source_ids": [
+        "R14"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F16",
+      "title": "Seeds are insufficient for exact replay",
+      "source_finding": "MuJoCo documents state, solver warmstart and numerical reproducibility considerations.",
+      "proposed_solution_change": "Store engine/build/hardware details, full supported state, RNG/controller state and tolerances.",
+      "verification_gate": "Test continuation; avoid claiming cross-platform bitwise identity.",
+      "source_ids": [
+        "R15"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F17",
+      "title": "Dataset formats do not fix action mismatch",
+      "source_finding": "robomimic multi-dataset training requires compatible observation/action spaces.",
+      "proposed_solution_change": "Add explicit adapters and loss/units documentation rather than merely convert containers.",
+      "verification_gate": "Reject incompatible control spaces without a declared tested transform.",
+      "source_ids": [
+        "R16",
+        "R06"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F18",
+      "title": "Visual realism is a separate acceptance track",
+      "source_finding": "Dynamics replay and observation extraction can be separate stages in ManiSkill.",
+      "proposed_solution_change": "Drive rendering from authoritative simulated states; test visual labels/calibration separately.",
+      "verification_gate": "Check image-depth-pose alignment and distinguish depiction from sensor simulation.",
+      "source_ids": [
+        "R07",
+        "R14"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F19",
+      "title": "Peak and sustained capability need distinct metadata",
+      "source_finding": "Actuator implementations include torque/velocity limits and delay models.",
+      "proposed_solution_change": "Retain peak duration and thermal assumptions; unknown continuous capability blocks that claim.",
+      "verification_gate": "Bounded-duration load tests and declared actuator envelope.",
+      "source_ids": [
+        "R05"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    },
+    {
+      "id": "F20",
+      "title": "Publication must attach validation evidence",
+      "source_finding": "Impact studies compare simulations against measured real-world trajectories.",
+      "proposed_solution_change": "Create publication levels: synthetic-only, engine-checked, calibrated-envelope, transfer-tested.",
+      "verification_gate": "No physics-accuracy label without a scoped report and measured evidence.",
+      "source_ids": [
+        "R03",
+        "R02"
+      ],
+      "status": "research_synthesis_not_implemented_engine_feature"
+    }
+  ]
+}

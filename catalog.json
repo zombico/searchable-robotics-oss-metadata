@@ -1,0 +1,2614 @@
+{
+  "schema_version": "0.1.0",
+  "researched_on": "2026-10-08",
+  "scope": "Broad primary-source starter catalog; not exhaustive and not a verified manufacturing library",
+  "units": {
+    "design": "mm, deg",
+    "physics": "m, kg, s, rad, N, N*m"
+  },
+  "interpretation": {
+    "published_specs": "Source-backed facts with per-field provenance",
+    "proposed_parameters": "Independently selected demonstration values; not source dimensions or validated operating ranges",
+    "missing_for_validated_simulation": "Must resolve for intended load case before claiming predictive physics",
+    "priority": "1=first compiler candidates; 2=second stage; 3=advanced modeling"
+  },
+  "sources": {
+    "bosl": {
+      "title": "BOSL2 gear API",
+      "url": "https://github.com/BelfrySCAD/BOSL2/wiki/gears.scad",
+      "supports": "Parametric geometry API; proposed examples are not load ratings",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "boslrepo": {
+      "title": "BOSL2",
+      "url": "https://github.com/BelfrySCAD/BOSL2",
+      "supports": "Repository shows BSD-2-Clause",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "nop": {
+      "title": "NopSCADlib",
+      "url": "https://github.com/nophead/NopSCADlib",
+      "supports": "Repository shows GPL-3.0; geometry is not dynamics",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "core": {
+      "title": "CoreXY original theory",
+      "url": "https://corexy.com/theory.html",
+      "supports": "Original mechanism explanation",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "voron": {
+      "title": "Voron hardware documentation",
+      "url": "https://docs.vorondesign.com/hardware.html",
+      "supports": "CoreXY architecture; use revision-specific BOM",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "four": {
+      "title": "SALAR four-bar synthesis",
+      "url": "https://github.com/ual-arm/SALAR",
+      "supports": "MIT software; dimensions below are proposed",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "pmks": {
+      "title": "WPI planar mechanism simulator",
+      "url": "https://github.com/PMKS-Web/Planar-Mechanism-Kinematic-Simulator",
+      "supports": "Kinematic analysis reference",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "cycloid": {
+      "title": "Cycloidal Drive Design",
+      "url": "https://github.com/SakethGG/Cycloidal-Drive-Design",
+      "supports": "Author describes 20:1 design; geometry and license need extraction",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "openhand": {
+      "title": "Yale OpenHand",
+      "url": "https://www.eng.yale.edu/grablab/openhand/",
+      "supports": "Tendon and flexure designs",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "handcad": {
+      "title": "OpenHand hardware",
+      "url": "https://github.com/grablab/openhand-hardware",
+      "supports": "CAD/STL; per-file license review still required",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "t": {
+      "title": "OpenHand Model T",
+      "url": "https://www.eng.yale.edu/grablab/openhand/model_t.html",
+      "supports": "Four fingers, single actuator, pulley-tree differential",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "t42": {
+      "title": "OpenHand Model T42",
+      "url": "https://www.eng.yale.edu/grablab/openhand/model_t42.html",
+      "supports": "Two independently driven underactuated fingers",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "pneu": {
+      "title": "PneuNets modeling",
+      "url": "https://softroboticstoolkit.com/book/pneunets-modeling",
+      "supports": "FEM modeling workflow",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "pneucad": {
+      "title": "PneuNets downloads",
+      "url": "https://softroboticstoolkit.com/book/pneunets-downloads",
+      "supports": "Fabrication and Abaqus modeling files",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "jam": {
+      "title": "Passive jamming gripper",
+      "url": "https://softroboticstoolkit.com/soft-gripper-with-passive-jamming/mechanism",
+      "supports": "Jamming behavior; proposed envelope is not source dimension",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "piab": {
+      "title": "Piab VL20BL",
+      "url": "https://www.piab.com/suction-cups-and-soft-grippers/round-suction-cups/multibellows-suction-cups/0202117",
+      "supports": "Nominal 20 mm; CAD and effective area need extraction",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "omx": {
+      "title": "ROBOTIS OpenMANIPULATOR-X",
+      "url": "https://en.robotis.com/model/page.php?co_id=prd_openmanipulator",
+      "supports": "380 mm reach, 500 g maximum payload",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "omxmanual": {
+      "title": "OpenMANIPULATOR-X specification",
+      "url": "https://github.com/ROBOTIS-GIT/emanual/blob/master/docs/en/platform/openmanipulator_x/specification.md",
+      "supports": "Specification and inertial data reference; units need conversion",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "moveo": {
+      "title": "BCN3D Moveo",
+      "url": "https://github.com/BCN3D/BCN3D-Moveo",
+      "supports": "CAD, STL, manual, firmware and BOM",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "ar4": {
+      "title": "Annin AR4 FAQ",
+      "url": "https://anninrobotics.com/docs/what-are-the-dimensions-and-key-specifications-of-the-ar4-robot/",
+      "supports": "FAQ disagrees with manual; blocked until revision chosen",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "ar4manual": {
+      "title": "Annin AR4 manual V1.5",
+      "url": "https://anninrobotics.com/wp-content/uploads/2025/07/AR4-Robot-Manul-V1.5-.pdf",
+      "supports": "Manual states 629 mm reach, 0.2 mm repeatability",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "so": {
+      "title": "SO-100/SO-101 hardware",
+      "url": "https://github.com/TheRobotStudio/SO-ARM100",
+      "supports": "STEP/STL/Simulation folders; Apache-2.0 repository",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "lerobot": {
+      "title": "SO-101 assembly guide",
+      "url": "https://huggingface.co/docs/lerobot/main/assemble_so101",
+      "supports": "Motor setup and assembly",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "odri": {
+      "title": "ODRI actuator hardware",
+      "url": "https://github.com/open-dynamic-robot-initiative/open_robot_actuator_hardware",
+      "supports": "BSD-3-Clause mechanics and electronics",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "odripaper": {
+      "title": "ODRI architecture paper",
+      "url": "https://arxiv.org/abs/1910.00093",
+      "supports": "Torque-controlled modular locomotion platform",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "osl": {
+      "title": "Open-Source Leg hardware",
+      "url": "https://opensourceleg.org/hardware/",
+      "supports": "CAD/BOM research platform; select hardware generation",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "lino": {
+      "title": "Linorobot2",
+      "url": "https://github.com/linorobot/linorobot2",
+      "supports": "ROS2 mobile robot stack; hardware parameters are configurable",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "linodoc": {
+      "title": "Linorobot2 transforms",
+      "url": "https://linorobot.github.io/linorobot2/transforms/",
+      "supports": "Dimension and sensor-pose xacro reference",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "cat": {
+      "title": "OpenCat",
+      "url": "https://github.com/PetoiCamp/OpenCat-Quadruped-Robot",
+      "supports": "MIT firmware framework; not proof that every commercial chassis CAD is open",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "pupper": {
+      "title": "StanfordQuadruped",
+      "url": "https://github.com/stanfordroboticsclub/StanfordQuadruped",
+      "supports": "Position-controlled quadruped reference; choose generation",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "moteus": {
+      "title": "mjbots moteus",
+      "url": "https://github.com/mjbots/moteus",
+      "supports": "Apache-2.0 controller designs, firmware and PCBs",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "skf": {
+      "title": "SKF deep-groove catalog",
+      "url": "https://cdn.skfmediahub.skf.com/api/public/0901d196802809de/pdf_preview_medium/0901d196802809de_pdf_preview_medium.pdf",
+      "supports": "608-2Z dimensions; loads depend on exact suffix",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "stepper": {
+      "title": "STEPPERONLINE 17HS19-2004S1",
+      "url": "https://www.omc-stepperonline.com/nema-17-bipolar-59ncm-84oz-in-2a-42x48mm-4-wires-w-1m-cable-connector-17hs19-2004s1",
+      "supports": "Exact motor example, not all NEMA17 motors",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "stepcurve": {
+      "title": "17HS19 torque-speed curve",
+      "url": "https://www.omc-stepperonline.com/download/17HS19-2004S1_Torque_Curve.pdf",
+      "supports": "2 A, 24 V, half-step test conditions",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "dxl": {
+      "title": "XM430-W350 manual",
+      "url": "https://emanual.robotis.com/docs/en/dxl/x/xm430-w350/",
+      "supports": "Stall ratings depend on voltage; not continuous torque",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "pololu": {
+      "title": "Pololu 37D gearmotors",
+      "url": "https://www.pololu.com/category/116/37d-metal-gearmotors",
+      "supports": "12/24 V families, ratios 6.3\u2013150, 64 CPR motor encoders",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "belt": {
+      "title": "SDP/SI belt profiles",
+      "url": "https://www.sdp-si.com/products/details/timing-belt-detail.php?hsLang=en",
+      "supports": "Pitch and tooth profile must both match",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "igus": {
+      "title": "igus lead-screw catalog",
+      "url": "https://blog.igus.ca/wp-content/uploads/2021/08/drylin-lead-screw-nut-2021-catalog.pdf",
+      "supports": "Trapezoidal lead-screw sizing; choose exact item",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "hiwin": {
+      "title": "HIWIN linear guide catalog",
+      "url": "https://www.hiwin.com/wp-content/uploads/HIWIN-Linear-Guideway-Catalog.pdf",
+      "supports": "MGN12 C/H have different lengths and ratings",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "extrusion": {
+      "title": "MISUMI extrusion families",
+      "url": "https://us.misumi-ec.com/vona2/A0000000001/M1500000000/M1501000000/M1501010000/?categoryKeyword=extrusion&searchFlow=results2category",
+      "supports": "Envelope size does not imply identical slot profiles",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "fastener": {
+      "title": "Bossard ISO4762 fasteners",
+      "url": "https://www.bossard.com/au-en/eshop/screws-and-bolts-with-internal-drive/hex-socket-head-cap-screws-fully-threaded/p/3/",
+      "supports": "Select material, grade and length",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "encoder": {
+      "title": "ams AS5048 datasheet",
+      "url": "https://look.ams-osram.com/m/287d7ad97d1ca22e/original/AS5048-DS000298.pdf",
+      "supports": "14-bit angle sensor; resolution is not accuracy",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "imu": {
+      "title": "Bosch BMI088 datasheet",
+      "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bmi088-ds001.pdf",
+      "supports": "16-bit accelerometer and gyroscope",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "urdf": {
+      "title": "ROS2 physical properties",
+      "url": "https://github.com/ros2/ros2_documentation/blob/rolling/source/Capabilities/Simulation/URDF/Adding-Physical-and-Collision-Properties-to-a-URDF-Model.rst",
+      "supports": "Mass, inertia, collision and joint dynamics",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "mj": {
+      "title": "MuJoCo modeling",
+      "url": "https://mujoco.readthedocs.io/en/stable/modeling.html",
+      "supports": "MJCF model definition and constraints",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "mjcomp": {
+      "title": "MuJoCo computation",
+      "url": "https://mujoco.readthedocs.io/en/3.5.0/computation.html",
+      "supports": "Transmission and slider-crank treatment",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "sdf": {
+      "title": "SDF to URDF limitations",
+      "url": "https://index.ros.org/p/sdformat_urdf/",
+      "supports": "Conversion excludes several joint types",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "scara": {
+      "title": "OpenSCARA design",
+      "url": "https://github.com/ggldnl/OpenSCARA",
+      "supports": "Author design/code reference; proposed dimensions independent",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "delta": {
+      "title": "Delta ROS2 reference",
+      "url": "https://github.com/Sharwin24/DeltaRobot",
+      "supports": "Kinematics/planning software; not proof of full hardware openness",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "stewart": {
+      "title": "SPUdeS Stewart platform",
+      "url": "https://github.com/SPUdeS/SPUdeS",
+      "supports": "CAD and geometric configuration reference",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "qdd": {
+      "title": "QDD actuator project",
+      "url": "https://github.com/JeongSeoJin/Quasi-Direct-Drive-Actuator",
+      "supports": "Author QDD actuator reference; claims not independently tested",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "sea": {
+      "title": "Pratt and Williamson SEA paper",
+      "url": "https://fab.cba.mit.edu/classes/865.15/people/rebecca.kleinberger/assets/papers/SEA_Pratt.pdf",
+      "supports": "Series-elastic actuator paradigm",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "strain": {
+      "title": "Strain-wave tooth generator",
+      "url": "https://github.com/abssimon/harmonic-drive-tooth-profile-generator",
+      "supports": "Tooth-profile generator, not a complete validated gearbox",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    },
+    "handlicense": {
+      "title": "OpenHand hardware license",
+      "url": "https://github.com/grablab/openhand-hardware/blob/master/LICENSE.md",
+      "supports": "CC-BY-NC-3.0 noncommercial hardware terms",
+      "accessed_on": "2026-10-08",
+      "revision_pin": null
+    }
+  },
+  "records": [
+    {
+      "id": "M01",
+      "category": "Mechanism",
+      "name": "Spur gear pair",
+      "problem_solved": "Reduce speed and increase output torque",
+      "proposed_parameters": {
+        "module_mm": 1,
+        "driver_teeth": 20,
+        "driven_teeth": 60,
+        "face_width_mm": 8,
+        "pressure_angle_deg": 20
+      },
+      "published_specs": [],
+      "source_ids": [
+        "bosl"
+      ],
+      "physics_representation": "Two revolute joints; q_out=-(20/60)q_in; inertias plus gear coupling",
+      "missing_for_validated_simulation": "Backlash, tooth strength, efficiency, bearing layout",
+      "fabrication_route": "Print test gears; purchase bearings and shafts",
+      "priority": 1,
+      "license_scope": "BOSL2 generator BSD-2-Clause",
+      "notes": "Proposed pitch diameters 20/60 mm; center distance 40 mm. No rated torque assigned.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M02",
+      "category": "Mechanism",
+      "name": "Planetary reducer",
+      "problem_solved": "Compact coaxial reduction",
+      "proposed_parameters": {
+        "module_mm": 1,
+        "sun_teeth": 18,
+        "planet_teeth": 18,
+        "ring_teeth": 54,
+        "planet_count": 3,
+        "face_width_mm": 10
+      },
+      "published_specs": [],
+      "source_ids": [
+        "bosl"
+      ],
+      "physics_representation": "Fixed ring; carrier output; ratio 1+54/18=4; equivalent reducer or explicit gears",
+      "missing_for_validated_simulation": "Carrier strength, planet phasing, backlash, losses",
+      "fabrication_route": "Print low-load demonstrator; metal bearings",
+      "priority": 2,
+      "license_scope": "BOSL2 generator BSD-2-Clause",
+      "notes": "Ring pitch diameter 54 mm; equally spaced planets satisfy (54+18)/3=24.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "constrained_multibody",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M03",
+      "category": "Mechanism",
+      "name": "Bevel gear pair",
+      "problem_solved": "Transmit rotation through angled axes",
+      "proposed_parameters": {
+        "module_mm": 1,
+        "teeth_a": 20,
+        "teeth_b": 20,
+        "shaft_angle_deg": 90,
+        "face_width_mm": 5
+      },
+      "published_specs": [],
+      "source_ids": [
+        "bosl"
+      ],
+      "physics_representation": "Two intersecting revolute axes plus 1:1 coupling",
+      "missing_for_validated_simulation": "Pitch cone, thrust bearings, tolerances, efficiency",
+      "fabrication_route": "Printed prototype or purchased bevel pair",
+      "priority": 2,
+      "license_scope": "BOSL2 generator BSD-2-Clause",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M04",
+      "category": "Mechanism",
+      "name": "Worm reducer",
+      "problem_solved": "Large reduction in one stage",
+      "proposed_parameters": {
+        "module_mm": 1,
+        "worm_starts": 1,
+        "wheel_teeth": 30,
+        "worm_pitch_diameter_mm": 12
+      },
+      "published_specs": [],
+      "source_ids": [
+        "bosl"
+      ],
+      "physics_representation": "Coupled revolute axes; 30:1 ratio; include direction-dependent losses",
+      "missing_for_validated_simulation": "Lead angle, friction, thermal limits, backlash",
+      "fabrication_route": "Print demonstrator or use metal worm set",
+      "priority": 3,
+      "license_scope": "BOSL2 generator BSD-2-Clause",
+      "notes": "Self-locking must be evaluated; it is not guaranteed by the mechanism name.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M05",
+      "category": "Mechanism",
+      "name": "Rack and pinion",
+      "problem_solved": "Rotary-to-linear travel over long stroke",
+      "proposed_parameters": {
+        "module_mm": 1,
+        "pinion_teeth": 20,
+        "rack_length_mm": 200,
+        "face_width_mm": 8
+      },
+      "published_specs": [],
+      "source_ids": [
+        "bosl"
+      ],
+      "physics_representation": "Revolute plus prismatic; x=0.010 theta in SI",
+      "missing_for_validated_simulation": "Backlash, guide friction, mesh preload, tooth loads",
+      "fabrication_route": "Print rack prototype; purchase linear guide",
+      "priority": 1,
+      "license_scope": "BOSL2 generator BSD-2-Clause",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M06",
+      "category": "Mechanism",
+      "name": "Cycloidal reducer",
+      "problem_solved": "Compact high ratio with distributed pin contacts",
+      "proposed_parameters": {
+        "prototype_outer_diameter_mm": 80,
+        "prototype_thickness_mm": 25,
+        "target_ratio": 20
+      },
+      "published_specs": [
+        {
+          "name": "author_design_ratio",
+          "value": 20,
+          "unit": "dimensionless",
+          "source_id": "cycloid",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "cycloid"
+      ],
+      "physics_representation": "Equivalent geared joint initially; explicit eccentric/pin contacts for detailed study",
+      "missing_for_validated_simulation": "Exact lobe/pin geometry, eccentricity, output pin clearances, efficiency",
+      "fabrication_route": "CAD extraction then printed disk and metal pins",
+      "priority": 3,
+      "license_scope": "Not established for this asset",
+      "notes": "80\u00d725 mm is a proposed envelope; not an extracted dimension of the cited design.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M07",
+      "category": "Mechanism",
+      "name": "Timing-belt rotary reduction",
+      "problem_solved": "Move motor away from joint; lower transmission mass",
+      "proposed_parameters": {
+        "pitch_mm": 2,
+        "pulley_teeth_a": 20,
+        "pulley_teeth_b": 60,
+        "belt_width_mm": 6,
+        "center_distance_mm": 80
+      },
+      "published_specs": [],
+      "source_ids": [
+        "belt"
+      ],
+      "physics_representation": "Coupled revolute joints; optional elastic torsion and belt slip",
+      "missing_for_validated_simulation": "Exact tooth profile, belt length, tension, shaft loads",
+      "fabrication_route": "Purchase belt/pulleys; print mounts",
+      "priority": 1,
+      "license_scope": "Not established for this asset",
+      "notes": "Proposed pitch diameters 12.732/38.197 mm. Exact belt length must be selected, then centers adjusted.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M08",
+      "category": "Mechanism",
+      "name": "Belt-driven linear axis",
+      "problem_solved": "Fast positioning with long travel",
+      "proposed_parameters": {
+        "travel_mm": 300,
+        "pitch_mm": 2,
+        "pulley_teeth": 20,
+        "belt_width_mm": 6
+      },
+      "published_specs": [],
+      "source_ids": [
+        "belt",
+        "voron"
+      ],
+      "physics_representation": "Prismatic output x=(0.040/(2*pi))theta; reflected inertia",
+      "missing_for_validated_simulation": "Belt stretch, carriage mass, guide loads, motor torque-speed curve",
+      "fabrication_route": "Extrusion, belt, rail; printed carriage",
+      "priority": 1,
+      "license_scope": "Not established for this asset",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M09",
+      "category": "Mechanism",
+      "name": "Trapezoidal lead-screw axis",
+      "problem_solved": "Compact linear thrust and positioning",
+      "proposed_parameters": {
+        "diameter_mm": 8,
+        "pitch_mm": 2,
+        "starts": 1,
+        "travel_mm": 150
+      },
+      "published_specs": [],
+      "source_ids": [
+        "igus"
+      ],
+      "physics_representation": "Prismatic output x=(0.002/(2*pi))theta; Coulomb friction and backlash",
+      "missing_for_validated_simulation": "Nut geometry, efficiency, critical speed, buckling, support bearings",
+      "fabrication_route": "Buy screw/nut; print bracket",
+      "priority": 1,
+      "license_scope": "Not established for this asset",
+      "notes": "Proposed Tr8\u00d72-like single-start configuration. Lead=pitch\u00d7starts; never infer lead from diameter alone.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M10",
+      "category": "Mechanism",
+      "name": "CoreXY stage",
+      "problem_solved": "Two-axis motion with fixed motors",
+      "proposed_parameters": {
+        "travel_x_mm": 200,
+        "travel_y_mm": 200,
+        "pitch_mm": 2,
+        "pulley_teeth": 20
+      },
+      "published_specs": [],
+      "source_ids": [
+        "core",
+        "voron"
+      ],
+      "physics_representation": "Two prismatic coordinates; belt displacements u=x+y, v=x-y for chosen routing",
+      "missing_for_validated_simulation": "Routing signs, belt compliance, pulley alignment, moving mass",
+      "fabrication_route": "Open printer CAD/BOM plus custom carriage",
+      "priority": 1,
+      "license_scope": "Not established for this asset",
+      "notes": "Axes/sign convention must be checked against the actual routing.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M11",
+      "category": "Mechanism",
+      "name": "Four-bar parallelogram",
+      "problem_solved": "Maintain tool orientation while moving",
+      "proposed_parameters": {
+        "ground_mm": 80,
+        "coupler_mm": 80,
+        "input_mm": 60,
+        "output_mm": 60,
+        "link_width_mm": 12,
+        "pin_diameter_mm": 4
+      },
+      "published_specs": [],
+      "source_ids": [
+        "four",
+        "pmks"
+      ],
+      "physics_representation": "Four revolute joints with loop closure; select assembly branch",
+      "missing_for_validated_simulation": "Joint clearances, collision, singular poses, link mass",
+      "fabrication_route": "Printed links with bushings/pins",
+      "priority": 1,
+      "license_scope": "SALAR software MIT; proposed geometry authored here",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "constrained_multibody",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M12",
+      "category": "Mechanism",
+      "name": "Slider-crank",
+      "problem_solved": "Convert continuous rotation to reciprocation",
+      "proposed_parameters": {
+        "crank_radius_mm": 20,
+        "connecting_rod_mm": 80,
+        "stroke_mm": 40
+      },
+      "published_specs": [],
+      "source_ids": [
+        "mjcomp",
+        "pmks"
+      ],
+      "physics_representation": "Revolute crank and rod plus prismatic slider; closure constraint",
+      "missing_for_validated_simulation": "Guide friction, pin play, side load, speed-dependent forces",
+      "fabrication_route": "Printed link demonstration; shaft/bearings",
+      "priority": 2,
+      "license_scope": "Not established for this asset",
+      "notes": "In-line stroke is 2r; use analytical or native transmission before tooth/contact detail.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M13",
+      "category": "Mechanism",
+      "name": "Parallel two-jaw gripper",
+      "problem_solved": "Predictable centering and pinch contact",
+      "proposed_parameters": {
+        "jaw_travel_each_mm": 25,
+        "closed_gap_mm": 10,
+        "jaw_size_mm": [
+          12,
+          20,
+          60
+        ],
+        "base_size_mm": [
+          100,
+          50,
+          20
+        ]
+      },
+      "published_specs": [],
+      "source_ids": [
+        "urdf",
+        "mj"
+      ],
+      "physics_representation": "Two opposite-axis prismatic joints; equal displacement coupling; pad contact",
+      "missing_for_validated_simulation": "Jaw force, pads, friction, actuator, link mass",
+      "fabrication_route": "Print jaw bodies; purchase rails/drive",
+      "priority": 1,
+      "license_scope": "Not established for this asset",
+      "notes": "Worked example uses this proposed mechanism; no payload claimed.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "grasp, slip and release primitives before manipulation",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M14",
+      "category": "Mechanism",
+      "name": "Tendon underactuated finger",
+      "problem_solved": "Conform to irregular objects with fewer motors",
+      "proposed_parameters": {
+        "finger_length_mm": 90,
+        "segment_lengths_mm": [
+          30,
+          30,
+          30
+        ],
+        "tendon_offset_mm": 5
+      },
+      "published_specs": [],
+      "source_ids": [
+        "openhand",
+        "handcad",
+        "handlicense"
+      ],
+      "physics_representation": "Rigid segments with hinge springs; routed tendon and unilateral tension",
+      "missing_for_validated_simulation": "Tendon routing, friction, preloads, flexure stiffness, pad material",
+      "fabrication_route": "Printed/molded hybrid plus cord",
+      "priority": 2,
+      "license_scope": "CC-BY-NC-3.0 hardware repository; noncommercial restriction; not unrestricted OSS",
+      "notes": "Proposed 90 mm finger is not a Yale model dimension.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "constrained_multibody",
+        "first_task": "grasp, slip and release primitives before manipulation",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M15",
+      "category": "Mechanism",
+      "name": "Pulley-tree differential",
+      "problem_solved": "Share actuator travel among fingers after contact",
+      "proposed_parameters": {
+        "pulley_radius_mm": 8,
+        "branch_count": 4,
+        "cord_diameter_mm": 1
+      },
+      "published_specs": [],
+      "source_ids": [
+        "t"
+      ],
+      "physics_representation": "Spatial/fixed tendons with differential length constraints",
+      "missing_for_validated_simulation": "Slack, pretension, pulley friction, mechanical travel stops",
+      "fabrication_route": "Printed pulleys and bought bearings/cord",
+      "priority": 2,
+      "license_scope": "Not established for this asset",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "constrained_multibody",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M16",
+      "category": "Mechanism",
+      "name": "Flexure hinge",
+      "problem_solved": "Joint motion without bearing assembly",
+      "proposed_parameters": {
+        "beam_length_mm": 20,
+        "beam_width_mm": 8,
+        "beam_thickness_mm": 0.8
+      },
+      "published_specs": [],
+      "source_ids": [
+        "openhand"
+      ],
+      "physics_representation": "Small-deflection spring hinge; FEM for large strain/fatigue",
+      "missing_for_validated_simulation": "Material E, damping, print anisotropy, strain limits",
+      "fabrication_route": "Print beam coupon or mold elastomer",
+      "priority": 3,
+      "license_scope": "Not established for this asset",
+      "notes": "Proposed beam. Approximate end-moment rotation stiffness E*b*t^3/(12*L); boundary conditions matter.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "deformable_or_calibrated_surrogate",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M17",
+      "category": "Mechanism",
+      "name": "PneuNet bending actuator",
+      "problem_solved": "Gentle compliant grasp or distributed bending",
+      "proposed_parameters": {
+        "length_mm": 100,
+        "width_mm": 20,
+        "chamber_count": 10,
+        "wall_thickness_mm": 2
+      },
+      "published_specs": [],
+      "source_ids": [
+        "pneu",
+        "pneucad"
+      ],
+      "physics_representation": "Hyperelastic FEM with pressure loading; fitted rigid segment surrogate for control",
+      "missing_for_validated_simulation": "Material law, chamber geometry, pressure limits, leakage",
+      "fabrication_route": "Print molds; cast elastomer; pneumatic supply",
+      "priority": 3,
+      "license_scope": "Not established for this asset",
+      "notes": "Proposed envelope; toolkit provides modeling files, not validation for these dimensions.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "deformable_or_calibrated_surrogate",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M18",
+      "category": "Mechanism",
+      "name": "Granular/passive jamming grip",
+      "problem_solved": "Adapt shape then change stiffness",
+      "proposed_parameters": {
+        "prototype_diameter_mm": 50,
+        "membrane_thickness_mm": 1
+      },
+      "published_specs": [],
+      "source_ids": [
+        "jam"
+      ],
+      "physics_representation": "Calibrated stiffness/contact surrogate; DEM/FEM for granular detail",
+      "missing_for_validated_simulation": "Jamming method, particle packing, pressure or deformation curve",
+      "fabrication_route": "Membrane fabrication and granular fill",
+      "priority": 3,
+      "license_scope": "Not established for this asset",
+      "notes": "Passive jamming and vacuum jamming are distinct activation methods.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "deformable_or_calibrated_surrogate",
+        "first_task": "grasp, slip and release primitives before manipulation",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M19",
+      "category": "Mechanism",
+      "name": "Vacuum suction end effector",
+      "problem_solved": "Pick smooth nonporous surfaces",
+      "proposed_parameters": {
+        "cup_diameter_mm": 20,
+        "example_pressure_difference_kPa": 40
+      },
+      "published_specs": [
+        {
+          "name": "nominal_cup_diameter",
+          "value": 20,
+          "unit": "mm",
+          "source_id": "piab",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "piab"
+      ],
+      "physics_representation": "Seal-dependent attachment force; release on seal loss",
+      "missing_for_validated_simulation": "Effective area, surface leakage, peel load, vacuum flow",
+      "fabrication_route": "Buy cup and vacuum hardware; print mount",
+      "priority": 2,
+      "license_scope": "Not established for this asset",
+      "notes": "Ideal full-area force at proposed 40 kPa is 12.57 N; not a rated holding force.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "grasp, slip and release primitives before manipulation",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M20",
+      "category": "Mechanism",
+      "name": "Differential-drive base",
+      "problem_solved": "Simple ground navigation",
+      "proposed_parameters": {
+        "wheel_diameter_mm": 80,
+        "track_width_mm": 220,
+        "chassis_size_mm": [
+          300,
+          250,
+          80
+        ]
+      },
+      "published_specs": [],
+      "source_ids": [
+        "lino",
+        "linodoc"
+      ],
+      "physics_representation": "Wheel revolute joints; v=r(wR+wL)/2, yaw=r(wR-wL)/track; contact",
+      "missing_for_validated_simulation": "COM, tire friction, caster drag, encoder and drive parameters",
+      "fabrication_route": "Plate/extrusion, bought motors and wheels",
+      "priority": 1,
+      "license_scope": "Not established for this asset",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "traction/slip and locomotion primitives",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M21",
+      "category": "Mechanism",
+      "name": "Mecanum base",
+      "problem_solved": "Strafe and turn in confined flat-floor spaces",
+      "proposed_parameters": {
+        "wheel_diameter_mm": 100,
+        "roller_angle_deg": 45,
+        "wheelbase_mm": 250,
+        "track_width_mm": 220
+      },
+      "published_specs": [],
+      "source_ids": [
+        "lino"
+      ],
+      "physics_representation": "Explicit roller contacts or calibrated anisotropic friction approximation",
+      "missing_for_validated_simulation": "Roller geometry, friction direction, slip, wheel order",
+      "fabrication_route": "Buy wheels; print chassis mounts",
+      "priority": 2,
+      "license_scope": "Not established for this asset",
+      "notes": "Plain cylindrical wheels with isotropic friction do not reproduce mecanum behavior.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "traction/slip and locomotion primitives",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "P01",
+      "category": "Open project",
+      "name": "OpenMANIPULATOR-X",
+      "problem_solved": "Compact serial arm benchmark",
+      "proposed_parameters": {},
+      "published_specs": [
+        {
+          "name": "reach",
+          "value": 380,
+          "unit": "mm",
+          "source_id": "omx",
+          "status": "published"
+        },
+        {
+          "name": "maximum_payload",
+          "value": 0.5,
+          "unit": "kg",
+          "source_id": "omx",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "omx",
+        "omxmanual"
+      ],
+      "physics_representation": "Import revision-specific links/joints/inertias; current limits and gripper contacts",
+      "missing_for_validated_simulation": "CAD revision, measured friction, payload pose and duty cycle",
+      "fabrication_route": "Open frames/CAD plus purchased DYNAMIXEL",
+      "priority": 1,
+      "license_scope": "Open hardware/software advertised; individual asset license not audited",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "P02",
+      "category": "Open project",
+      "name": "SO-101 / SO-ARM100 repository",
+      "problem_solved": "Low-cost teleoperation and imitation-learning arm",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "so",
+        "lerobot"
+      ],
+      "physics_representation": "Use selected Simulation asset; match follower motors, axes and calibration",
+      "missing_for_validated_simulation": "Exact variant, link lengths/masses, servo model, gripper contact",
+      "fabrication_route": "Printed links plus Feetech servos",
+      "priority": 1,
+      "license_scope": "Apache-2.0 repository; per-file scope still check",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "P03",
+      "category": "Open project",
+      "name": "BCN3D Moveo",
+      "problem_solved": "Printed educational articulated arm",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "moveo"
+      ],
+      "physics_representation": "Reconstruct tree from CAD; geared stepper drives",
+      "missing_for_validated_simulation": "CAD extraction, ratios, masses, torque-speed curves, print stiffness",
+      "fabrication_route": "Printed bodies and purchased motion hardware",
+      "priority": 2,
+      "license_scope": "Open-source claim; exact asset license not audited",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "P04",
+      "category": "Open project",
+      "name": "Annin AR4",
+      "problem_solved": "Larger six-axis workstation reference",
+      "proposed_parameters": {},
+      "published_specs": [
+        {
+          "name": "FAQ_reach",
+          "value": 670,
+          "unit": "mm",
+          "source_id": "ar4",
+          "status": "published"
+        },
+        {
+          "name": "FAQ_payload",
+          "value": 1.9,
+          "unit": "kg",
+          "source_id": "ar4",
+          "status": "published"
+        },
+        {
+          "name": "FAQ_repeatability",
+          "value": 0.3,
+          "unit": "mm",
+          "source_id": "ar4",
+          "status": "published"
+        },
+        {
+          "name": "manual_V1_5_reach",
+          "value": 629,
+          "unit": "mm",
+          "source_id": "ar4manual",
+          "status": "published"
+        },
+        {
+          "name": "manual_V1_5_repeatability",
+          "value": 0.2,
+          "unit": "mm",
+          "source_id": "ar4manual",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "ar4",
+        "ar4manual"
+      ],
+      "physics_representation": "Six revolute links with geared drives; choose manual/model revision first",
+      "missing_for_validated_simulation": "Conflicting reach/repeatability, exact revision, asset licenses, inertia",
+      "fabrication_route": "Machined aluminum plus purchased transmission components",
+      "priority": 2,
+      "license_scope": "Build resources available; hardware redistribution rights not established",
+      "notes": "FAQ says 26 inches (67 cm); conversion is rounded/inconsistent. Neither figure is accepted as canonical here.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "P05",
+      "category": "Open project",
+      "name": "Yale OpenHand Model T",
+      "problem_solved": "Single-actuator adaptive grasp",
+      "proposed_parameters": {},
+      "published_specs": [
+        {
+          "name": "fingers",
+          "value": 4,
+          "unit": "count",
+          "source_id": "t",
+          "status": "published"
+        },
+        {
+          "name": "actuators",
+          "value": 1,
+          "unit": "count",
+          "source_id": "t",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "t",
+        "handcad",
+        "handlicense"
+      ],
+      "physics_representation": "Underactuated tendon, pulley differential, compliant joints",
+      "missing_for_validated_simulation": "CAD dimension extraction, stiffness, damping, pretension",
+      "fabrication_route": "Printed/molded fingers and actuator",
+      "priority": 2,
+      "license_scope": "CC-BY-NC-3.0 hardware repository; noncommercial restriction; not unrestricted OSS",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "P06",
+      "category": "Open project",
+      "name": "Yale OpenHand T42",
+      "problem_solved": "Independent adaptive fingers for manipulation",
+      "proposed_parameters": {},
+      "published_specs": [
+        {
+          "name": "fingers",
+          "value": 2,
+          "unit": "count",
+          "source_id": "t42",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "t42",
+        "handcad",
+        "handlicense"
+      ],
+      "physics_representation": "Independent finger tendons and compliant joints",
+      "missing_for_validated_simulation": "Selected pivot/flexure variant, material and cord properties",
+      "fabrication_route": "Printed and molded hybrid",
+      "priority": 2,
+      "license_scope": "CC-BY-NC-3.0 hardware repository; noncommercial restriction; not unrestricted OSS",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "P07",
+      "category": "Open project",
+      "name": "ODRI actuator / Solo family",
+      "problem_solved": "Torque-controlled legged motion research",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "odri",
+        "odripaper"
+      ],
+      "physics_representation": "Actuator rotor/transmission inertia; articulated legs and foot contacts",
+      "missing_for_validated_simulation": "Choose module/Solo revision, ratios, motor parameters, contacts",
+      "fabrication_route": "Precision components with printed shells",
+      "priority": 2,
+      "license_scope": "BSD-3-Clause hardware repository",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "P08",
+      "category": "Open project",
+      "name": "Open-Source Leg",
+      "problem_solved": "Wearable knee/ankle research mechanisms",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "osl"
+      ],
+      "physics_representation": "Articulated joints with actuator dynamics and load interaction",
+      "missing_for_validated_simulation": "Hardware generation, geometry/masses, actuator limits, compliant interface",
+      "fabrication_route": "Machined parts and purchased actuator hardware",
+      "priority": 3,
+      "license_scope": "License not audited",
+      "notes": "Research reference; this catalog does not establish suitability for human use.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "P09",
+      "category": "Open project",
+      "name": "Linorobot2",
+      "problem_solved": "Configurable mobile base with ROS2 simulation path",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "lino",
+        "linodoc"
+      ],
+      "physics_representation": "Dimensioned xacro; wheel drive and sensors; Gazebo integration",
+      "missing_for_validated_simulation": "Selected base geometry, motor SKU, friction, calibration",
+      "fabrication_route": "Configurable chassis using bought components",
+      "priority": 1,
+      "license_scope": "Repository license not audited",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "P10",
+      "category": "Open project",
+      "name": "OpenCat firmware paradigm",
+      "problem_solved": "Small servo-driven walking robots",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "cat"
+      ],
+      "physics_representation": "Position-controlled leg chain plus servo lag and ground contact",
+      "missing_for_validated_simulation": "Chassis CAD openness, servo dynamics, generation-specific geometry",
+      "fabrication_route": "Use verified open chassis or independently authored geometry",
+      "priority": 2,
+      "license_scope": "MIT firmware; chassis hardware rights not established",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "traction/slip and locomotion primitives",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "P11",
+      "category": "Open project",
+      "name": "Stanford Pupper reference",
+      "problem_solved": "Compact position-controlled quadruped",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "pupper"
+      ],
+      "physics_representation": "Leg kinematics, servo drive model, ground contact",
+      "missing_for_validated_simulation": "Generation, hardware geometry, torque limits, mass/inertia",
+      "fabrication_route": "Revision-specific build route",
+      "priority": 2,
+      "license_scope": "Software/hardware asset license scopes not audited",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "traction/slip and locomotion primitives",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "C01",
+      "category": "Standard/component",
+      "name": "SKF 608-2Z bearing",
+      "problem_solved": "Support 8 mm rotary shafts",
+      "proposed_parameters": {},
+      "published_specs": [
+        {
+          "name": "bore",
+          "value": 8,
+          "unit": "mm",
+          "source_id": "skf",
+          "status": "published"
+        },
+        {
+          "name": "outer_diameter",
+          "value": 22,
+          "unit": "mm",
+          "source_id": "skf",
+          "status": "published"
+        },
+        {
+          "name": "width",
+          "value": 7,
+          "unit": "mm",
+          "source_id": "skf",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "skf"
+      ],
+      "physics_representation": "Usually represented by revolute joint plus friction; shell merged to link",
+      "missing_for_validated_simulation": "Fits, suffix-specific loads, friction, mass",
+      "fabrication_route": "Buy steel bearing; recreate envelope and mounting pockets",
+      "priority": 1,
+      "license_scope": "Commercial part; published dimensions are interface references",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "C02",
+      "category": "Standard/component",
+      "name": "17HS19-2004S1 stepper",
+      "problem_solved": "Drive small axes and reduction mechanisms",
+      "proposed_parameters": {},
+      "published_specs": [
+        {
+          "name": "body_dimensions",
+          "value": [
+            42,
+            42,
+            48
+          ],
+          "unit": "mm",
+          "source_id": "stepper",
+          "status": "published"
+        },
+        {
+          "name": "holding_torque",
+          "value": 0.59,
+          "unit": "N*m",
+          "source_id": "stepper",
+          "status": "published"
+        },
+        {
+          "name": "phase_current",
+          "value": 2,
+          "unit": "A",
+          "source_id": "stepper",
+          "status": "published"
+        },
+        {
+          "name": "shaft_diameter",
+          "value": 5,
+          "unit": "mm",
+          "source_id": "stepper",
+          "status": "published"
+        },
+        {
+          "name": "shaft_length",
+          "value": 24,
+          "unit": "mm",
+          "source_id": "stepper",
+          "status": "published"
+        },
+        {
+          "name": "mass",
+          "value": 0.39,
+          "unit": "kg",
+          "source_id": "stepper",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "stepper",
+        "stepcurve"
+      ],
+      "physics_representation": "Torque-speed/current model with rotor inertia; step-loss behavior if needed",
+      "missing_for_validated_simulation": "Shaft/mount drawing, inertia, driver supply, thermal limits",
+      "fabrication_route": "Buy motor; recreate casing/mount interface",
+      "priority": 1,
+      "license_scope": "Commercial component",
+      "notes": "Holding torque is not moving or continuous torque; 24 V curve conditions are specific.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "C03",
+      "category": "Standard/component",
+      "name": "DYNAMIXEL XM430-W350",
+      "problem_solved": "Integrated servo with position/current feedback",
+      "proposed_parameters": {},
+      "published_specs": [
+        {
+          "name": "case_dimensions",
+          "value": [
+            28.5,
+            46.5,
+            34
+          ],
+          "unit": "mm",
+          "source_id": "dxl",
+          "status": "published"
+        },
+        {
+          "name": "stall_torque_at_12V",
+          "value": 4.1,
+          "unit": "N*m",
+          "source_id": "dxl",
+          "status": "published"
+        },
+        {
+          "name": "mass",
+          "value": 0.082,
+          "unit": "kg",
+          "source_id": "dxl",
+          "status": "published"
+        },
+        {
+          "name": "gear_ratio",
+          "value": 353.5,
+          "unit": "dimensionless",
+          "source_id": "dxl",
+          "status": "published"
+        },
+        {
+          "name": "backlash",
+          "value": 0.25,
+          "unit": "deg",
+          "source_id": "dxl",
+          "status": "published"
+        },
+        {
+          "name": "no_load_speed_at_12V",
+          "value": 46,
+          "unit": "rpm",
+          "source_id": "dxl",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "dxl"
+      ],
+      "physics_representation": "Torque-limited servo with gearing, lag, friction, temperature state",
+      "missing_for_validated_simulation": "Continuous torque, horn/shaft interfaces, thermal derating, inertia",
+      "fabrication_route": "Buy servo; import drawing/CAD for mounts",
+      "priority": 1,
+      "license_scope": "Commercial servo; software availability does not make motor hardware OSS",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "C04",
+      "category": "Standard/component",
+      "name": "Pololu 37D gearmotor family",
+      "problem_solved": "Encoder-controlled mobile wheel drive",
+      "proposed_parameters": {},
+      "published_specs": [
+        {
+          "name": "nominal_family_diameter",
+          "value": 37,
+          "unit": "mm",
+          "source_id": "pololu",
+          "status": "published"
+        },
+        {
+          "name": "available_voltage",
+          "value": [
+            12,
+            24
+          ],
+          "unit": "V",
+          "source_id": "pololu",
+          "status": "published"
+        },
+        {
+          "name": "gear_ratio_range",
+          "value": [
+            6.3,
+            150
+          ],
+          "unit": "dimensionless",
+          "source_id": "pololu",
+          "status": "published"
+        },
+        {
+          "name": "motor_encoder_resolution",
+          "value": 64,
+          "unit": "CPR",
+          "source_id": "pololu",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "pololu"
+      ],
+      "physics_representation": "DC motor plus chosen gearbox; encoder on motor shaft",
+      "missing_for_validated_simulation": "Exact SKU, length, torque-speed/current curves, shaft drawing",
+      "fabrication_route": "Buy chosen SKU; recreate envelope",
+      "priority": 1,
+      "license_scope": "Commercial component",
+      "notes": "Output counts depend on exact gear ratio and decode convention; CPR must not be blindly multiplied by four.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "C05",
+      "category": "Standard/component",
+      "name": "2 mm pitch synchronous belt interface",
+      "problem_solved": "Standardize small belt drives",
+      "proposed_parameters": {
+        "example_width_mm": 6,
+        "example_pulley_teeth": 20
+      },
+      "published_specs": [
+        {
+          "name": "selected_profile_pitch",
+          "value": 2,
+          "unit": "mm",
+          "source_id": "belt",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "belt"
+      ],
+      "physics_representation": "Constraint or elastic transmission; belt visual mesh separate",
+      "missing_for_validated_simulation": "Exact profile, material, width, load rating and length",
+      "fabrication_route": "Buy matching belt/pulleys; author mounts",
+      "priority": 1,
+      "license_scope": "Commercial profile; CAD license independent",
+      "notes": "GT2 family naming alone is insufficient for tooth-profile matching.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "C06",
+      "category": "Standard/component",
+      "name": "MGN12 miniature rail family",
+      "problem_solved": "Constrain a compact linear carriage",
+      "proposed_parameters": {},
+      "published_specs": [
+        {
+          "name": "nominal_rail_width",
+          "value": 12,
+          "unit": "mm",
+          "source_id": "hiwin",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "hiwin"
+      ],
+      "physics_representation": "Prismatic joint; block/rail usually rigid or fixed components",
+      "missing_for_validated_simulation": "C versus H variant; full hole pattern, preload, load moments, friction",
+      "fabrication_route": "Buy rail/block; extract catalog drawing",
+      "priority": 1,
+      "license_scope": "Commercial part",
+      "notes": "Do not use family name as a complete carriage envelope.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "C07",
+      "category": "Standard/component",
+      "name": "20\u00d720 extrusion family",
+      "problem_solved": "Composable frames and structural axes",
+      "proposed_parameters": {
+        "example_cut_length_mm": 300
+      },
+      "published_specs": [
+        {
+          "name": "nominal_cross_section",
+          "value": [
+            20,
+            20
+          ],
+          "unit": "mm",
+          "source_id": "extrusion",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "extrusion"
+      ],
+      "physics_representation": "Fixed rigid members initially; beam elements for deflection",
+      "missing_for_validated_simulation": "Exact slot series, cross-section inertia, mass per metre, joint stiffness",
+      "fabrication_route": "Buy and cut extrusion; print compatible brackets",
+      "priority": 1,
+      "license_scope": "Commercial profile",
+      "notes": "2020 describes envelope, not universal T-nut compatibility.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "C08",
+      "category": "Standard/component",
+      "name": "ISO4762 socket cap screw family",
+      "problem_solved": "Reversible structural assembly",
+      "proposed_parameters": {
+        "example_nominal_thread_mm": 3,
+        "example_length_mm": 12
+      },
+      "published_specs": [],
+      "source_ids": [
+        "fastener"
+      ],
+      "physics_representation": "Fixed constraints or bolt preload/contact model when needed",
+      "missing_for_validated_simulation": "Pitch, grade, head dimensions, torque, thread engagement",
+      "fabrication_route": "Buy screws; model clearance and head pockets",
+      "priority": 1,
+      "license_scope": "Published standardized part family",
+      "notes": "M3\u00d712 is a proposed selection; extract full manufacturer drawing before manufacturing pockets.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "C09",
+      "category": "Standard/component",
+      "name": "AS5048A magnetic angle sensor",
+      "problem_solved": "Non-contact joint angle feedback",
+      "proposed_parameters": {},
+      "published_specs": [
+        {
+          "name": "angle_resolution",
+          "value": 14,
+          "unit": "bit",
+          "source_id": "encoder",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "encoder"
+      ],
+      "physics_representation": "Angle observation with noise, quantization, bias and delay",
+      "missing_for_validated_simulation": "Magnet dimensions/gap, PCB envelope, absolute accuracy, calibration",
+      "fabrication_route": "Buy IC/module; author mount and magnet holder",
+      "priority": 2,
+      "license_scope": "Commercial IC",
+      "notes": "Quantization step 360/16384=0.02197 degrees; not angular accuracy.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "C10",
+      "category": "Standard/component",
+      "name": "BMI088 IMU",
+      "problem_solved": "Estimate motion and attitude in dynamic robots",
+      "proposed_parameters": {},
+      "published_specs": [
+        {
+          "name": "accelerometer_resolution",
+          "value": 16,
+          "unit": "bit",
+          "source_id": "imu",
+          "status": "published"
+        },
+        {
+          "name": "gyroscope_resolution",
+          "value": 16,
+          "unit": "bit",
+          "source_id": "imu",
+          "status": "published"
+        }
+      ],
+      "source_ids": [
+        "imu"
+      ],
+      "physics_representation": "Accelerometer specific force and gyro angular rate; noise/bias/latency",
+      "missing_for_validated_simulation": "Board footprint, selected ranges, noise spectra, orientation calibration",
+      "fabrication_route": "Buy module or design PCB",
+      "priority": 2,
+      "license_scope": "Commercial IC; driver license separate",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "C11",
+      "category": "Standard/component",
+      "name": "moteus brushless controller",
+      "problem_solved": "Torque/velocity/position control for custom actuators",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "moteus"
+      ],
+      "physics_representation": "Actuator/current loop and communications delay; controller is not a motor",
+      "missing_for_validated_simulation": "Board revision, motor constants, encoder, electrical/thermal limits",
+      "fabrication_route": "Buy board or fabricate licensed design",
+      "priority": 2,
+      "license_scope": "Apache-2.0 repository",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "T01",
+      "category": "Tool/format",
+      "name": "BOSL2 parametric geometry",
+      "problem_solved": "Generate gears and interface geometry from parameters",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "boslrepo",
+        "bosl"
+      ],
+      "physics_representation": "Geometry generator only; attach independent physics metadata",
+      "missing_for_validated_simulation": "Pin commit; define units and manufacturing tolerances",
+      "fabrication_route": "OpenSCAD source/VNF output",
+      "priority": 1,
+      "license_scope": "BSD-2-Clause repository",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "T02",
+      "category": "Tool/format",
+      "name": "NopSCADlib component library",
+      "problem_solved": "Reuse purchased-part models and BOM structure",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "nop"
+      ],
+      "physics_representation": "Geometry/BOM only; derive dynamics from real components",
+      "missing_for_validated_simulation": "Pin commit; verify exact SKU and source license scope",
+      "fabrication_route": "OpenSCAD vitamins plus assembly scripts",
+      "priority": 1,
+      "license_scope": "GPL-3.0 repository",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "T03",
+      "category": "Tool/format",
+      "name": "URDF / xacro",
+      "problem_solved": "Describe rigid robot geometry and kinematic tree",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "urdf",
+        "sdf"
+      ],
+      "physics_representation": "Links, tree joints, collision, inertial tensors; engine control extensions",
+      "missing_for_validated_simulation": "Closed-loop and transmission support varies by importer",
+      "fabrication_route": "Compiler export target",
+      "priority": 1,
+      "license_scope": "Format reference; software package licenses separate",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "T04",
+      "category": "Tool/format",
+      "name": "MuJoCo MJCF",
+      "problem_solved": "Represent articulated/contact-rich mechanisms",
+      "proposed_parameters": {},
+      "published_specs": [],
+      "source_ids": [
+        "mj",
+        "mjcomp"
+      ],
+      "physics_representation": "Bodies, joints, actuators, tendons and equality constraints",
+      "missing_for_validated_simulation": "Engine version, contact calibration, timestep and convergence",
+      "fabrication_route": "Compiler export target",
+      "priority": 1,
+      "license_scope": "Engine/model asset licenses separate",
+      "notes": "",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "component interface verification",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M22",
+      "category": "Mechanism",
+      "name": "SCARA serial arm",
+      "problem_solved": "Planar pick-and-place with separate vertical motion",
+      "proposed_parameters": {
+        "link_lengths_mm": [
+          150,
+          150
+        ],
+        "z_stroke_mm": 80
+      },
+      "published_specs": [],
+      "source_ids": [
+        "scara"
+      ],
+      "physics_representation": "Two parallel-axis revolute joints plus prismatic Z; optional wrist rotation",
+      "missing_for_validated_simulation": "Joint limits, motor/gear selection, stiffness, tool load",
+      "fabrication_route": "Printed/machined links with bearings and linear Z",
+      "priority": 1,
+      "license_scope": "Not established for this asset",
+      "notes": "Proposed planar reach 300 mm, excluding tool offset; folded singularity needs joint limits.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M23",
+      "category": "Mechanism",
+      "name": "Delta parallel manipulator",
+      "problem_solved": "Low moving mass for rapid translational positioning",
+      "proposed_parameters": {
+        "base_radius_mm": 100,
+        "platform_radius_mm": 30,
+        "upper_arm_mm": 100,
+        "forearm_mm": 200
+      },
+      "published_specs": [],
+      "source_ids": [
+        "delta"
+      ],
+      "physics_representation": "Three driven arms and parallel forearm constraints; native loop closure",
+      "missing_for_validated_simulation": "Full anchor frames, workspace, collisions, link mass, actuator limits",
+      "fabrication_route": "Revision-specific CAD and paired rods",
+      "priority": 3,
+      "license_scope": "Not established for this asset",
+      "notes": "Proposed geometry only; no working envelope or cycle rate claimed.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "constrained_multibody",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M24",
+      "category": "Mechanism",
+      "name": "Stewart parallel platform",
+      "problem_solved": "Six-axis orientation and positioning of a platform",
+      "proposed_parameters": {
+        "base_radius_mm": 150,
+        "platform_radius_mm": 100,
+        "nominal_height_mm": 150,
+        "actuator_stroke_mm": 50
+      },
+      "published_specs": [],
+      "source_ids": [
+        "stewart"
+      ],
+      "physics_representation": "Six struts with ball/universal joints and loop constraints; IK from attachment coordinates",
+      "missing_for_validated_simulation": "Six paired attachment frames, actuator lengths, singularities, mass and stiffness",
+      "fabrication_route": "Plate, bought actuators/joints, authored mounts",
+      "priority": 3,
+      "license_scope": "Not established for this asset",
+      "notes": "Radii and height are insufficient to compile; anchor angles must be supplied.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "constrained_multibody",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M25",
+      "category": "Mechanism",
+      "name": "Quasi-direct-drive joint",
+      "problem_solved": "Backdrivable torque control with modest reduction",
+      "proposed_parameters": {
+        "prototype_reduction_ratio": 6,
+        "prototype_case_diameter_mm": 80
+      },
+      "published_specs": [],
+      "source_ids": [
+        "qdd",
+        "moteus"
+      ],
+      "physics_representation": "Low-ratio drive with reflected rotor inertia, torque/current control and saturation",
+      "missing_for_validated_simulation": "Motor Kt/Kv, winding resistance, rotor inertia, gearing and thermal limits",
+      "fabrication_route": "BLDC motor, low ratio reducer, encoder and controller",
+      "priority": 2,
+      "license_scope": "Not established for this asset",
+      "notes": "Proposed 6:1 and 80 mm are independent choices, not source specifications.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M26",
+      "category": "Mechanism",
+      "name": "Series-elastic actuator",
+      "problem_solved": "Measure force from spring deflection and absorb shock",
+      "proposed_parameters": {
+        "prototype_torsion_stiffness_Nm_rad": 20,
+        "prototype_deflection_limit_deg": 10
+      },
+      "published_specs": [],
+      "source_ids": [
+        "sea"
+      ],
+      "physics_representation": "Separate motor/output coordinates; spring torque k*(theta_motor/N-theta_out) plus damping",
+      "missing_for_validated_simulation": "Spring calibration, fatigue, sensors, preload, controller bandwidth",
+      "fabrication_route": "Motor/reducer plus designed spring and dual sensing",
+      "priority": 3,
+      "license_scope": "Not established for this asset",
+      "notes": "Proposed spring torque at 10 degrees is 3.49 N*m; this is not an actuator rating.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "rigid_body",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    },
+    {
+      "id": "M27",
+      "category": "Mechanism",
+      "name": "Strain-wave reducer",
+      "problem_solved": "High coaxial ratio through a deformable toothed cup",
+      "proposed_parameters": {
+        "flexspline_teeth": 100,
+        "circular_spline_teeth": 102,
+        "prototype_pitch_diameter_mm": 60
+      },
+      "published_specs": [],
+      "source_ids": [
+        "strain"
+      ],
+      "physics_representation": "Equivalent ratio -100/(102-100)=-50 with compliance; FEM for cup stress",
+      "missing_for_validated_simulation": "Conjugate profiles, wave generator geometry, wall strain, fatigue and losses",
+      "fabrication_route": "Printed proof of geometry or precision manufactured assembly",
+      "priority": 3,
+      "license_scope": "Not established for this asset",
+      "notes": "Proposed tooth counts yield 50:1 for fixed circular spline; profile generator is not a manufacturing-ready actuator.",
+      "readiness": "research_record_not_validated_asset",
+      "training_profile": {
+        "fidelity_class": "deformable_or_calibrated_surrogate",
+        "first_task": "bounded motion/load primitive test",
+        "release_status": "synthetic_only_unvalidated",
+        "calibration_report": null,
+        "controller_contract": null,
+        "episode_contract": "contracts/episode.schema.json",
+        "requirements": [
+          "exact_asset_revision",
+          "task_and_action_contract",
+          "measured_or_declared_parameters",
+          "clock_and_sensor_contract",
+          "scoped_validation_report"
+        ]
+      }
+    }
+  ],
+  "solution_version": "0.2.0",
+  "training_research_file": "training_findings.json"
+}

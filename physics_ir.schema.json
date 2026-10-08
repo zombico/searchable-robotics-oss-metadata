@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Proposed robotics physics intermediate representation v0.1",
+  "type": "object",
+  "required": ["schema_version", "units", "frame_convention", "links", "joints", "provenance", "validation_status"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "units": {"const": "SI_m_kg_s_rad"},
+    "frame_convention": {"const": "right_handed_Z_up"},
+    "validation_status": {"enum": ["proposed", "kinematics_checked", "engine_smoke_checked", "physically_calibrated"]},
+    "provenance": {"type": "array", "items": {"$ref": "#/$defs/provenance"}},
+    "links": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/link"}},
+    "joints": {"type": "array", "items": {"$ref": "#/$defs/joint"}},
+    "actuators": {"type": "array", "items": {"$ref": "#/$defs/actuator"}},
+    "constraints": {"type": "array", "items": {"$ref": "#/$defs/constraint"}},
+    "environment": {"type": "object", "description": "Engine-specific world, contacts, sensors and solver extension; schema not standardized here."},
+    "unresolved": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "vec3": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}},
+    "positive_vec3": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number", "exclusiveMinimum": 0}},
+    "evidence": {
+      "type": "object", "required": ["status"],
+      "properties": {
+        "status": {"enum": ["unknown", "proposed", "published", "measured", "derived", "validated"]},
+        "source_ids": {"type": "array", "items": {"type": "string"}},
+        "method": {"type": "string"}, "conditions": {"type": "string"}
+      }
+    },
+    "provenance": {
+      "type": "object", "required": ["id", "url", "revision", "license_scope"],
+      "properties": {
+        "id": {"type": "string"}, "url": {"type": "string", "format": "uri"},
+        "revision": {"type": ["string", "null"]}, "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "license_scope": {"type": "string"}
+      }
+    },
+    "shape": {
+      "type": "object", "required": ["type", "pose_xyz_m", "pose_rpy_rad"],
+      "properties": {
+        "type": {"enum": ["box", "sphere", "cylinder", "capsule", "mesh", "convex_parts"]},
+        "pose_xyz_m": {"$ref": "#/$defs/vec3"}, "pose_rpy_rad": {"$ref": "#/$defs/vec3"},
+        "dimensions_m": {"$ref": "#/$defs/positive_vec3"},
+        "asset_path": {"type": "string"}, "geometry_recipe": {"type": "object"},
+        "dimension_evidence": {"$ref": "#/$defs/evidence"}
+      },
+      "description": "Box dimensions are full XYZ lengths; other shapes require explicitly documented target-specific semantics. Compiler must reject incomplete shape records."
+    },
+    "link": {
+      "type": "object", "required": ["id", "mass_kg", "com_xyz_m", "inertia_kg_m2", "inertia_rpy_rad", "physics_evidence", "visual", "collision"],
+      "properties": {
+        "id": {"type": "string"}, "mass_kg": {"type": "number", "exclusiveMinimum": 0},
+        "com_xyz_m": {"$ref": "#/$defs/vec3"}, "inertia_rpy_rad": {"$ref": "#/$defs/vec3"},
+        "inertia_kg_m2": {
+          "type": "object", "required": ["ixx", "iyy", "izz", "ixy", "ixz", "iyz"],
+          "properties": {"ixx": {"type": "number", "exclusiveMinimum": 0}, "iyy": {"type": "number", "exclusiveMinimum": 0}, "izz": {"type": "number", "exclusiveMinimum": 0}, "ixy": {"type": "number"}, "ixz": {"type": "number"}, "iyz": {"type": "number"}}
+        },
+        "physics_evidence": {"$ref": "#/$defs/evidence"},
+        "visual": {"type": "array", "items": {"$ref": "#/$defs/shape"}},
+        "collision": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/shape"}},
+        "attachment_frames": {"type": "object"}, "material_id": {"type": "string"},
+        "component_sku": {"type": ["string", "null"]}
+      }
+    },
+    "joint": {
+      "type": "object", "required": ["id", "parent", "child", "type", "origin_xyz_m", "origin_rpy_rad", "evidence"],
+      "properties": {
+        "id": {"type": "string"}, "parent": {"type": "string"}, "child": {"type": "string"},
+        "type": {"enum": ["fixed", "revolute", "continuous", "prismatic", "ball", "free"]},
+        "origin_xyz_m": {"$ref": "#/$defs/vec3"}, "origin_rpy_rad": {"$ref": "#/$defs/vec3"},
+        "axis_unit": {"$ref": "#/$defs/vec3"}, "lower": {"type": "number"}, "upper": {"type": "number"},
+        "effort_limit": {"type": "number", "exclusiveMinimum": 0}, "velocity_limit": {"type": "number", "exclusiveMinimum": 0},
+        "damping": {"type": "number", "minimum": 0}, "frictionloss": {"type": "number", "minimum": 0},
+        "stiffness": {"type": "number", "minimum": 0}, "rest_coordinate": {"type": "number"},
+        "evidence": {"$ref": "#/$defs/evidence"}
+      },
+      "description": "Rotational limits radians, effort N*m, damping N*m*s/rad; translational limits m, effort N, damping N*s/m. Compiler must validate axis norm and limit order."
+    },
+    "actuator": {
+      "type": "object", "required": ["id", "joint_id", "mode", "evidence"],
+      "properties": {
+        "id": {"type": "string"}, "joint_id": {"type": "string"},
+        "mode": {"enum": ["ideal_force", "ideal_torque", "position_servo", "velocity_servo", "dc_motor", "pressure", "tendon"]},
+        "reduction_motor_over_output": {"type": "number", "exclusiveMinimum": 0},
+        "ratio_sign": {"enum": [-1, 1]}, "efficiency": {"type": "number", "exclusiveMinimum": 0, "maximum": 1},
+        "rotor_inertia_kg_m2": {"type": "number", "minimum": 0},
+        "continuous_limit": {"type": ["number", "null"]}, "peak_limit": {"type": ["number", "null"]},
+        "peak_duration_s": {"type": ["number", "null"]}, "backlash_rad": {"type": "number", "minimum": 0},
+        "motor_parameters": {"type": "object"}, "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "constraint": {
+      "type": "object", "required": ["id", "type", "members", "parameters", "evidence"],
+      "properties": {
+        "id": {"type": "string"}, "type": {"enum": ["joint_coupling", "loop_closure", "tendon", "spring", "contact_attachment"]},
+        "members": {"type": "array", "minItems": 2, "items": {"type": "string"}},
+        "parameters": {"type": "object"}, "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    }
+  }
+}

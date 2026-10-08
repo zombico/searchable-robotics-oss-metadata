@@ -1,0 +1,105 @@
+{
+  "schema_version": "0.2.0",
+  "origin": "contract_fixture",
+  "episode_id": "hand-authored-contract-fixture-001",
+  "split": "train",
+  "leakage_group": "fixture-family-A",
+  "manifest": {
+    "clock": {
+      "physics_dt_s": 0.001,
+      "control_decimation": 20,
+      "control_hz": 50
+    },
+    "asset_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "seed": 0,
+    "engine": {
+      "name": "not_run",
+      "version": "fixture",
+      "runtime_scope": "hand-authored metadata only"
+    },
+    "action_contract": {
+      "mode": "joint_force",
+      "unit": "N",
+      "frame": "joint",
+      "dimension": 1,
+      "hold": "zero_order",
+      "controller_id": "illustrative_ideal_force_v0",
+      "lower": -5,
+      "upper": 5
+    },
+    "observation_contract": {
+      "policy_channels": [
+        "qpos"
+      ],
+      "privileged_channels": [
+        "true_material_parameters"
+      ]
+    }
+  },
+  "transitions": [
+    {
+      "t_s": 0.0,
+      "next_t_s": 0.02,
+      "action": [
+        -0.5
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025,
+            0.025
+          ],
+          "unit": "m",
+          "capture_t_s": 0.0,
+          "release_t_s": 0.0
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.024,
+            0.024
+          ],
+          "unit": "m",
+          "capture_t_s": 0.02,
+          "release_t_s": 0.02
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.02,
+      "next_t_s": 0.04,
+      "action": [
+        -0.5
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.024,
+            0.024
+          ],
+          "unit": "m",
+          "capture_t_s": 0.02,
+          "release_t_s": 0.02
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.023,
+            0.023
+          ],
+          "unit": "m",
+          "capture_t_s": 0.04,
+          "release_t_s": 0.04
+        }
+      },
+      "terminated": false,
+      "truncated": true,
+      "outcome": "timeout"
+    }
+  ]
+}
