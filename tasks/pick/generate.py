@@ -23,9 +23,9 @@ GENERATOR = {'type': 'scripted', 'source': 'tasks/pick/scripted.py', 'source_sha
 def stamp(obs, t):
     return {k: {'value': v, 'unit': POLICY_CHANNELS[k][1], 'capture_t_s': t, 'release_t_s': t} for k, v in obs.items()}
 
-def run(env, seed, params=None, actions=None):
-    """Roll out the scripted policy (or replay `actions`); returns the episode dict and outcome."""
-    obs, info = env.reset(seed=seed, params=params); policy = ScriptedPicker(); transitions = []
+def run(env, seed, params=None, actions=None, policy=None):
+    """Roll out `policy` (default: the scripted picker) or replay `actions`; returns the episode dict."""
+    obs, info = env.reset(seed=seed, params=params); policy = policy or ScriptedPicker(); transitions = []
     step = TASK['clock']['physics_dt_s'] * TASK['clock']['control_decimation']; peak = {'grip_N': 0.0, 'power_W': [0.0] * 3, 'lift_m': 0.0}
     while True:
         k = len(transitions); t = round(k * step, 9)

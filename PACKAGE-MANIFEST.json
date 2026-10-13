@@ -3,15 +3,15 @@
   "files": [
     {
       "path": ".github/workflows/contracts.yml",
-      "sha256": "b4dd68241658e13d808bd477e977f0ba8ad6c4db584029fad5d21bcc9ef70b57"
+      "sha256": "8b4f04037036c0d2195a5c24eea8be03b515fa5b7b2ca67cf9e1951604960e69"
     },
     {
       "path": ".gitignore",
-      "sha256": "7a91371e1ad9526c36c08ea780bb79e4ca2e8e0b0b47de3814d6297babf5a68d"
+      "sha256": "496c2df5011e1b6be199d9f384bff0e2ca8d5e01cf0ecb17c346bf0a2b27aa78"
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "d2e7d7948bc24ca70361dedc874fb6afb30c69dc300a78ad80499315a4b42bb9"
+      "sha256": "1ef22609a00be8e8467251451f109de8846502ce440862dc41b16eba77a7d92a"
     },
     {
       "path": "LICENSING.md",
@@ -23,7 +23,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "caa1987b5f572ad3e91bee945025b4e5f23967129750f068449c1a9f9fa14981"
+      "sha256": "1e7d5dd52f3c2c25c7964b7e8511af7a54b9f862f42e8a8839b12e3e9e4772df"
     },
     {
       "path": "SOLUTION-V2.md",
@@ -48,6 +48,22 @@
     {
       "path": "compile_example.py",
       "sha256": "941902b5065d03ae8c32f8f32c0d903ef0f74c93c81109f101d2cd39e94ac323"
+    },
+    {
+      "path": "compose/README.md",
+      "sha256": "de7335ccbc8c6751ce27e70b35c8eaf147679dcadcfbb3fec2aa163d0e506aaa"
+    },
+    {
+      "path": "compose/pick_gripper.py",
+      "sha256": "fcc6a71e8960c69b2a0da46faf8a990b1675b761207a52ad326c6e55c1349124"
+    },
+    {
+      "path": "compose/reports/pick_gripper_v0.json",
+      "sha256": "ffb418c87b0284111fa55a00055b376f5a8e8fee9f27b8dfcf936380d77e9612"
+    },
+    {
+      "path": "compose/reports/pick_gripper_v0.md",
+      "sha256": "11b47e8ea1ed9908ab8a7c8a2fa99e600c7eb81c0d87b1830e8583ea4160e56f"
     },
     {
       "path": "contracts/episode.schema.json",
@@ -155,11 +171,11 @@
     },
     {
       "path": "tasks/pick/env.py",
-      "sha256": "207a331bc30ed47c27df2c88ce13f57891f846500f9b66900e99f5b76ccf3c73"
+      "sha256": "2ec053a565c1ea95fd9c2f798713d1229567fd371b69db70c542290ad39c486f"
     },
     {
       "path": "tasks/pick/generate.py",
-      "sha256": "9f27eef8bde94d8f6197714fa000834c8f3aee3712fc25bda9dccf1f2029b9ad"
+      "sha256": "07b1a3bd7e18acf8e436b40c2b4a0642684375afd86c0f4fac61cb168faaaedb"
     },
     {
       "path": "tasks/pick/pick_scene.mjcf.xml",
@@ -179,15 +195,19 @@
     },
     {
       "path": "tasks/pick/scene.py",
-      "sha256": "aecf45c9d178e431b68d3a084eed8129a0978cd1e7d73d3f46678dc4c8c8140b"
+      "sha256": "8f7439d003cadd42014f5a2fe76c71c736abb640826841b42ea1e06124fcf1f6"
     },
     {
       "path": "tasks/pick/scripted.py",
-      "sha256": "cfc0073bb57150cadb12e172bfb50dd09478761839448dbba80e86516c66eae9"
+      "sha256": "ce49922044aad894c6667283a8f06d9c539e629ecb513281fbbdddff5e094458"
     },
     {
       "path": "tasks/pick/task.json",
       "sha256": "cecc6c9c55738e0938b437f23ce6f5079a58fe012bdba93ed76203b00259e744"
+    },
+    {
+      "path": "tests/test_compose.py",
+      "sha256": "e636f269ab2328869615e51f5f95a0adcc5c1ede557f6592098da3cb7e20898f"
     },
     {
       "path": "tests/test_contracts.py",

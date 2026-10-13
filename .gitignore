@@ -6,3 +6,4 @@ datasets/
 *.mp4
 *.hdf5
 *.parquet
+compose/build/

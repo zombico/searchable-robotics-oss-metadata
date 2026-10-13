@@ -31,8 +31,9 @@ def split_for(group):
     return 'test' if group in s['test_groups'] else 'validation' if group in s['validation_groups'] else 'train'
 
 class PickEnv:
-    def __init__(self):
-        self.model = mujoco.MjModel.from_xml_path(str(SCENE)); self.data = mujoco.MjData(self.model)
+    def __init__(self, scene=SCENE):
+        self.scene = pathlib.Path(scene)
+        self.model = mujoco.MjModel.from_xml_path(str(self.scene)); self.data = mujoco.MjData(self.model)
         m = self.model; name = lambda kind, n: mujoco.mj_name2id(m, kind, n)
         self.joints = [m.jnt_qposadr[name(mujoco.mjtObj.mjOBJ_JOINT, j)] for j in ('x_slide', 'z_slide', 'left_slide', 'right_slide')]
         self.dofs = [m.jnt_dofadr[name(mujoco.mjtObj.mjOBJ_JOINT, j)] for j in ('x_slide', 'z_slide', 'left_slide', 'right_slide')]
@@ -42,7 +43,7 @@ class PickEnv:
         self.decimation = TASK['clock']['control_decimation']; self.dt = m.opt.timestep * self.decimation
         self.horizon = int(round(TASK['clock']['episode_s'] / self.dt))
         self.lower, self.upper = m.actuator_ctrlrange[:, 0].copy(), m.actuator_ctrlrange[:, 1].copy()
-        self.asset_sha256 = hashlib.sha256(SCENE.read_bytes()).hexdigest()
+        self.asset_sha256 = hashlib.sha256(self.scene.read_bytes()).hexdigest()
 
     def _apply(self, p):
         """Set object geometry, mass, consistent box inertia, friction and start pose."""
