@@ -37,7 +37,7 @@
           "sim": true
         },
         "bus_physical": {
-          "rule": "equals",
+          "rule": "contains",
           "on_fail": "rewire"
         },
         "protocol": {

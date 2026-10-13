@@ -13,6 +13,7 @@ Usage:
   python electronics/swap.py BINDING.json SLOT_ID              # rank every candidate for the slot
   python electronics/swap.py BINDING.json SLOT_ID COMPONENT_ID # one candidate, full report
   python electronics/swap.py BINDING.json --budget             # static worst-case rail budgets
+  python electronics/swap.py BINDING.json --audit              # each bound part against its own slot
 """
 import json, math, pathlib, sys
 
@@ -25,9 +26,14 @@ def load():
     catalog = json.loads((HERE / 'components.json').read_text())
     return interfaces, catalog
 
-def spec(component, field):
-    """Return (value, entries). value is None when unpublished or when sources disagree."""
+VOLTAGE_DEPENDENT = {'stall_torque_Nm', 'no_load_speed_rpm', 'stall_current_A', 'no_load_current_A'}
+
+def spec(component, field, voltage=None):
+    """Return (value, entries). value is None when unpublished or when sources disagree.
+    Voltage-dependent ratings only count when published at the requested supply voltage."""
     entries = [s for s in component['specs'] if s['field'] == field]
+    if field in VOLTAGE_DEPENDENT and voltage is not None:
+        entries = [s for s in entries if s.get('at_voltage_V') is not None and math.isclose(s['at_voltage_V'], voltage, rel_tol=0.01)]
     values = {json.dumps(s['value'], sort_keys=True) for s in entries}
     return (entries[0]['value'] if len(values) == 1 else None), entries
 
@@ -53,16 +59,17 @@ def differs(a, b, rel_tol=0.01):
     if isinstance(a, (int, float)) and isinstance(b, (int, float)): return not math.isclose(a, b, rel_tol=rel_tol)
     return json.dumps(a, sort_keys=True) != json.dumps(b, sort_keys=True)
 
-def solver_parameters(component):
+def solver_parameters(component, voltage=None):
     """Simulation parameters implied by published specs; assumptions are named, unknowns stay None."""
-    get = lambda f: spec(component, f)[0]
+    get = lambda f: spec(component, f, voltage)[0]
     if component['interface'] == 'actuator.smart_servo':
         tau, rpm, counts = get('stall_torque_Nm'), get('no_load_speed_rpm'), get('position_resolution_counts')
         return {
             'forcerange_Nm': [-tau, tau] if tau is not None else None,
             'torque_speed_slope_Nm_s_rad': -tau / (rpm * RPM) if tau is not None and rpm else None,
             'position_quantization_rad': 2 * math.pi / counts if counts else None,
-            'assumption': 'linear torque-speed line between published stall and no-load points at the stated voltage'}
+            'at_voltage_V': voltage,
+            'assumption': 'linear torque-speed line between published stall and no-load points at this supply voltage'}
     if component['interface'] == 'sensor.angle_absolute':
         bits = get('resolution_bits')
         return {'position_quantization_rad': 2 * math.pi / 2 ** bits if bits else None}
@@ -86,7 +93,7 @@ def rail_budget(binding, by_id, substitute=None):
         for slot_id in rail['loads']:
             slot = slots[slot_id]
             part = substitute[1] if substitute and substitute[0] == slot_id else by_id[slot['bound_component']]
-            current = next((v for v in (spec(part, f)[0] for f in CURRENT_FIELDS) if v is not None), None)
+            current = next((v for v in (spec(part, f, rail['voltage_V'])[0] for f in CURRENT_FIELDS) if v is not None), None)
             declared = slot.get('declared_current_A')
             if current is None and declared and not (substitute and substitute[0] == slot_id):
                 current = declared['value']; assumed.append(slot_id)
@@ -106,15 +113,15 @@ def rail_budget(binding, by_id, substitute=None):
 def check(slot, candidate, bound, interfaces, binding=None, by_id=None):
     iface = interfaces[slot['interface']]
     report = {'slot': slot['slot_id'], 'candidate': candidate['id'], 'name': candidate['name'],
-              'findings': [], 'unknown': [], 'conflicting': [], 'search_snippet_only': []}
+              'findings': [], 'warnings': [], 'unknown': [], 'conflicting': [], 'search_snippet_only': []}
     if candidate['interface'] != slot['interface']:
         report.update(classification='incompatible', complete=True)
         report['findings'].append({'field': 'interface', 'result': 'incompatible',
                                    'detail': f"{candidate['interface']} does not implement {slot['interface']}"})
         return report
-    worst = 'drop_in'
+    worst = 'drop_in'; volts = slot['requirements'].get('supply_voltage_V')
     for field, r in iface['fields'].items():
-        have, entries = spec(candidate, field)
+        have, entries = spec(candidate, field, volts)
         if have is None:
             if entries: report['conflicting'].append(field)
             elif field in slot['requirements'] or (r.get('sim') and bound): report['unknown'].append(field)
@@ -127,25 +134,32 @@ def check(slot, candidate, bound, interfaces, binding=None, by_id=None):
                 outcome = r['on_fail']
                 report['findings'].append({'field': field, 'result': outcome, 'rule': r['rule'], 'required': need, 'candidate': have})
         if outcome is None and r.get('sim') and bound is not None and bound['id'] != candidate['id']:
-            was = spec(bound, field)[0]
+            was = spec(bound, field, volts)[0]
             if was is None: report['unknown'].append(field + ' (bound component)')
             elif differs(have, was):
                 outcome = 'retune'
                 report['findings'].append({'field': field, 'result': 'retune', 'bound': was, 'candidate': have})
         if outcome and SEVERITY.index(outcome) > SEVERITY.index(worst): worst = outcome
     if binding is not None:
+        before = {r['rail']: r for r in rail_budget(binding, by_id)}
         for rail in rail_budget(binding, by_id, (slot['slot_id'], candidate)):
             if slot['slot_id'] not in rail['members']: continue
-            if rail['status'] == 'over_budget':
+            was = before[rail['rail']]
+            if slot['slot_id'] in rail['unknown_loads']: report['unknown'].append('rail_budget (' + rail['rail'] + ')')
+            if rail['status'] != 'over_budget': continue
+            effect = {'rail': rail['rail'], 'worst_case_total_A_before': was['worst_case_total_A'],
+                      'worst_case_total_A_after': rail['worst_case_total_A'], 'limit_continuous_A': rail['limit_continuous_A']}
+            if was['status'] == 'over_budget':
+                # The existing design already exceeds the static bound; report the change instead of blaming the swap.
+                report['warnings'].append(dict(effect, note='rail already over its static worst-case budget before this swap'))
+            else:
                 worst = 'incompatible'
-                report['findings'].append({'field': 'rail_budget', 'result': 'incompatible', 'rail': rail['rail'],
-                                           'worst_case_total_A': rail['worst_case_total_A'], 'limit_continuous_A': rail['limit_continuous_A']})
-            elif slot['slot_id'] in rail['unknown_loads']: report['unknown'].append('rail_budget (' + rail['rail'] + ')')
+                report['findings'].append(dict(effect, field='rail_budget', result='incompatible'))
     complete = not report['unknown'] and not report['conflicting']
     # Missing data can hide a failure, so a clean or retune-only result is not trusted until complete.
     report['classification'] = worst if complete or SEVERITY.index(worst) >= SEVERITY.index('rewire') else 'undetermined'
     report['complete'] = complete
-    report['solver_parameters'] = solver_parameters(candidate)
+    report['solver_parameters'] = solver_parameters(candidate, volts)
     return report
 
 def main(argv):
@@ -155,6 +169,16 @@ def main(argv):
     binding = json.loads(pathlib.Path(argv[1]).read_text())
     if argv[2] == '--budget':
         print(json.dumps(rail_budget(binding, by_id), indent=2))
+        return
+    if argv[2] == '--audit':
+        for slot in binding['slots']:
+            part = by_id[slot['bound_component']]
+            r = check(slot, part, part, interfaces, binding, by_id)
+            why = ', '.join(f"{f['field']}:{f['result']}" for f in r['findings']) or '-'
+            gaps = ', '.join(r['unknown'] + r['conflicting'])
+            print(f"{slot['slot_id']:<14} {part['id']:<4} {r['classification']:<13} {why}" + (f"  [missing: {gaps}]" if gaps else '')
+                  + (f"  [search-only: {', '.join(r['search_snippet_only'])}]" if r['search_snippet_only'] else '')
+                  + (f"  [warning: {r['warnings'][0]['rail']} over static budget]" if r['warnings'] else ''))
         return
     slot = next((s for s in binding['slots'] if s['slot_id'] == argv[2]), None)
     if slot is None: raise SystemExit('unknown slot ' + argv[2])
@@ -168,6 +192,7 @@ def main(argv):
     for r in sorted(rows, key=lambda r: order.index(r['classification'])):
         why = ', '.join(f"{f['field']}:{f['result']}" for f in r['findings']) or '-'
         gaps = ', '.join(r['unknown'] + r['conflicting'])
-        print(f"{r['candidate']:<4} {r['classification']:<13} {r['name']:<34} {why}" + (f"  [missing: {gaps}]" if gaps else ''))
+        print(f"{r['candidate']:<4} {r['classification']:<13} {r['name'][:46]:<46} {why}" + (f"  [missing: {gaps}]" if gaps else '')
+              + (''.join(f"  [warning: {w['rail']} {w['worst_case_total_A_before']}->{w['worst_case_total_A_after']} A vs {w['limit_continuous_A']} A]" for w in r['warnings'])))
 
 if __name__ == '__main__': main(sys.argv)

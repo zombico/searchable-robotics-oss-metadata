@@ -3,7 +3,7 @@
   "files": [
     {
       "path": ".github/workflows/contracts.yml",
-      "sha256": "2512b5343a78bebf2b26ba16cdcfb460925e0f1afe17cccac1baea4b881b94d0"
+      "sha256": "0c08274cdca04a72ad5b2d839e260e410d1d32d3554a99f1b147f2b38c504503"
     },
     {
       "path": ".gitignore",
@@ -11,7 +11,7 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "1bab69370fe04d894749b59a537c2dd4472b20426d050ed1726c1dee7e2f2b23"
+      "sha256": "f7910ff89471f8da46bdd0e4888c791ce7ce493cbee354204dffa9f0ca887200"
     },
     {
       "path": "LICENSING.md",
@@ -23,7 +23,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "9267d823a0f70d2dc321148717e6cedfd519f8b4e336c00aa8eae334d5c3cbb3"
+      "sha256": "9ab00bf51a5d1483678afd39ced6cd23379c2db95ff79179a5970ca521c0c85c"
     },
     {
       "path": "SOLUTION-V2.md",
@@ -52,6 +52,46 @@
     {
       "path": "contracts/episode.schema.json",
       "sha256": "c9b8920118d33a17b7b313c12ebcd3eb1170775744585400b601366cb006d385"
+    },
+    {
+      "path": "electronics/README.md",
+      "sha256": "b9329d39f059d56efb1fad61c88a8a470e58cede76e617eec4e60b201eb5ef00"
+    },
+    {
+      "path": "electronics/bindings/so101_follower.json",
+      "sha256": "5f750955ce30243b79235c0ddbdc6c237ecd1d7f819d1e2c3ae2b87d6eacf3fd"
+    },
+    {
+      "path": "electronics/bindings/so101_follower_12v.json",
+      "sha256": "c36c10e98b35a7bad2b323ec6babeac13f9801dfaf892428adcc2e4d4a74cb0e"
+    },
+    {
+      "path": "electronics/build_components.py",
+      "sha256": "f46de282deabec157913d1b5dab613dca3d34ec5f645eba099151fe134768aea"
+    },
+    {
+      "path": "electronics/components.json",
+      "sha256": "e9c79c0889728cab4125d07b856bf199aedbc230d91ee155d916c696a9ae5a61"
+    },
+    {
+      "path": "electronics/interfaces.json",
+      "sha256": "07a6ec0170eb93e050002990c6f0b597ee1f1300ab6edc71e5ff70726a5a8b05"
+    },
+    {
+      "path": "electronics/research/bus_compute_power_safety.json",
+      "sha256": "6ade3f0e1859050ac1f07047821b523f86df2f308865b8030ae0c942799f3041"
+    },
+    {
+      "path": "electronics/research/drives_servos.json",
+      "sha256": "ade6804e1f0262d373e56b810f0651d75cd7021d2a305716605e4132b977c3d2"
+    },
+    {
+      "path": "electronics/research/sensors.json",
+      "sha256": "4e655caa4a1f1fa454dbf33edd73b2d484455d933eca93f456452e38e64f4a1e"
+    },
+    {
+      "path": "electronics/swap.py",
+      "sha256": "5df1dd8da54ba6fe712058f5b11f5321b92034ca27f7bfb0acaecfb44fec9aeb"
     },
     {
       "path": "example.json",
@@ -88,6 +128,10 @@
     {
       "path": "tests/test_contracts.py",
       "sha256": "178a4c22e73249c00458e104223c0db0e894b0be532b0b64c813c1f3cf5d7e68"
+    },
+    {
+      "path": "tests/test_electronics.py",
+      "sha256": "76aa41c1bb696b55ad2ca434fa7f75ea4d398aac98da6d8992f8fd9a8fafbf6c"
     },
     {
       "path": "tests/test_engine.py",

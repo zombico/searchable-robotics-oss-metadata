@@ -13,6 +13,10 @@ jobs:
       - run: python -m unittest discover -s tests -v
       - run: python verify_release.py fixtures/episode.json
       - run: python verify_release.py fixtures/release.json
+      - run: python electronics/build_components.py
+      - run: git diff --exit-code electronics/components.json
+      - run: python electronics/swap.py electronics/bindings/so101_follower.json --audit
+      - run: python electronics/swap.py electronics/bindings/so101_follower_12v.json --budget
   engine:
     runs-on: ubuntu-latest
     steps:

@@ -2,7 +2,7 @@
 
 The mechanical catalog (`catalog.json`) describes what moves. This concern describes what drives, senses, carries signals and supplies power: the parts that set the solver's actuator limits, sensor clocks, noise, quantization, latency and supply budget. It is kept separate because the same mechanism can be built with very different electronics, and because electronics are where OEM, ODM and open-hardware parts get substituted most often.
 
-Research date: 13 October 2026. This is a starter set of 31 parts, protocols and standards, not an exhaustive or purchasing-grade library.
+Research date: 13 October 2026. This is a starter set of 34 parts, protocols, standards and supplies (280 values: 161 from fetched manufacturer or standards text, 22 secondary, 92 search-snippet only, 5 catalog labels). It is not an exhaustive or purchasing-grade library. Most vendor sites were unreachable from the research environment, which is why so many values are search-only; re-verifying those is the most useful next contribution.
 
 ## Files
 
@@ -43,6 +43,16 @@ Where sources disagree, or a value depends on conditions (for example encoder ma
 
 Chip ratings are not board ratings. A driver IC's datasheet current is not the current of an ODM breakout built around it, which depends on its sense resistor, copper and cooling. Parts are tagged with `level` (`ic`, `module`, `board`, `integrated_unit`, `standard`) and `sourcing` (`oem`, `odm_module`, `open_hardware`, `standard`) so that a slot bound to a module is not silently satisfied by an IC-level figure.
 
+Voltage matters. Servo stall torque, no-load speed and stall current are published per supply voltage (an XM430-W350 is 3.8, 4.1 or 4.8 N·m at 11.1, 12 or 14.8 V). The checker uses only values published at the slot's supply voltage; a rating at another voltage, or at an unstated one, is unknown rather than reused.
+
+## Worked example: SO-101 follower arm
+
+`bindings/so101_follower.json` is the default build (six STS3215 C001 servos, 5 V supply); `bindings/so101_follower_12v.json` is the README's 12 V servo option. What the checker reports, from published data only:
+
+- **Default 5 V build:** a retailer lists the 7.4 V STS3215's operating range as 6–7.4 V (search snippet), while the SO-ARM100 README powers it from 5 V and notes torque is "likely slightly less for a 5V power supply". The checker flags the supply as out of range and marks that flag search-only. No stall torque, speed or current is published at 5 V, so the solver cannot be parameterized for this build from datasheets; it needs measurement. The BOM's 5 V adapter has no stated current rating, so its rail budget is undetermined.
+- **12 V option:** six servos at 2.7 A stall is 16.2 A worst case against the README's "12V 5A+" minimum. All six stalling at once is the conservative bound, not a typical load, but it shows the supply is not sized for it.
+- **Swapping a 12 V STS3215 for a DYNAMIXEL XM430-W350-T:** `remount` (different mount), which also implies `rewire` (Protocol 2.0 vs Feetech protocol) and `retune` (4.1 vs 2.94 N·m and 46 vs 45 rpm at 12 V). The rail warning shows the worst case going from 16.2 to 15.8 A.
+
 ## Power: what is and is not provable
 
 `python electronics/swap.py BINDING.json --budget` sums every load's published worst-case current on each rail (actuators at stall, all at once) and compares it with the rail source's continuous rating. That is a conservative static bound computed from datasheets. A load without a published worst-case current makes its rail `undetermined`, unless the binding declares a proposed current for that slot; declared values are reported as assumptions.
@@ -53,8 +63,9 @@ Not covered yet: dynamic current, inrush, regeneration, voltage sag, conversion 
 
 ```sh
 python electronics/build_components.py
-python electronics/swap.py electronics/bindings/so101_follower.json --budget
-python electronics/swap.py electronics/bindings/so101_follower.json shoulder_lift
-python electronics/swap.py electronics/bindings/so101_follower.json shoulder_lift E01
+python electronics/swap.py electronics/bindings/so101_follower_12v.json --audit
+python electronics/swap.py electronics/bindings/so101_follower_12v.json --budget
+python electronics/swap.py electronics/bindings/so101_follower_12v.json shoulder_lift
+python electronics/swap.py electronics/bindings/so101_follower_12v.json shoulder_lift E01
 python -m unittest tests.test_electronics -v
 ```

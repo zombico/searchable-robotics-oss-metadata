@@ -1,0 +1,1595 @@
+{
+ "sources": {
+  "e_tmc2209_ds": {
+   "title": "TMC2209 Datasheet Rev. 1.09 (2023-FEB-16), Trinamic/ADI - copy mirrored in janelia-arduino/TMC2209 GitHub repo",
+   "url": "https://github.com/janelia-arduino/TMC2209/blob/main/datasheet/TMC2209_datasheet_rev1.09.pdf",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_drv8825_ti": {
+   "title": "DRV8825 Stepper Motor Controller IC datasheet / product page (Texas Instruments)",
+   "url": "https://www.ti.com/product/DRV8825",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_moteus_readme": {
+   "title": "mjbots/moteus README - Specifications table",
+   "url": "https://github.com/mjbots/moteus/blob/main/README.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_moteus_hw": {
+   "title": "moteus docs: Hardware Specifications (source of mjbots.github.io/moteus/reference/hardware/)",
+   "url": "https://github.com/mjbots/moteus/blob/main/docs/reference/hardware.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_moteus_limits": {
+   "title": "moteus docs: Application Limits (source of mjbots.github.io/moteus/reference/limits/)",
+   "url": "https://github.com/mjbots/moteus/blob/main/docs/reference/limits.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_moteus_can": {
+   "title": "moteus docs: CAN Protocol",
+   "url": "https://github.com/mjbots/moteus/blob/main/docs/protocol/can.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_moteus_config": {
+   "title": "moteus docs: Configuration reference",
+   "url": "https://github.com/mjbots/moteus/blob/main/docs/reference/configuration.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_moteus_theory": {
+   "title": "moteus docs: Theory of operation",
+   "url": "https://github.com/mjbots/moteus/blob/main/docs/reference/theory.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_moteus_reachdog": {
+   "title": "moteus r4.11 controller - reach.dog shop listing",
+   "url": "https://m.reach.dog/shop/mjbots-robotic-systems/products/moteus-r4-11",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_moteus_hackaday": {
+   "title": "moteus brushless controller - hackaday.io project (Josh Pieper)",
+   "url": "https://hackaday.io/project/179234-moteus-brushless-controller",
+   "publisher_type": "community",
+   "accessed_on": "2026-10-13"
+  },
+  "e_odrive_s1_ds": {
+   "title": "ODrive S1 Datasheet (ODrive Robotics docs)",
+   "url": "https://docs.odriverobotics.com/v/latest/hardware/s1-datasheet.html",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_odrive_s1_shop": {
+   "title": "ODrive S1 shop page (ODrive Robotics)",
+   "url": "https://shop.odriverobotics.com/products/odrive-s1",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_odrive_cmp": {
+   "title": "ODrive Comparison Table (ODrive Robotics docs)",
+   "url": "https://docs.odriverobotics.com/v/latest/hardware/odrive-comparison.html",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_odrive_rs485enc": {
+   "title": "ODrive RS485 magnetic encoder shop page (ODrive Robotics)",
+   "url": "https://shop.odriverobotics.com/products/odrive-rs485-magnetic-encoder",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_xm430_emanual": {
+   "title": "ROBOTIS e-Manual XM430-W350-T/R page source (emanual.robotis.com/docs/en/dxl/x/xm430-w350/)",
+   "url": "https://github.com/ROBOTIS-GIT/emanual/blob/master/docs/en/dxl/x/xm430-w350.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_dxl_x_info": {
+   "title": "ROBOTIS e-Manual spec data file _data/dxl_x_info.yml (renders the X-series spec tables)",
+   "url": "https://github.com/ROBOTIS-GIT/emanual/blob/master/_data/dxl_x_info.yml",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_robotis_us_xm430r": {
+   "title": "DYNAMIXEL XM430-W350-R product page (ROBOTIS US)",
+   "url": "https://www.robotis.us/dynamixel-xm430-w350-r",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_mybotshop_xm430r": {
+   "title": "DYNAMIXEL XM430-W350-R listing (MyBotShop)",
+   "url": "https://www.mybotshop.de/DYNAMIXEL-XM430-W350-R_2",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_u2d2_emanual": {
+   "title": "ROBOTIS e-Manual U2D2 page source (emanual.robotis.com/docs/en/parts/interface/u2d2/)",
+   "url": "https://github.com/ROBOTIS-GIT/emanual/blob/master/docs/en/parts/interface/u2d2.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_soarm_readme": {
+   "title": "TheRobotStudio SO-ARM100 README (SO-101 BOM)",
+   "url": "https://github.com/TheRobotStudio/SO-ARM100/blob/main/README.md",
+   "publisher_type": "community",
+   "accessed_on": "2026-10-13"
+  },
+  "e_lerobot_so101": {
+   "title": "LeRobot SO-101 docs source (huggingface.co/docs/lerobot/so101)",
+   "url": "https://github.com/huggingface/lerobot/blob/main/docs/source/so101.mdx",
+   "publisher_type": "community",
+   "accessed_on": "2026-10-13"
+  },
+  "e_lerobot_fttables": {
+   "title": "LeRobot Feetech motor tables (src/lerobot/motors/feetech/tables.py)",
+   "url": "https://github.com/huggingface/lerobot/blob/main/src/lerobot/motors/feetech/tables.py",
+   "publisher_type": "community",
+   "accessed_on": "2026-10-13"
+  },
+  "e_sts3215_ds_tr": {
+   "title": "STS3215 smart servo datasheet (translated), hosted by Core Electronics",
+   "url": "https://core-electronics.com.au/attachments/uploads/sts3215-smart-servo-datasheet-translated.pdf",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_sts3215_eckstein": {
+   "title": "Feetech STS3215 listings (Eckstein shop)",
+   "url": "https://eckstein-shop.de/Motors?mf=1602",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_pololu_4035": {
+   "title": "DRV8874 Single Brushed DC Motor Driver Carrier (Pololu #4035)",
+   "url": "https://www.pololu.com/product/4035",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_pololu_4035_retail": {
+   "title": "Pololu DRV8874 Single Brushed DC Motor Driver Carrier (retailer listings, e.g. Core Electronics POLOLU-4035)",
+   "url": "https://core-electronics.com.au/catalog/product/view/sku/POLOLU-4035",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_moteus_uart": {
+   "title": "moteus docs: UART integration",
+   "url": "https://github.com/mjbots/moteus/blob/main/docs/integration/uart.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  }
+ },
+ "components": [
+  {
+   "name": "TMC2209 stepper driver IC",
+   "manufacturer": "Trinamic (Analog Devices)",
+   "part_number": "TMC2209",
+   "interface": "drive.stepper",
+   "variant_note": null,
+   "specs": [
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      4.75,
+      29
+     ],
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_tmc2209_ds",
+     "quote": "Voltage Range 4.75… 29V DC",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "phase_current_rms_A",
+     "value": 2.0,
+     "unit": "A",
+     "conditions": "per coil",
+     "source_id": "e_tmc2209_ds",
+     "quote": "2-phase stepper motors up to 2.8A coil current (peak), 2A RMS",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "phase_current_peak_A",
+     "value": 2.8,
+     "unit": "A",
+     "conditions": "per coil",
+     "source_id": "e_tmc2209_ds",
+     "quote": "2-phase stepper motors up to 2.8A coil current (peak), 2A RMS",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "microsteps_max",
+     "value": 256,
+     "unit": null,
+     "conditions": "Native via MRES register (UART); with STEP/DIR pin setting only 8/16/32/64 native, interpolated to 256 by MicroPlyer",
+     "source_id": "e_tmc2209_ds",
+     "quote": "%0000: Native 256 microstep setting.",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "microsteps_pin_settings",
+     "value": [
+      8,
+      16,
+      32,
+      64
+     ],
+     "unit": null,
+     "conditions": "standalone pin configuration",
+     "source_id": "e_tmc2209_ds",
+     "quote": "STEP/DIR Interface with 8, 16, 32 or 64 microstep pin setting",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "command_interfaces",
+     "value": [
+      "step_dir",
+      "uart"
+     ],
+     "unit": null,
+     "conditions": "UART is single-wire, for configuration/diagnostics",
+     "source_id": "e_tmc2209_ds",
+     "quote": "Single Wire UART & OTP for advanced configuration options",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_current_max_A",
+     "value": 0.01,
+     "unit": "A",
+     "conditions": "total VS supply current, driver disabled, max; VVS=VVSA=24 V, fCLK=12 MHz (typ 7 mA)",
+     "source_id": "e_tmc2209_ds",
+     "quote": "Total supply current, driver disabled IVS  IS  fCLK=12MHz  7  10  mA",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_current_typ_A",
+     "value": 0.0075,
+     "unit": "A",
+     "conditions": "total supply current operating, typ; fCLK=12 MHz, 35 kHz chopper, no load, VVS=24 V",
+     "source_id": "e_tmc2209_ds",
+     "quote": "Total supply current, operating, IVS  IS  fCLK=12MHz, 35kHz chopper, no load  7.5  mA",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "standby_current_max_A",
+     "value": 0.0003,
+     "unit": "A",
+     "conditions": "ENN=0V, VREF=0V; typ 160 µA",
+     "source_id": "e_tmc2209_ds",
+     "quote": "Total supply current, standby  IS  ENN=0V, VREF=0V  160  300  µA",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": []
+  },
+  {
+   "name": "DRV8825 stepper motor controller IC",
+   "manufacturer": "Texas Instruments",
+   "part_number": "DRV8825",
+   "interface": "drive.stepper",
+   "variant_note": null,
+   "specs": [
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      8.2,
+      45
+     ],
+     "unit": "V",
+     "conditions": "operating supply",
+     "source_id": "e_drv8825_ti",
+     "quote": "8.2-V to 45-V operating supply voltage range",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "phase_current_peak_A",
+     "value": 2.5,
+     "unit": "A",
+     "conditions": "maximum drive current per output, with proper heat sinking, at 24 V and TA = 25°C",
+     "source_id": "e_drv8825_ti",
+     "quote": "capable of driving up to 2.5 A of current from each output (with proper heat sinking, at 24 V and 25°C)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "microsteps_max",
+     "value": 32,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_drv8825_ti",
+     "quote": "mode pins set full-step up to 1/32-step",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "command_interfaces",
+     "value": [
+      "step_dir"
+     ],
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_drv8825_ti",
+     "quote": "The STEP/DIR interface is simple",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "phase_current_rms_A (no RMS figure found in a source; board-level 1.5 A/2.2 A figures from breakout listings are not IC ratings and were not recorded)",
+    "all DRV8825 values are search-snippet only: ti.com unreachable from this environment and no GitHub-hosted datasheet copy found",
+    "supply_current_max_A (no logic/quiescent/max supply current found in a reachable source)"
+   ]
+  },
+  {
+   "name": "moteus r4.11 brushless controller",
+   "manufacturer": "mjbots",
+   "part_number": "moteus r4.11",
+   "interface": "drive.bldc_foc",
+   "variant_note": "r4.11 revision of moteus-r4",
+   "specs": [
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      10,
+      44
+     ],
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_moteus_readme",
+     "quote": "| Voltage Input          | 10-44V",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      10,
+      44
+     ],
+     "unit": "V",
+     "conditions": "min voltage 10 V; nominal 24 V; abs max 44 V (<= 10S)",
+     "source_id": "e_moteus_hw",
+     "quote": "| moteus-r4 | 10V | 24V | 44V (<= 10S) | 100A |",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "nominal_voltage_V",
+     "value": 24,
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_moteus_hw",
+     "quote": "| moteus-r4 | 10V | 24V | 44V (<= 10S) | 100A |",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "phase_current_peak_A",
+     "value": 100,
+     "unit": "A",
+     "conditions": null,
+     "source_id": "e_moteus_readme",
+     "quote": "| Peak phase current     | 100A",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "phase_current_continuous_A",
+     "value": 12,
+     "unit": "A",
+     "conditions": "uncooled",
+     "source_id": "e_moteus_readme",
+     "quote": "| Uncooled phase current | 12A",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "phase_current_continuous_A",
+     "value": 32,
+     "unit": "A",
+     "conditions": "cooled",
+     "source_id": "e_moteus_readme",
+     "quote": "| Cooled phase current   | 32A",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "phase_current_continuous_A",
+     "value": [
+      11,
+      22
+     ],
+     "unit": "A",
+     "conditions": "without / with thermal management (CONFLICTS with README 12/32 A)",
+     "source_id": "e_moteus_reachdog",
+     "quote": "Continuous phase current: 11A / 22A (w/o and w/ thermal management)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "phase_current_continuous_A",
+     "value": [
+      10,
+      20
+     ],
+     "unit": "A",
+     "conditions": "no thermal management / maximal heatsinking (CONFLICTS with README 12/32 A)",
+     "source_id": "e_moteus_hackaday",
+     "quote": "10A continuous with no thermal management and 20A continuous with maximal heatsinking",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "peak_power_W",
+     "value": 900,
+     "unit": "W",
+     "conditions": "at <= 30 V input, servo.pwm_rate_hz=30000; linearly derated to 400 W at >= 38 V",
+     "source_id": "e_moteus_hw",
+     "quote": "| moteus-r4  | <= 30V 900W  | linear derated | >= 38V 400W      |",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "current_loop_rate_hz",
+     "value": [
+      15000,
+      30000
+     ],
+     "unit": "Hz",
+     "conditions": "README 'Control Rate'",
+     "source_id": "e_moteus_readme",
+     "quote": "| Control Rate           | 15-30kHz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "current_loop_rate_hz",
+     "value": 30000,
+     "unit": "Hz",
+     "conditions": "default; position and current loops run at the switching frequency",
+     "source_id": "e_moteus_theory",
+     "quote": "with both running at the switching frequency (by default 30kHz)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "pwm_rate_hz",
+     "value": [
+      15000,
+      60000
+     ],
+     "unit": "Hz",
+     "conditions": "configurable servo.pwm_rate_hz, default 30000",
+     "source_id": "e_moteus_readme",
+     "quote": "| PWM Switching Rate     | 15-60kHz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "command_bus",
+     "value": "can_fd",
+     "unit": null,
+     "conditions": "1 Mbit nominal / 5 Mbit data bitrate",
+     "source_id": "e_moteus_can",
+     "quote": "CAN-FD frames with a 1Mbit standard bitrate and a 5Mbit data bitrate",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "command_bus_secondary",
+     "value": "uart",
+     "unit": null,
+     "conditions": "TTL-level UART, for systems without CAN-FD",
+     "source_id": "e_moteus_uart",
+     "quote": "moteus can be commanded and monitored over a TTL level UART connection",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "position_sensor",
+     "value": "AS5047P onboard magnetic encoder, CPR 16384 (14 bit)",
+     "unit": null,
+     "conditions": "docs are general across moteus models; AS5047P is described as the default onboard encoder",
+     "source_id": "e_moteus_config",
+     "quote": "0 - The onboard AS5047P (CPR == 16384). Only valid for aux1.",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "max_electrical_frequency_hz",
+     "value": 4000,
+     "unit": "Hz",
+     "conditions": null,
+     "source_id": "e_moteus_limits",
+     "quote": "The maximum electrical frequency is 4kHz.",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "max_mechanical_speed_rpm",
+     "value": 28000,
+     "unit": "rpm",
+     "conditions": "before reducers",
+     "source_id": "e_moteus_limits",
+     "quote": "The maximum mechanical velocity which can be commanded is 28000 rpm",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "mass_kg",
+     "value": 0.0142,
+     "unit": "kg",
+     "conditions": null,
+     "source_id": "e_moteus_readme",
+     "quote": "| Mass                   | 14.2g",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "dimensions_mm",
+     "value": [
+      46,
+      53
+     ],
+     "unit": "mm",
+     "conditions": null,
+     "source_id": "e_moteus_readme",
+     "quote": "| Dimensions             | 46x53mm",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "mcu",
+     "value": "STM32G4",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_moteus_readme",
+     "quote": "| CPU                    | STM32G4",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "mjbots.com product page unreachable; continuous current figures conflict between README (12/32 A) and search snippets (11/22 A, 10/20 A)",
+    "supply_current_max_A (no logic/quiescent/max supply current found in a reachable source)"
+   ]
+  },
+  {
+   "name": "ODrive S1",
+   "manufacturer": "ODrive Robotics",
+   "part_number": "ODrive S1",
+   "interface": "drive.bldc_foc",
+   "variant_note": null,
+   "specs": [
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      12,
+      50.5
+     ],
+     "unit": "V",
+     "conditions": "absolute min/max; nominal DC bus range 16-48 V",
+     "source_id": "e_odrive_s1_ds",
+     "quote": "DC bus range of 16–48 V (with a 12 V minimum and 50.5 V maximum)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "nominal_voltage_range_V",
+     "value": [
+      16,
+      48
+     ],
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_odrive_s1_ds",
+     "quote": "DC bus range of 16–48 V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "phase_current_continuous_A",
+     "value": 20,
+     "unit": "A",
+     "conditions": "free air",
+     "source_id": "e_odrive_s1_ds",
+     "quote": "20 A in free air, 40 A with a heat spreader plate",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "phase_current_continuous_A",
+     "value": 40,
+     "unit": "A",
+     "conditions": "with heat spreader plate",
+     "source_id": "e_odrive_s1_shop",
+     "quote": "40A continuous (with heat spreader, recommended)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "phase_current_peak_A",
+     "value": 80,
+     "unit": "A",
+     "conditions": "peak; firmware limits vs DC voltage; datasheet summary gives 40-80 A peak",
+     "source_id": "e_odrive_cmp",
+     "quote": "40 A nominal and 80 A peak",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "command_bus",
+     "value": "can",
+     "unit": null,
+     "conditions": "CAN 2.0B @ 1 Mbps; CAN-FD 5 Mbit/s listed as experimental",
+     "source_id": "e_odrive_s1_ds",
+     "quote": "CAN 2.0B @ 1Mbps control (5Mbit/s CAN-FD, experimental)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "command_interfaces",
+     "value": [
+      "can",
+      "uart"
+     ],
+     "unit": null,
+     "conditions": "UART is isolated",
+     "source_id": "e_odrive_cmp",
+     "quote": "lists UART, CAN, and CAN-FD as supported",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "position_sensor",
+     "value": "MA702 onboard magnetic encoder",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_odrive_s1_shop",
+     "quote": "On-board magnetic encoder: MA702",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "position_sensor_bits",
+     "value": 12,
+     "unit": "bit",
+     "conditions": "stated on ODrive's RS485 encoder product page as 'same as ODrive Pro and S1' (indirect)",
+     "source_id": "e_odrive_rs485enc",
+     "quote": "12-bit MA702 magnetic encoder (same as ODrive Pro and S1)",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "current_loop_rate_hz / pwm rate (not found)",
+    "mass_kg",
+    "dimensions_mm",
+    "all ODrive values are search-snippet only: docs.odriverobotics.com and shop unreachable from this environment",
+    "supply_current_max_A (no logic/quiescent/max supply current found in a reachable source)"
+   ]
+  },
+  {
+   "name": "DYNAMIXEL XM430-W350-T",
+   "manufacturer": "ROBOTIS",
+   "part_number": "XM430-W350-T",
+   "interface": "actuator.smart_servo",
+   "variant_note": "-T variant; specs shared with -R in the e-Manual (single XM430-W350-T/R page). A ROBOTIS reseller snippet says the -T package includes a TTL 3-pin cable, but no fetched source states the -T = TTL mapping.",
+   "specs": [
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      10.0,
+      14.8
+     ],
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_dxl_x_info",
+     "quote": "10.0 ~ 14.8 [V] (**Recommended : 12.0 [V]**)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "nominal_voltage_V",
+     "value": 12.0,
+     "unit": "V",
+     "conditions": "recommended",
+     "source_id": "e_dxl_x_info",
+     "quote": "10.0 ~ 14.8 [V] (**Recommended : 12.0 [V]**)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "stall_torque_Nm",
+     "value": 3.8,
+     "unit": "N·m",
+     "conditions": "at 11.1 V, 2.1 A",
+     "source_id": "e_dxl_x_info",
+     "quote": "3.8 [N.m] (at 11.1 [V], 2.1 [A], 1.810 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "stall_torque_Nm",
+     "value": 4.1,
+     "unit": "N·m",
+     "conditions": "at 12.0 V, 2.3 A",
+     "source_id": "e_dxl_x_info",
+     "quote": "4.1 [N.m] (at 12.0 [V], 2.3 [A], 1.783 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "stall_torque_Nm",
+     "value": 4.8,
+     "unit": "N·m",
+     "conditions": "at 14.8 V, 2.7 A",
+     "source_id": "e_dxl_x_info",
+     "quote": "4.8 [N.m] (at 14.8 [V], 2.7 [A], 1.778 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "no_load_speed_rpm",
+     "value": 43,
+     "unit": "rpm",
+     "conditions": "at 11.1 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "43 [rev/min] (at 11.1 [V])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "no_load_speed_rpm",
+     "value": 46,
+     "unit": "rpm",
+     "conditions": "at 12.0 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "46 [rev/min] (at 12.0 [V])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "no_load_speed_rpm",
+     "value": 57,
+     "unit": "rpm",
+     "conditions": "at 14.8 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "57 [rev/min] (at 14.8 [V])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "gear_ratio",
+     "value": 353.5,
+     "unit": null,
+     "conditions": "353.5:1",
+     "source_id": "e_dxl_x_info",
+     "quote": "gearratio:          \"353.5 : 1\"",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "position_resolution_counts",
+     "value": 4096,
+     "unit": "counts/rev",
+     "conditions": null,
+     "source_id": "e_dxl_x_info",
+     "quote": "4096 [pulse/rev]",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "position_sensor",
+     "value": "AS5045 contactless absolute encoder, 12 bit, 360°",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_dxl_x_info",
+     "quote": "Contactless absolute encoder (12Bit, 360 [&deg;])<br />Maker : ams(www.ams.com), Part No : AS5045",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "bus_physical",
+     "value": [
+      "ttl_half_duplex",
+      "rs485"
+     ],
+     "unit": null,
+     "conditions": "family-level spec covering both -T and -R; manual does not state the per-suffix mapping",
+     "source_id": "e_dxl_x_info",
+     "quote": "TTL Half Duplex Asynchronous Serial Communication with 8bit, 1stop, No Parity<br />RS-485 Asynchronous Serial Communication with 8bit, 1stop, No Parity",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "protocol",
+     "value": "dynamixel_protocol_2.0",
+     "unit": null,
+     "conditions": "Protocol Type register default 2 (range 1~2, i.e. Protocol 1.0 also selectable)",
+     "source_id": "e_xm430_emanual",
+     "quote": "|   13    |     1      | [Protocol Type](#protocol-type13)               |   RW   |         2          |           1 ~ 2",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "baud_max_bps",
+     "value": 4500000,
+     "unit": "bps",
+     "conditions": "range 9,600 bps - 4.5 Mbps",
+     "source_id": "e_dxl_x_info",
+     "quote": "9,600 [bps] ~ 4.5 [Mbps]",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "mass_kg",
+     "value": 0.082,
+     "unit": "kg",
+     "conditions": null,
+     "source_id": "e_dxl_x_info",
+     "quote": "82 [g]",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "dimensions_mm",
+     "value": [
+      28.5,
+      46.5,
+      34
+     ],
+     "unit": "mm",
+     "conditions": "W x H x D",
+     "source_id": "e_dxl_x_info",
+     "quote": "28.5 x 46.5 x 34 [mm]",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "feedback",
+     "value": [
+      "position",
+      "velocity",
+      "current",
+      "realtime_tick",
+      "trajectory",
+      "temperature",
+      "input_voltage"
+     ],
+     "unit": null,
+     "conditions": "list ends with 'etc'",
+     "source_id": "e_dxl_x_info",
+     "quote": "Position, Velocity, Current, Realtime tick, Trajectory, Temperature, Input Voltage, etc",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "mcu",
+     "value": "ARM Cortex-M3 72 MHz",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_dxl_x_info",
+     "quote": "ARM CORTEX-M3 (72 [MHz], 32Bit)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "stall_current_A",
+     "value": 2.1,
+     "unit": "A",
+     "conditions": "at 11.1 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "3.8 [N.m] (at 11.1 [V], 2.1 [A], 1.810 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "stall_current_A",
+     "value": 2.3,
+     "unit": "A",
+     "conditions": "at 12.0 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "4.1 [N.m] (at 12.0 [V], 2.3 [A], 1.783 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "stall_current_A",
+     "value": 2.7,
+     "unit": "A",
+     "conditions": "at 14.8 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "4.8 [N.m] (at 14.8 [V], 2.7 [A], 1.778 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "standby_current_A",
+     "value": 0.04,
+     "unit": "A",
+     "conditions": "standby (not a no-load running current)",
+     "source_id": "e_dxl_x_info",
+     "quote": "standbycurrent_40:  &standbycurrent_40 \"40 [mA]\"",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "bus_physical per variant (-T presumed TTL 3-pin, not stated explicitly in fetched source)",
+    "no_load_current_A (not published in e-Manual spec table; only standby current 40 mA)"
+   ]
+  },
+  {
+   "name": "DYNAMIXEL XM430-W350-R",
+   "manufacturer": "ROBOTIS",
+   "part_number": "XM430-W350-R",
+   "interface": "actuator.smart_servo",
+   "variant_note": "-R variant; specs shared with -T in the e-Manual. Per-variant RS-485 only from search snippets.",
+   "specs": [
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      10.0,
+      14.8
+     ],
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_dxl_x_info",
+     "quote": "10.0 ~ 14.8 [V] (**Recommended : 12.0 [V]**)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "nominal_voltage_V",
+     "value": 12.0,
+     "unit": "V",
+     "conditions": "recommended",
+     "source_id": "e_dxl_x_info",
+     "quote": "10.0 ~ 14.8 [V] (**Recommended : 12.0 [V]**)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "stall_torque_Nm",
+     "value": 3.8,
+     "unit": "N·m",
+     "conditions": "at 11.1 V, 2.1 A",
+     "source_id": "e_dxl_x_info",
+     "quote": "3.8 [N.m] (at 11.1 [V], 2.1 [A], 1.810 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "stall_torque_Nm",
+     "value": 4.1,
+     "unit": "N·m",
+     "conditions": "at 12.0 V, 2.3 A",
+     "source_id": "e_dxl_x_info",
+     "quote": "4.1 [N.m] (at 12.0 [V], 2.3 [A], 1.783 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "stall_torque_Nm",
+     "value": 4.8,
+     "unit": "N·m",
+     "conditions": "at 14.8 V, 2.7 A",
+     "source_id": "e_dxl_x_info",
+     "quote": "4.8 [N.m] (at 14.8 [V], 2.7 [A], 1.778 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "no_load_speed_rpm",
+     "value": 43,
+     "unit": "rpm",
+     "conditions": "at 11.1 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "43 [rev/min] (at 11.1 [V])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "no_load_speed_rpm",
+     "value": 46,
+     "unit": "rpm",
+     "conditions": "at 12.0 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "46 [rev/min] (at 12.0 [V])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "no_load_speed_rpm",
+     "value": 57,
+     "unit": "rpm",
+     "conditions": "at 14.8 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "57 [rev/min] (at 14.8 [V])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "gear_ratio",
+     "value": 353.5,
+     "unit": null,
+     "conditions": "353.5:1",
+     "source_id": "e_dxl_x_info",
+     "quote": "gearratio:          \"353.5 : 1\"",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "position_resolution_counts",
+     "value": 4096,
+     "unit": "counts/rev",
+     "conditions": null,
+     "source_id": "e_dxl_x_info",
+     "quote": "4096 [pulse/rev]",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "position_sensor",
+     "value": "AS5045 contactless absolute encoder, 12 bit, 360°",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_dxl_x_info",
+     "quote": "Contactless absolute encoder (12Bit, 360 [&deg;])<br />Maker : ams(www.ams.com), Part No : AS5045",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "bus_physical",
+     "value": [
+      "ttl_half_duplex",
+      "rs485"
+     ],
+     "unit": null,
+     "conditions": "family-level spec covering both -T and -R; manual does not state the per-suffix mapping",
+     "source_id": "e_dxl_x_info",
+     "quote": "TTL Half Duplex Asynchronous Serial Communication with 8bit, 1stop, No Parity<br />RS-485 Asynchronous Serial Communication with 8bit, 1stop, No Parity",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "protocol",
+     "value": "dynamixel_protocol_2.0",
+     "unit": null,
+     "conditions": "Protocol Type register default 2 (range 1~2, i.e. Protocol 1.0 also selectable)",
+     "source_id": "e_xm430_emanual",
+     "quote": "|   13    |     1      | [Protocol Type](#protocol-type13)               |   RW   |         2          |           1 ~ 2",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "baud_max_bps",
+     "value": 4500000,
+     "unit": "bps",
+     "conditions": "range 9,600 bps - 4.5 Mbps",
+     "source_id": "e_dxl_x_info",
+     "quote": "9,600 [bps] ~ 4.5 [Mbps]",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "mass_kg",
+     "value": 0.082,
+     "unit": "kg",
+     "conditions": null,
+     "source_id": "e_dxl_x_info",
+     "quote": "82 [g]",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "dimensions_mm",
+     "value": [
+      28.5,
+      46.5,
+      34
+     ],
+     "unit": "mm",
+     "conditions": "W x H x D",
+     "source_id": "e_dxl_x_info",
+     "quote": "28.5 x 46.5 x 34 [mm]",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "feedback",
+     "value": [
+      "position",
+      "velocity",
+      "current",
+      "realtime_tick",
+      "trajectory",
+      "temperature",
+      "input_voltage"
+     ],
+     "unit": null,
+     "conditions": "list ends with 'etc'",
+     "source_id": "e_dxl_x_info",
+     "quote": "Position, Velocity, Current, Realtime tick, Trajectory, Temperature, Input Voltage, etc",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "mcu",
+     "value": "ARM Cortex-M3 72 MHz",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_dxl_x_info",
+     "quote": "ARM CORTEX-M3 (72 [MHz], 32Bit)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "bus_physical",
+     "value": [
+      "rs485"
+     ],
+     "unit": null,
+     "conditions": "-R variant; this listing's package contents mention the X3P (TTL) cable and the -T model name, so it is internally inconsistent",
+     "source_id": "e_mybotshop_xm430r",
+     "quote": "Communication: RS485",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "included_cable",
+     "value": "Robot Cable-X4P 180mm (RS485 4p)",
+     "unit": null,
+     "conditions": "-R package contents",
+     "source_id": "e_robotis_us_xm430r",
+     "quote": "Robot Cable-X4P 180mm | 1 | RS485 4p Cable (JST-JST)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "stall_current_A",
+     "value": 2.1,
+     "unit": "A",
+     "conditions": "at 11.1 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "3.8 [N.m] (at 11.1 [V], 2.1 [A], 1.810 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "stall_current_A",
+     "value": 2.3,
+     "unit": "A",
+     "conditions": "at 12.0 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "4.1 [N.m] (at 12.0 [V], 2.3 [A], 1.783 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "stall_current_A",
+     "value": 2.7,
+     "unit": "A",
+     "conditions": "at 14.8 V",
+     "source_id": "e_dxl_x_info",
+     "quote": "4.8 [N.m] (at 14.8 [V], 2.7 [A], 1.778 [Nm/A])",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "standby_current_A",
+     "value": 0.04,
+     "unit": "A",
+     "conditions": "standby (not a no-load running current)",
+     "source_id": "e_dxl_x_info",
+     "quote": "standbycurrent_40:  &standbycurrent_40 \"40 [mA]\"",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "bus_physical per variant from a fetched source",
+    "no_load_current_A (not published in e-Manual spec table; only standby current 40 mA)"
+   ]
+  },
+  {
+   "name": "Feetech STS3215 smart servo (7.4 V)",
+   "manufacturer": "Feetech",
+   "part_number": "STS3215 (ST-3215-C001 / C044 / C046)",
+   "interface": "actuator.smart_servo",
+   "variant_note": "7.4 V variant. C001 = 1/345 gear; C044 = 1/191 and C046 = 1/147 are the other 7.4 V gearings used in the SO-101 leader arm. Electrical/speed figures are for C001. SO-101 leader arm is always 7.4 V.",
+   "specs": [
+    {
+     "field": "position_resolution_counts",
+     "value": 4096,
+     "unit": "counts/rev",
+     "conditions": null,
+     "source_id": "e_lerobot_fttables",
+     "quote": "\"sts3215\": 4096,",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "baud_max_bps",
+     "value": 1000000,
+     "unit": "bps",
+     "conditions": "highest entry in LeRobot's STS/SMS baudrate table (1M,500k,250k,128k,115.2k,57.6k,38.4k,19.2k)",
+     "source_id": "e_lerobot_fttables",
+     "quote": "STS_SMS_SERIES_BAUDRATE_TABLE = {\n    1_000_000: 0,",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "protocol",
+     "value": "feetech_sts_serial (SCServo SDK protocol 0)",
+     "unit": null,
+     "conditions": "LeRobot uses scservo_sdk with DEFAULT_PROTOCOL_VERSION = 0 for STS series",
+     "source_id": "e_lerobot_fttables",
+     "quote": "\"sts3215\": STS_SMS_SERIES_CONTROL_TABLE,",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      6,
+      7.4
+     ],
+     "unit": "V",
+     "conditions": "C001 7.4 V variant",
+     "source_id": "e_sts3215_eckstein",
+     "quote": "Operating Voltage Range: 6-7.4 V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "nominal_voltage_V",
+     "value": 7.4,
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_soarm_readme",
+     "quote": "The 7.4V has a stall torque of 16.5kg.cm at 6V",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "stall_torque_Nm",
+     "value": 1.912,
+     "unit": "N·m",
+     "conditions": "19.5 kg·cm peak stall @ 6 V (converted 1 kg·cm = 0.0980665 N·m); C001",
+     "source_id": "e_sts3215_ds_tr",
+     "quote": "peak stall torque is 19.5kg.cm @ 6 V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "stall_torque_Nm",
+     "value": 1.618,
+     "unit": "N·m",
+     "conditions": "16.5 kg·cm @ 6 V per SO-ARM100 README (CONFLICTS with 19.5 kg·cm datasheet/retailer figure)",
+     "source_id": "e_soarm_readme",
+     "quote": "The 7.4V has a stall torque of 16.5kg.cm at 6V",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "no_load_speed_rpm",
+     "value": 42,
+     "unit": "rpm",
+     "conditions": "@ 6 V; 0.238 s/60°",
+     "source_id": "e_sts3215_ds_tr",
+     "quote": "0.238sec/60° (42RPM)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "gear_ratio",
+     "value": 345,
+     "unit": null,
+     "conditions": "C001 = 1/345; used for all 6 SO-101 follower joints and leader shoulder lift",
+     "source_id": "e_soarm_readme",
+     "quote": "STS3215 Servo 7.4V, 1/345 gear (C001)",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "mass_kg",
+     "value": 0.055,
+     "unit": "kg",
+     "conditions": "±1 g",
+     "source_id": "e_sts3215_eckstein",
+     "quote": "Weight: 55± 1 g",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "dimensions_mm",
+     "value": [
+      45.2,
+      24.7,
+      35
+     ],
+     "unit": "mm",
+     "conditions": null,
+     "source_id": "e_sts3215_eckstein",
+     "quote": "45.2mmx24.7mmx35mm",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "gear_ratio",
+     "value": 191,
+     "unit": null,
+     "conditions": "C044 = 1/191; SO-101 leader base/shoulder pan and elbow flex",
+     "source_id": "e_soarm_readme",
+     "quote": "STS3215 Servo 7.4V, 1/191 gear (C044)",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "gear_ratio",
+     "value": 147,
+     "unit": null,
+     "conditions": "C046 = 1/147; SO-101 leader wrist flex, wrist roll, gripper",
+     "source_id": "e_soarm_readme",
+     "quote": "STS3215 Servo 7.4V, 1/147 gear (C046)",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "so101_leader_joint_map",
+     "value": {
+      "base_shoulder_pan": "1/191",
+      "shoulder_lift": "1/345",
+      "elbow_flex": "1/191",
+      "wrist_flex": "1/147",
+      "wrist_roll": "1/147",
+      "gripper": "1/147"
+     },
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_lerobot_so101",
+     "quote": "| Base / Shoulder Pan |   1   |  1 / 191   |",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "so101_follower_gearing",
+     "value": "6x STS3215 1/345",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_lerobot_so101",
+     "quote": "The follower arm uses 6x STS3215 motors with 1/345 gearing.",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "stall_current_A",
+     "value": 2.0,
+     "unit": "A",
+     "conditions": "@ 6 V, C001 7.4 V variant",
+     "source_id": "e_sts3215_ds_tr",
+     "quote": "Stall current is 2000 mA @ 6 V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "no_load_current_A",
+     "value": 0.15,
+     "unit": "A",
+     "conditions": "@ 6 V, no-load running current, C001",
+     "source_id": "e_sts3215_ds_tr",
+     "quote": "no-load running current is 150 mA @ 6 V",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "bus_physical (TTL half-duplex per retailer titles, but not captured with a quote)",
+    "feedback list",
+    "Feetech-hosted primary datasheet (feetechrc.com unreachable)"
+   ]
+  },
+  {
+   "name": "Feetech STS3215 smart servo (12 V)",
+   "manufacturer": "Feetech",
+   "part_number": "STS3215 12 V (ST-3215-C018)",
+   "interface": "actuator.smart_servo",
+   "variant_note": "12 V, 30 kg·cm variant; optional higher-torque choice for the SO-101 follower arm (requires 12 V 5 A+ supply per SO-ARM100 README). C018 designation from retailer snippet.",
+   "specs": [
+    {
+     "field": "position_resolution_counts",
+     "value": 4096,
+     "unit": "counts/rev",
+     "conditions": null,
+     "source_id": "e_lerobot_fttables",
+     "quote": "\"sts3215\": 4096,",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "baud_max_bps",
+     "value": 1000000,
+     "unit": "bps",
+     "conditions": "highest entry in LeRobot's STS/SMS baudrate table (1M,500k,250k,128k,115.2k,57.6k,38.4k,19.2k)",
+     "source_id": "e_lerobot_fttables",
+     "quote": "STS_SMS_SERIES_BAUDRATE_TABLE = {\n    1_000_000: 0,",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "protocol",
+     "value": "feetech_sts_serial (SCServo SDK protocol 0)",
+     "unit": null,
+     "conditions": "LeRobot uses scservo_sdk with DEFAULT_PROTOCOL_VERSION = 0 for STS series",
+     "source_id": "e_lerobot_fttables",
+     "quote": "\"sts3215\": STS_SMS_SERIES_CONTROL_TABLE,",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      4,
+      14
+     ],
+     "unit": "V",
+     "conditions": "12 V variant (ST-3215-C018 per retailer)",
+     "source_id": "e_sts3215_eckstein",
+     "quote": "Operating Voltage Range: 4V to 14V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "nominal_voltage_V",
+     "value": 12,
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_soarm_readme",
+     "quote": "The 12V version has a stall torque of 30kg.cm",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "stall_torque_Nm",
+     "value": 2.942,
+     "unit": "N·m",
+     "conditions": "30 kg·cm @ 12 V (converted)",
+     "source_id": "e_sts3215_eckstein",
+     "quote": "Peak Stall Torque: 30 kg·cm at 12V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "stall_torque_Nm",
+     "value": 2.942,
+     "unit": "N·m",
+     "conditions": "30 kg·cm, voltage not stated in this source",
+     "source_id": "e_soarm_readme",
+     "quote": "The 12V version has a stall torque of 30kg.cm",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "no_load_speed_s_per_60deg",
+     "value": 0.222,
+     "unit": "s/60°",
+     "conditions": "@ 12 V",
+     "source_id": "e_sts3215_eckstein",
+     "quote": "No-Load Speed: 0.222 sec/60° at 12V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "stall_current_A",
+     "value": 2.7,
+     "unit": "A",
+     "conditions": "@ 12 V, 12 V variant",
+     "source_id": "e_sts3215_eckstein",
+     "quote": "Stall Current: 2.7A at 12V",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "gear_ratio of 12 V variant",
+    "mass_kg",
+    "dimensions_mm",
+    "bus_physical",
+    "feedback list",
+    "no_load_current_A"
+   ]
+  },
+  {
+   "name": "Pololu DRV8874 Single Brushed DC Motor Driver Carrier",
+   "manufacturer": "Pololu",
+   "part_number": "4035",
+   "interface": "drive.dc_brushed",
+   "variant_note": "Chosen as a 37D-gearmotor-class driver; TB9051FTG not researched.",
+   "specs": [
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      4.5,
+      37
+     ],
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_pololu_4035_retail",
+     "quote": "4.5 V to 37 V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "current_continuous_A",
+     "value": 2.1,
+     "unit": "A",
+     "conditions": null,
+     "source_id": "e_pololu_4035_retail",
+     "quote": "Output current: 2.1 A continuous (6 A peak)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "current_peak_A",
+     "value": 6,
+     "unit": "A",
+     "conditions": "chip tolerance per retailer listing",
+     "source_id": "e_pololu_4035_retail",
+     "quote": "Output current: 2.1 A continuous (6 A peak)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "current_peak_A",
+     "value": 4.4,
+     "unit": "A",
+     "conditions": "default regulated peak (current regulation) per Pololu; CONFLICTS with 6 A retailer figure (different meaning)",
+     "source_id": "e_pololu_4035",
+     "quote": "limits the peak motor current to about 4.4 A by default",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "command_interfaces",
+     "value": [
+      "ph_en",
+      "in_in_pwm",
+      "independent_half_bridge"
+     ],
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_pololu_4035",
+     "quote": "Three input control modes: Phase/enable (PH/EH), PWM (IN/IN), Independent half-bridge control",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "logic_voltage_V",
+     "value": [
+      1.8,
+      5
+     ],
+     "unit": "V",
+     "conditions": "5.5 V max",
+     "source_id": "e_pololu_4035",
+     "quote": "1.8 V to 5 V logic voltage (5.5 V max)",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "all Pololu values are search-snippet only (pololu.com unreachable)",
+    "supply_current_max_A (no logic/quiescent/max supply current found in a reachable source)"
+   ]
+  },
+  {
+   "name": "ROBOTIS U2D2",
+   "manufacturer": "ROBOTIS",
+   "part_number": "U2D2",
+   "interface": "adapter.bus_bridge",
+   "variant_note": "USB connector changed from Micro-B to Type-C from August 2025",
+   "specs": [
+    {
+     "field": "host_interface",
+     "value": "usb",
+     "unit": null,
+     "conditions": "USB Type-C since Aug 2025 (previously Micro-B); FTDI-based VCP",
+     "source_id": "e_u2d2_emanual",
+     "quote": "*Type-C USB   |                  Connect to the PC with USB cable",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "bus_physical",
+     "value": [
+      "ttl_3pin",
+      "rs485_4pin",
+      "uart_4pin"
+     ],
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_u2d2_emanual",
+     "quote": "3Pin TTL Level(TTL Communication supported DYNAMIXEL)<br />4Pin RS-485(RS-485 Communication supported DYNAMIXEL)<br />4Pin UART",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "baud_max_bps",
+     "value": 6000000,
+     "unit": "bps",
+     "conditions": null,
+     "source_id": "e_u2d2_emanual",
+     "quote": "Maximum 6Mbps",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "mass_kg",
+     "value": 0.009,
+     "unit": "kg",
+     "conditions": null,
+     "source_id": "e_u2d2_emanual",
+     "quote": "Weight   | ... 9g",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "dimensions_mm",
+     "value": [
+      48,
+      18,
+      14.9
+     ],
+     "unit": "mm",
+     "conditions": null,
+     "source_id": "e_u2d2_emanual",
+     "quote": "48mm x 18mm x 14.9mm",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "powers_bus",
+     "value": false,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_u2d2_emanual",
+     "quote": "U2D2 does not supply power to DYNAMIXEL",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "supply_current_max_A (no logic/quiescent/max supply current found in a reachable source)"
+   ]
+  },
+  {
+   "name": "SO-101 arm power supply (per SO-ARM100 BOM / README)",
+   "manufacturer": "unspecified (BOM links a generic switching adapter)",
+   "part_number": null,
+   "interface": "power.source",
+   "variant_note": "SO-101 BOM lists 'Power Supply' (2 for two-arm kit, 1 per arm) without stating ratings in text. README implies a 5 V supply by default (7.4 V STS3215 servos) and requires a 12 V 5 A+ supply if the follower uses 12 V STS3215 servos. LeRobot so101 docs mention 'Power supply' without ratings. The leader arm is always 7.4 V servos.",
+   "specs": [
+    {
+     "field": "output_voltage_V",
+     "value": 5,
+     "unit": "V",
+     "conditions": "default supply for 7.4 V STS3215 servos (follower and leader); implied by 'instead of a 5V one' - current rating not stated",
+     "source_id": "e_soarm_readme",
+     "quote": "you will also have to buy a 12V 5A+ power supply instead of a 5V one",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "output_voltage_V",
+     "value": 12,
+     "unit": "V",
+     "conditions": "only when follower uses 12 V STS3215 servos",
+     "source_id": "e_soarm_readme",
+     "quote": "you will also have to buy a 12V 5A+ power supply instead of a 5V one",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "current_continuous_A",
+     "value": 5,
+     "unit": "A",
+     "conditions": "minimum ('5A+') for the 12 V follower option",
+     "source_id": "e_soarm_readme",
+     "quote": "12V 5A+ power supply",
+     "verification": "fetched_secondary"
+    }
+   ],
+   "unresolved": [
+    "current rating of the default 5 V supply (BOM row only gives an Amazon link; listing not fetched/stated)"
+   ]
+  }
+ ]
+}

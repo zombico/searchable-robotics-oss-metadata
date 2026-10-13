@@ -1,0 +1,995 @@
+{
+ "sources": {
+  "e_bmi088_ds": {
+   "title": "Bosch Sensortec BMI088 Data sheet, BST-BMI088-DS001-14, Revision 1.4 (09/2018) — manufacturer PDF retrieved from mirror in bolderflight/bmi088-arduino (commit a3b136f)",
+   "url": "https://github.com/bolderflight/bmi088-arduino/blob/a3b136f69f1f4ff6434d8a3f7cdc6d953549e471/extras/BST-BMI088-DS001.pdf",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_bmi088_flyer_search": {
+   "title": "Bosch Sensortec BMI088 product flyer (seen only in search results)",
+   "url": "https://www.bosch-sensortec.com/media/boschsensortec/downloads/product_flyer/bst-bmi088-fl000.pdf",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_icm42688p_ds": {
+   "title": "TDK InvenSense ICM-42688-P Datasheet, DS-000347 Revision 1.5 (Rev. date 05/05/2021) — manufacturer PDF retrieved from mirror in finani/ICM42688 (commit b417e0a); note TDK lists rev 1.8 (2023) as current",
+   "url": "https://github.com/finani/ICM42688/blob/b417e0ab80650201dcb321a3d306a8d51464a20a/extras/InvenSense-ICM-42688-P-datasheet.pdf",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_ina226_ds": {
+   "title": "TI INA226 datasheet, SBOS547B (June 2011, revised September 2024) — manufacturer PDF retrieved from mirror in libdriver/ina226 (commit a54677f)",
+   "url": "https://github.com/libdriver/ina226/blob/a54677f093d1580dee5b6bc3d6428e48930531ba/datasheet/ina226_datasheet.pdf",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_hx711_ds": {
+   "title": "Avia Semiconductor HX711 datasheet (Chinese-language edition) — manufacturer PDF retrieved from mirror in libdriver/hx711 (commit 2a3cacf)",
+   "url": "https://github.com/libdriver/hx711/blob/2a3cacf0ae241c3af9fba73bb271121aebacdb50/datasheet/hx711_datasheet.pdf",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_as5600_ds": {
+   "title": "ams AS5600 Datasheet [v1-06] 2018-Jun-20 — manufacturer PDF retrieved from mirror in libdriver/as5600 (commit b8bc11f)",
+   "url": "https://github.com/libdriver/as5600/blob/b8bc11f331a48c3e8c0ff4f4ab91274982eb7e5f/datasheet/as5600_datashet.pdf",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_as5048_ds_search": {
+   "title": "ams AS5048A/AS5048B datasheet DS000298 (Infineon-hosted legacy ams OSRAM copy; seen only in search results)",
+   "url": "https://www.infineon.com/row/public/documents/24/49/infineon-as5048a-as5048b-datasheet-en.pdf",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_as5047p_ds_search": {
+   "title": "ams AS5047P datasheet (Infineon-hosted legacy ams OSRAM copy; seen only in search results)",
+   "url": "https://www.infineon.com/row/public/documents/24/49/infineon-as5047p-datasheet-en.pdf",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_as5047p_solicomp_search": {
+   "title": "solicomp.de AS5047P product page (seen only in search results)",
+   "url": "https://solicomp.de/en/?p=7667",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_as5047p_rs_search": {
+   "title": "RS Online AS5047P listing 2009464 (seen only in search results)",
+   "url": "https://uk.rs-online.com/web/p/motion-sensor-ics/2009464",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_amt10_ds_search": {
+   "title": "CUI Devices / Same Sky AMT10 series datasheet (Mouser-hosted copy, dated 08/05/2022; seen only in search results)",
+   "url": "https://www.mouser.lt/pdfDocs/amt10.pdf",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_amt102v_digikey_search": {
+   "title": "DigiKey product page AMT102-V (Same Sky, formerly CUI Devices) (seen only in search results)",
+   "url": "https://www.digikey.com/en/products/detail/same-sky-formerly-cui-devices/AMT102-V/827015",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_amt10x_old_search": {
+   "title": "Older CUI AMT10X datasheet (cncdrive.com-hosted copy; seen only in search results)",
+   "url": "https://mail.cncdrive.com/downloads/AMT10X.pdf",
+   "publisher_type": "community",
+   "accessed_on": "2026-10-13"
+  }
+ },
+ "components": [
+  {
+   "name": "AS5048A magnetic rotary position sensor",
+   "manufacturer": "ams OSRAM",
+   "part_number": "AS5048A",
+   "interface": "sensor.angle_absolute",
+   "variant_note": "AS5048A = SPI variant; AS5048B = I2C variant (same datasheet). Product line now hosted by Infineon.",
+   "specs": [
+    {
+     "field": "resolution_bits",
+     "value": 14,
+     "unit": "bit",
+     "conditions": null,
+     "source_id": "e_as5048_ds_search",
+     "quote": "14-bit resolution (0.0219°/LSB)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "interface",
+     "value": "spi",
+     "unit": null,
+     "conditions": "AS5048A; also PWM output",
+     "source_id": "e_as5048_ds_search",
+     "quote": "AS5048A has a SPI interface, AS5048B I²C interface. Both devices offer a PWM output.",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      3.3,
+      5.0
+     ],
+     "unit": "V",
+     "conditions": "either supply via internal regulator",
+     "source_id": "e_as5048_ds_search",
+     "quote": "operate at either 3.3V or 5V supplies",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "accuracy_deg",
+     "value": 0.05,
+     "unit": "deg",
+     "conditions": "after system linearization and averaging (system-level, not INL)",
+     "source_id": "e_as5048_ds_search",
+     "quote": "angle accuracy 0.05° after system linearization and averaging",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "primary datasheet not fetchable (ams-osram.com, infineon.com, sparkfun CDN blocked); all values search_snippet only",
+    "INL spec not found",
+    "max_speed_rpm / sampling_rate_hz not found",
+    "SPI clock max not found",
+    "supply_current not found"
+   ]
+  },
+  {
+   "name": "AS5600 12-bit programmable contactless potentiometer",
+   "manufacturer": "ams OSRAM",
+   "part_number": "AS5600",
+   "interface": "sensor.angle_absolute",
+   "variant_note": "I2C programming/readout plus analog (ratiometric) or PWM output on OUT pin",
+   "specs": [
+    {
+     "field": "resolution_bits",
+     "value": 12,
+     "unit": "bit",
+     "conditions": null,
+     "source_id": "e_as5600_ds",
+     "quote": "RES Resolution 12 bit",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "interface",
+     "value": "i2c",
+     "unit": null,
+     "conditions": "plus analog or PWM output",
+     "source_id": "e_as5600_ds",
+     "quote": "The AS5600 supports the 2-wire Fast-mode Plus I²C-slave",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "outputs",
+     "value": [
+      "i2c",
+      "analog",
+      "pwm"
+     ],
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_as5600_ds",
+     "quote": "Analog output ratiometric to VDD or PWM-encoded digital output",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      4.5,
+      5.5
+     ],
+     "unit": "V",
+     "conditions": "5.0V operation mode (VDD5V)",
+     "source_id": "e_as5600_ds",
+     "quote": "VDD5V ... 5.0V operation mode 4.5 5.0 5.5 V",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      3.0,
+      3.6
+     ],
+     "unit": "V",
+     "conditions": "3.3V operation mode (VDD3V3 tied to VDD5V)",
+     "source_id": "e_as5600_ds",
+     "quote": "3.3V operation mode 3.0 3.3 3.6 V",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "sampling_period_us",
+     "value": 150,
+     "unit": "us",
+     "conditions": "max",
+     "source_id": "e_as5600_ds",
+     "quote": "F_S Sampling rate 150 μs",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "inl_deg",
+     "value": 1,
+     "unit": "deg",
+     "conditions": "max ±1°; best line fit, 360° max angle, no magnet displacement, no zero-programming (PWM, I²C)",
+     "source_id": "e_as5600_ds",
+     "quote": "INL_BL System INL ... ±1 degree",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "pwm_frequency_hz_options",
+     "value": [
+      115,
+      230,
+      460,
+      920
+     ],
+     "unit": "Hz",
+     "conditions": "PWMF = 00/01/10/11",
+     "source_id": "e_as5600_ds",
+     "quote": "PWMF = 00 115 Hz ... PWMF = 11 920 Hz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_current_max_A",
+     "value": 0.0065,
+     "unit": "A",
+     "conditions": "IDD in NOM, PM = 00, always on (max column)",
+     "source_id": "e_as5600_ds",
+     "quote": "IDD Supply current in NOM (1) Always on 6.5 mA",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "max_speed_rpm not published in fetched datasheet",
+    "datasheet is v1-06 (2018) from a GitHub mirror; newer revision may exist"
+   ]
+  },
+  {
+   "name": "AS5047P high-resolution magnetic rotary position sensor",
+   "manufacturer": "ams OSRAM",
+   "part_number": "AS5047P",
+   "interface": "sensor.angle_absolute",
+   "variant_note": "Product line now hosted by Infineon (legacy ams OSRAM document)",
+   "specs": [
+    {
+     "field": "resolution_bits",
+     "value": 14,
+     "unit": "bit",
+     "conditions": null,
+     "source_id": "e_as5047p_ds_search",
+     "quote": "14-bit on-axis magnetic rotary position sensor",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "max_speed_rpm",
+     "value": 28000,
+     "unit": "rpm",
+     "conditions": null,
+     "source_id": "e_as5047p_ds_search",
+     "quote": "up to 28krpm",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "interface",
+     "value": "spi",
+     "unit": null,
+     "conditions": "4-wire SPI; also ABI, UVW, PWM outputs",
+     "source_id": "e_as5047p_ds_search",
+     "quote": "standard 4-wire SPI interface",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "abi_resolution_steps_per_rev_max",
+     "value": [
+      4000,
+      4096
+     ],
+     "unit": "steps/rev",
+     "conditions": "4000 decimal mode / 4096 binary mode (1000 / 1024 pulses)",
+     "source_id": "e_as5047p_ds_search",
+     "quote": "maximum resolution of 4000 steps /1000 pulses per revolution in decimal mode and 4096 steps /1024 pulses per revolution in binary mode",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "abi_resolution_steps_per_rev_min",
+     "value": 100,
+     "unit": "steps/rev",
+     "conditions": "= 25 pulses per revolution",
+     "source_id": "e_as5047p_ds_search",
+     "quote": "can be reduced to 100 steps per revolution, or 25 pulses per revolution",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      3.3,
+      5.0
+     ],
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_as5047p_solicomp_search",
+     "quote": "3.3 or 5.0",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      3,
+      7
+     ],
+     "unit": "V",
+     "conditions": "distributor min/max listing; likely conflates abs-max - treat with caution",
+     "source_id": "e_as5047p_rs_search",
+     "quote": "3 V 7 V",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "primary datasheet not fetchable; all values search_snippet only",
+    "INL / accuracy_deg not found",
+    "supply-voltage sources conflict (3.3/5.0 V vs 3-7 V distributor listing); recorded both",
+    "supply current: only distributor listings (RS 'Supply Current 15mA'; LisleApex 15 mA ATSM / 16 mA ATST) without typ/max qualifier; omitted"
+   ]
+  },
+  {
+   "name": "AMT102-V capacitive incremental encoder (kit)",
+   "manufacturer": "CUI Devices (now Same Sky)",
+   "part_number": "AMT102-V",
+   "interface": "sensor.encoder_incremental",
+   "variant_note": "AMT10 series; DIP-switch selectable resolution, preset 2048 PPR",
+   "specs": [
+    {
+     "field": "ppr_options",
+     "value": [
+      48,
+      96,
+      100,
+      125,
+      192,
+      200,
+      250,
+      256,
+      384,
+      400,
+      500,
+      512,
+      800,
+      1000,
+      1024,
+      2048
+     ],
+     "unit": "PPR",
+     "conditions": "pre-quadrature (counts = PPR x 4)",
+     "source_id": "e_amt10_ds_search",
+     "quote": "quadrature resolutions 48, 96, 100, 125, 192, 200, 250, 256, 384, 400, 500, 512, 800, 1000, 1024, 2048 PPR",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "default_ppr",
+     "value": 2048,
+     "unit": "PPR",
+     "conditions": "DIP switch preset",
+     "source_id": "e_amt10_ds_search",
+     "quote": "Resolution selected via adjustable DIP switch, pre-set to 2048 PPR.",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "max_speed_rpm",
+     "value": 15000,
+     "unit": "rpm",
+     "conditions": "at 48, 96, 100, 125, 200, 250, 256, 512 PPR",
+     "source_id": "e_amt10_ds_search",
+     "quote": "48, 96, 100, 125, 200, 250, 256, 512 15000 RPM",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "max_speed_rpm",
+     "value": 7500,
+     "unit": "rpm",
+     "conditions": "at 192, 384, 400, 500, 800, 1000, 1024, 2048 PPR",
+     "source_id": "e_amt10_ds_search",
+     "quote": "192, 384, 400, 500, 800, 1000, 1024, 2048 7500 RPM",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      3.6,
+      5.5
+     ],
+     "unit": "V",
+     "conditions": "typ 5 V",
+     "source_id": "e_amt10_ds_search",
+     "quote": "power supply VDD 3.6 5 5.5 V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      3.6,
+      5.5
+     ],
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_amt102v_digikey_search",
+     "quote": "Voltage - Supply 3.6V ~ 5.5V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "outputs",
+     "value": [
+      "A",
+      "B",
+      "X (index)"
+     ],
+     "unit": null,
+     "conditions": "quadrature + 1 index pulse per revolution",
+     "source_id": "e_amt10_ds_search",
+     "quote": "channels quadrature A, B, and X index",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "output_type",
+     "value": "CMOS",
+     "unit": null,
+     "conditions": "current Same Sky AMT10 datasheet",
+     "source_id": "e_amt10_ds_search",
+     "quote": "CMOS outputs",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "output_type",
+     "value": "TTL",
+     "unit": null,
+     "conditions": "older CUI AMT10X datasheet",
+     "source_id": "e_amt10x_old_search",
+     "quote": "TTL voltage square wave",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "supply_current_typ_A",
+     "value": 0.006,
+     "unit": "A",
+     "conditions": "unloaded output (current AMT10 datasheet)",
+     "source_id": "e_amt10_ds_search",
+     "quote": "6 mA",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "supply_current_max_A",
+     "value": 0.01,
+     "unit": "A",
+     "conditions": "excluding output load; older AMT10X datasheet (07/26/2013), typ 6 mA",
+     "source_id": "e_amt10x_old_search",
+     "quote": "maximum of 10 mA",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "primary datasheet not fetchable; all values search_snippet only",
+    "output type conflicts between datasheet generations (CMOS vs TTL); recorded both",
+    "supply current max (10 mA) only in older AMT10X sheet; current AMT10 sheet gives typical 6 mA only"
+   ]
+  },
+  {
+   "name": "BMI088 6-axis IMU",
+   "manufacturer": "Bosch Sensortec",
+   "part_number": "BMI088",
+   "interface": "sensor.imu",
+   "variant_note": null,
+   "specs": [
+    {
+     "field": "accel_range_g",
+     "value": [
+      3,
+      6,
+      12,
+      24
+     ],
+     "unit": "g",
+     "conditions": "±, selectable via serial digital interface",
+     "source_id": "e_bmi088_ds",
+     "quote": "gFS3g ±3 ... gFS24g ±24 g",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "gyro_range_dps",
+     "value": [
+      125,
+      250,
+      500,
+      1000,
+      2000
+     ],
+     "unit": "deg/s",
+     "conditions": "±",
+     "source_id": "e_bmi088_ds",
+     "quote": "RFS125 125 ... RFS2000 2000 °/s",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "accel_odr_hz_max",
+     "value": 1600,
+     "unit": "Hz",
+     "conditions": "min 12.5 Hz",
+     "source_id": "e_bmi088_ds",
+     "quote": "Output Data Rate ODR 12.5 1600 Hz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "gyro_odr_hz_max",
+     "value": 2000,
+     "unit": "Hz",
+     "conditions": "options 2000/1000/400/200/100 Hz",
+     "source_id": "e_bmi088_ds",
+     "quote": "Data rate (set of x,y,z rate) 2000 ... 100 Hz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "gyro_noise_density",
+     "value": 0.014,
+     "unit": "deg/s/sqrt(Hz)",
+     "conditions": "typ; rms 0.1 °/s at BW=47Hz",
+     "source_id": "e_bmi088_ds",
+     "quote": "rms, BW=47Hz 0.1 °/s (@ 0.014°/s/√Hz)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "accel_noise_density",
+     "value": {
+      "x_y": 160,
+      "z": 190
+     },
+     "unit": "ug/sqrt(Hz)",
+     "conditions": "typ; gFS3g, TA=25°C, nominal supplies, normal mode",
+     "source_id": "e_bmi088_ds",
+     "quote": "Output Noise Density gFS3g, TA=25°C 190 (Z-axis) 160 (X- & Y-axis) µg/√Hz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "accel_noise_density",
+     "value": 230,
+     "unit": "ug/sqrt(Hz)",
+     "conditions": "in ±24 g range (product flyer)",
+     "source_id": "e_bmi088_flyer_search",
+     "quote": "low spectral noise of only 230 µg/sqrt(Hz) in the widest measurement range of ± 24 g",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "interface",
+     "value": [
+      "spi",
+      "i2c"
+     ],
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_bmi088_ds",
+     "quote": "BMI088 is fitted with digital interfaces (SPI or I2C)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      2.4,
+      3.6
+     ],
+     "unit": "V",
+     "conditions": "VDD (internal domains)",
+     "source_id": "e_bmi088_ds",
+     "quote": "Supply Voltage VDD 2.4 3.6 V",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_voltage_io_V",
+     "value": [
+      1.2,
+      3.6
+     ],
+     "unit": "V",
+     "conditions": "VDDIO (I/O domain)",
+     "source_id": "e_bmi088_ds",
+     "quote": "Supply Voltage VDDIO 1.2 3.6 V",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_current_typ_A",
+     "value": 0.00015,
+     "unit": "A",
+     "conditions": "accelerometer only, normal mode, VDD = VDDIO = 3.0V, 25°C, gFS4g",
+     "source_id": "e_bmi088_ds",
+     "quote": "Total Supply Current in Normal mode IDD VDD = VDDIO =3.0V, 25°C, gFS4g 150 µA",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_current_typ_A",
+     "value": 0.005,
+     "unit": "A",
+     "conditions": "gyroscope only, normal mode, VDD = VDDIO = 3.0V, 25°C, ODR = 1kHz",
+     "source_id": "e_bmi088_ds",
+     "quote": "Supply Current in Normal Mode IDD VDD = VDDIO = 3.0V, 25°C, ODR =1kHz 5 mA",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "fetched datasheet is rev 1.4 (2018) from GitHub mirror; search indicates newer rev 1.9 (2024) exists - values not re-checked against it",
+    "accel noise: datasheet 160/190 µg/√Hz at ±3g vs flyer 230 µg/√Hz at ±24g (different conditions; both recorded)"
+   ]
+  },
+  {
+   "name": "ICM-42688-P 6-axis IMU",
+   "manufacturer": "TDK InvenSense",
+   "part_number": "ICM-42688-P",
+   "interface": "sensor.imu",
+   "variant_note": null,
+   "specs": [
+    {
+     "field": "accel_range_g",
+     "value": [
+      2,
+      4,
+      8,
+      16
+     ],
+     "unit": "g",
+     "conditions": "±",
+     "source_id": "e_icm42688p_ds",
+     "quote": "programmable full-scale range of ±2g, ±4g ±8g and ±16g",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "gyro_range_dps",
+     "value": [
+      15.625,
+      31.25,
+      62.5,
+      125,
+      250,
+      500,
+      1000,
+      2000
+     ],
+     "unit": "deg/s",
+     "conditions": "±",
+     "source_id": "e_icm42688p_ds",
+     "quote": "programmable full-scale range of ±15.625, ±31.25, ±62.5, ±125, ±250, ±500, ±1000, and ±2000 degrees/sec",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "accel_odr_hz_max",
+     "value": 32000,
+     "unit": "Hz",
+     "conditions": "min 1.5625 Hz",
+     "source_id": "e_icm42688p_ds",
+     "quote": "Output Data Rate 1.5625 32000 Hz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "gyro_odr_hz_max",
+     "value": 32000,
+     "unit": "Hz",
+     "conditions": "min 12.5 Hz",
+     "source_id": "e_icm42688p_ds",
+     "quote": "Output Data Rate 12.5 32000 Hz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "gyro_noise_density",
+     "value": 0.0028,
+     "unit": "deg/s/sqrt(Hz)",
+     "conditions": "typ @ 10 Hz; VDD=VDDIO=1.8V, 25°C",
+     "source_id": "e_icm42688p_ds",
+     "quote": "Rate Noise Spectral Density @ 10 Hz 0.0028 º/s /√Hz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "accel_noise_density",
+     "value": {
+      "x_y": 65,
+      "z": 70
+     },
+     "unit": "ug/sqrt(Hz)",
+     "conditions": "typ @ 10 Hz",
+     "source_id": "e_icm42688p_ds",
+     "quote": "Power Spectral Density @ 10 Hz X and Y-axis 65 µg/√Hz Z-axis 70 µg/√Hz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "interface",
+     "value": [
+      "spi",
+      "i2c",
+      "i3c"
+     ],
+     "unit": null,
+     "conditions": "24 MHz SPI, 1 MHz I2C, 12.5 MHz I3C",
+     "source_id": "e_icm42688p_ds",
+     "quote": "12.5MHz I3CSM ... / 1 MHz I2C / 24 MHz SPI slave host interface",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      1.71,
+      3.6
+     ],
+     "unit": "V",
+     "conditions": "VDD",
+     "source_id": "e_icm42688p_ds",
+     "quote": "a VDD operating range of 1.71 V to 3.6 V",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_voltage_io_V",
+     "value": [
+      1.71,
+      3.6
+     ],
+     "unit": "V",
+     "conditions": "VDDIO",
+     "source_id": "e_icm42688p_ds",
+     "quote": "a separate VDDIO operating range of 1.71 V to 3.6",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_current_typ_A",
+     "value": 0.00088,
+     "unit": "A",
+     "conditions": "Low-Noise mode, 6-axis gyro + accel, VDD = VDDIO = 1.8 V, 25°C",
+     "source_id": "e_icm42688p_ds",
+     "quote": "Low-Noise Mode 6-Axis Gyroscope + Accelerometer 0.88 mA",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "fetched datasheet is rev 1.5 (2021) from GitHub mirror; TDK lists rev 1.8 (2023) as current - not re-checked",
+    "cover page rounds accel noise to 70 µg/√Hz; spec table gives 65 (X/Y) / 70 (Z) - table values used"
+   ]
+  },
+  {
+   "name": "INA226 current/voltage/power monitor",
+   "manufacturer": "Texas Instruments",
+   "part_number": "INA226",
+   "interface": "sensor.current_monitor",
+   "variant_note": null,
+   "specs": [
+    {
+     "field": "bus_voltage_range_V",
+     "value": [
+      0,
+      36
+     ],
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_ina226_ds",
+     "quote": "Bus voltage input range(1) 0 36 V",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "shunt_voltage_range_mV",
+     "value": [
+      -81.9175,
+      81.92
+     ],
+     "unit": "mV",
+     "conditions": null,
+     "source_id": "e_ina226_ds",
+     "quote": "Shunt voltage input range –81.9175 81.92 mV",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "adc_resolution_bits",
+     "value": 16,
+     "unit": "bit",
+     "conditions": "native",
+     "source_id": "e_ina226_ds",
+     "quote": "ADC native resolution 16 Bits",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "lsb_shunt_uV",
+     "value": 2.5,
+     "unit": "uV",
+     "conditions": null,
+     "source_id": "e_ina226_ds",
+     "quote": "1 LSB step size Shunt voltage 2.5 μV",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "lsb_bus_mV",
+     "value": 1.25,
+     "unit": "mV",
+     "conditions": null,
+     "source_id": "e_ina226_ds",
+     "quote": "Bus voltage 1.25 mV",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "interface",
+     "value": "i2c",
+     "unit": null,
+     "conditions": "I2C/SMBus compatible, 16 programmable addresses",
+     "source_id": "e_ina226_ds",
+     "quote": "with an I2C™- or SMBUS-compatible interface",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "conversion_time_us",
+     "value": [
+      140,
+      204,
+      332,
+      588,
+      1100,
+      2116,
+      4156,
+      8244
+     ],
+     "unit": "us",
+     "conditions": "typ, CT bits 000..111",
+     "source_id": "e_ina226_ds",
+     "quote": "CT bit = 000 140 ... CT bit = 111 8.244 (ms)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "shunt_offset_voltage_uV_max",
+     "value": 10,
+     "unit": "uV",
+     "conditions": "±, max; typ ±2.5",
+     "source_id": "e_ina226_ds",
+     "quote": "Shunt offset voltage, RTI(2) ±2.5 ±10 μV",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "bus_offset_voltage_mV_max",
+     "value": 7.5,
+     "unit": "mV",
+     "conditions": "±, max; typ ±1.25",
+     "source_id": "e_ina226_ds",
+     "quote": "Bus offset voltage, RTI(2) ±1.25 ±7.5 mV",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "gain_error_pct_max",
+     "value": 0.1,
+     "unit": "%",
+     "conditions": "shunt and bus voltage; typ 0.02%",
+     "source_id": "e_ina226_ds",
+     "quote": "Shunt voltage gain error 0.02% 0.1%",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      2.7,
+      5.5
+     ],
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_ina226_ds",
+     "quote": "Operates from 2.7V to 5.5V power supply",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_current_max_A",
+     "value": 0.00042,
+     "unit": "A",
+     "conditions": "quiescent current, active; typ 330 µA",
+     "source_id": "e_ina226_ds",
+     "quote": "IQ Quiescent current 330 420 μA",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": []
+  },
+  {
+   "name": "HX711 24-bit ADC for weigh scales",
+   "manufacturer": "Avia Semiconductor",
+   "part_number": "HX711",
+   "interface": "sensor.force_adc",
+   "variant_note": "Quotes are from the Chinese-language manufacturer datasheet",
+   "specs": [
+    {
+     "field": "adc_resolution_bits",
+     "value": 24,
+     "unit": "bit",
+     "conditions": null,
+     "source_id": "e_hx711_ds",
+     "quote": "24 位 A/D 转换器芯片",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "output_data_rate_hz",
+     "value": [
+      10,
+      80
+     ],
+     "unit": "Hz",
+     "conditions": "internal oscillator; RATE pin 0 = 10 Hz, 1 = 80 Hz",
+     "source_id": "e_hx711_ds",
+     "quote": "可选择 10Hz 或 80Hz 的输出数据速率",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "selectable_gain",
+     "value": [
+      32,
+      64,
+      128
+     ],
+     "unit": null,
+     "conditions": "channel A: 128 or 64; channel B: fixed 32",
+     "source_id": "e_hx711_ds",
+     "quote": "可选增益为 32,64 和 128",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "interface",
+     "value": "serial_2wire_custom",
+     "unit": null,
+     "conditions": "PD_SCK clock/power-down input + DOUT data output; not SPI/I2C",
+     "source_id": "e_hx711_ds",
+     "quote": "简单的数字控制和串口通讯",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      2.6,
+      5.5
+     ],
+     "unit": "V",
+     "conditions": "operating voltage range (features list, pin table)",
+     "source_id": "e_hx711_ds",
+     "quote": "工作电压范围：2.6 ~ 5.5V",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_voltage_V",
+     "value": [
+      2.7,
+      5.5
+     ],
+     "unit": "V",
+     "conditions": "VSUP in typical application diagram",
+     "source_id": "e_hx711_ds",
+     "quote": "VSUP 2.7~5.5V",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "effective_number_of_bits",
+     "value": 19.7,
+     "unit": "bit",
+     "conditions": "gain 128, 10 Hz",
+     "source_id": "e_hx711_ds",
+     "quote": "增益 = 128，速率=10Hz 19.7 Bits",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "input_noise_nV_rms",
+     "value": {
+      "10Hz": 50,
+      "80Hz": 90
+     },
+     "unit": "nV rms",
+     "conditions": "gain 128",
+     "source_id": "e_hx711_ds",
+     "quote": "增益 = 128，RATE = 0 50 nV(rms) 增益 = 128，RATE = DVDD 90",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supply_current_typ_A",
+     "value": 0.0016,
+     "unit": "A",
+     "conditions": "typical operating current incl. regulator, stated as '< 1.6mA' (table: analog 1500 µA typ + digital 100 µA typ)",
+     "source_id": "e_hx711_ds",
+     "quote": "典型工作电流：< 1.6mA",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "minor internal inconsistency on min supply (2.6 V in text vs 2.7 V in diagram); recorded both",
+    "English edition of datasheet not fetched"
+   ]
+  }
+ ]
+}

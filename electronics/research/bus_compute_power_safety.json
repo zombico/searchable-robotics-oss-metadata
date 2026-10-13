@@ -1,0 +1,1105 @@
+{
+ "sources": {
+  "e_linux_can_doc": {
+   "title": "Linux kernel documentation: SocketCAN (Documentation/networking/can.rst)",
+   "url": "https://raw.githubusercontent.com/torvalds/linux/master/Documentation/networking/can.rst",
+   "publisher_type": "community",
+   "accessed_on": "2026-10-13"
+  },
+  "e_bosch_canfd": {
+   "title": "Bosch Semiconductors: CAN FD IP module page",
+   "url": "https://www.bosch-semiconductors.com/ip-modules/can-protocols/can-fd/",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_cia_esa_slides": {
+   "title": "CiA presentation (Zeltwanger) at ESA workshop",
+   "url": "https://indico.esa.int/event/120/contributions/481/attachments/655/701/01_esa_zeltwanger_cia.pdf",
+   "publisher_type": "standards_body",
+   "accessed_on": "2026-10-13"
+  },
+  "e_robotis_p2": {
+   "title": "ROBOTIS e-Manual: DYNAMIXEL Protocol 2.0 (source markdown in ROBOTIS-GIT/emanual)",
+   "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/emanual/master/docs/en/dxl/protocol2.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_robotis_crc": {
+   "title": "ROBOTIS e-Manual: CRC calculation (source markdown)",
+   "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/emanual/master/docs/en/dxl/crc.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_robotis_xinfo": {
+   "title": "ROBOTIS e-Manual data file for DYNAMIXEL X series specs (_data/dxl_x_info.yml)",
+   "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/emanual/master/_data/dxl_x_info.yml",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_robotis_baud": {
+   "title": "ROBOTIS e-Manual include: Baud Rate(8) control table (control_table_baudrate_2.md)",
+   "url": "https://raw.githubusercontent.com/ROBOTIS-GIT/emanual/master/_includes/en/dxl/control_table_baudrate_2.md",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_lerobot_ft_tables": {
+   "title": "Hugging Face LeRobot: src/lerobot/motors/feetech/tables.py",
+   "url": "https://raw.githubusercontent.com/huggingface/lerobot/main/src/lerobot/motors/feetech/tables.py",
+   "publisher_type": "community",
+   "accessed_on": "2026-10-13"
+  },
+  "e_lerobot_ft_driver": {
+   "title": "Hugging Face LeRobot: src/lerobot/motors/feetech/feetech.py",
+   "url": "https://raw.githubusercontent.com/huggingface/lerobot/main/src/lerobot/motors/feetech/feetech.py",
+   "publisher_type": "community",
+   "accessed_on": "2026-10-13"
+  },
+  "e_pypi_ftsdk": {
+   "title": "feetech-servo-sdk 1.0.0 (PyPI sdist; 'source code from official feetech repository', packaged by a third party), scservo_sdk/protocol_packet_handler.py",
+   "url": "https://pypi.org/project/feetech-servo-sdk/1.0.0/",
+   "publisher_type": "community",
+   "accessed_on": "2026-10-13"
+  },
+  "e_coreel_sts3215": {
+   "title": "Core Electronics: STS3215 smart servo datasheet (translated)",
+   "url": "https://core-electronics.com.au/attachments/uploads/sts3215-smart-servo-datasheet-translated.pdf",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_etg_tech": {
+   "title": "EtherCAT Technology Group: EtherCAT - the Ethernet Fieldbus",
+   "url": "https://ethercat.org/en/technology.html",
+   "publisher_type": "standards_body",
+   "accessed_on": "2026-10-13"
+  },
+  "e_iebmedia_ecat": {
+   "title": "IEB Media: EtherCAT technology and applications update (2022)",
+   "url": "https://iebmedia.com/technology/industrial-ethernet/ethercat-technology-and-applications-update",
+   "publisher_type": "community",
+   "accessed_on": "2026-10-13"
+  },
+  "e_radiolocman_tcan1042": {
+   "title": "RadioLocman datasheet listing: TI TCAN1042 variants",
+   "url": "https://www.radiolocman.com/datasheet/data.html?di=326921",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_radiolocman_tcan1042_drb": {
+   "title": "RadioLocman datasheet listing: TI TCAN1042DRBRQ1",
+   "url": "https://www.radiolocman.com/datasheet/data.html?di=486411",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_farnell_mcp2562fd": {
+   "title": "Farnell: MCP2562FD-E/P CAN transceiver listing",
+   "url": "https://jp.farnell.com/en-JP/microchip/mcp2562fd-e-p/can-transceiver-8mbps-1-tx-rx/dp/2434898",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_radiolocman_mcp2562fd": {
+   "title": "RadioLocman datasheet listing: Microchip MCP2562FD",
+   "url": "https://www.radiolocman.com/datasheet/data.html?di=479245",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_rpi_doc_rp2040": {
+   "title": "Raspberry Pi documentation source: microcontroller-chips/rp2040.adoc",
+   "url": "https://raw.githubusercontent.com/raspberrypi/documentation/master/documentation/asciidoc/microcontrollers/microcontroller-chips/rp2040.adoc",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_rpi_doc_rp2350": {
+   "title": "Raspberry Pi documentation source: microcontroller-chips/rp2350.adoc",
+   "url": "https://raw.githubusercontent.com/raspberrypi/documentation/master/documentation/asciidoc/microcontrollers/microcontroller-chips/rp2350.adoc",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_picosdk_211": {
+   "title": "Raspberry Pi pico-sdk release 2.1.1 notes",
+   "url": "https://github.com/raspberrypi/pico-sdk/releases/tag/2.1.1",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_st_cmsis_g474": {
+   "title": "STMicroelectronics cmsis-device-g4: Include/stm32g474xx.h",
+   "url": "https://raw.githubusercontent.com/STMicroelectronics/cmsis-device-g4/master/Include/stm32g474xx.h",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_st_g474re": {
+   "title": "ST product page: STM32G474RE",
+   "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32g474re.html",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_idf_s3_caps": {
+   "title": "Espressif ESP-IDF: components/soc/esp32s3/include/soc/soc_caps.h",
+   "url": "https://raw.githubusercontent.com/espressif/esp-idf/master/components/soc/esp32s3/include/soc/soc_caps.h",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_idf_s3_kconfig": {
+   "title": "Espressif ESP-IDF: components/esp_system/port/soc/esp32s3/Kconfig.cpu",
+   "url": "https://raw.githubusercontent.com/espressif/esp-idf/master/components/esp_system/port/soc/esp32s3/Kconfig.cpu",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_esp32s3_ds": {
+   "title": "Espressif ESP32-S3 Series Datasheet v2.0 (Mouser-hosted copy)",
+   "url": "https://mouser.com/datasheet/2/891/Espressif_ESP32_S3_Datasheet-2904763.pdf",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_sparkfun_t41": {
+   "title": "SparkFun: Teensy 4.1 (DEV-16771)",
+   "url": "https://www.sparkfun.com/teensy-4-1.html",
+   "publisher_type": "distributor",
+   "accessed_on": "2026-10-13"
+  },
+  "e_flexcan_t4": {
+   "title": "tonton81/FlexCAN_T4 README (Teensy 4 CAN library)",
+   "url": "https://raw.githubusercontent.com/tonton81/FlexCAN_T4/master/README.md",
+   "publisher_type": "community",
+   "accessed_on": "2026-10-13"
+  },
+  "e_pololu_4092": {
+   "title": "Pololu: 6V, 5.5A Step-Down Voltage Regulator D36V50F6 (#4092)",
+   "url": "https://www.pololu.com/product/4092",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_iso13850_scope": {
+   "title": "ISO 13850:2015 scope text as reproduced by national standards body catalog (SCC)",
+   "url": "https://scc-ccn.ca/standardsdb/standards/8157956",
+   "publisher_type": "standards_body",
+   "accessed_on": "2026-10-13"
+  },
+  "e_sis_iso13850": {
+   "title": "SIS catalog: ISO 13850:2015",
+   "url": "https://sis.se/produkter/miljo-och-halsoskydd-sakerhet/maskinsakerhet/iso138502015",
+   "publisher_type": "standards_body",
+   "accessed_on": "2026-10-13"
+  },
+  "e_lenze_stopcat": {
+   "title": "Lenze knowledge base: Stop-categories (EN 60204)",
+   "url": "https://www.lenze.com/en-de/go/akb/200502242/1",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  },
+  "e_kollmorgen_stop": {
+   "title": "Kollmorgen: Stop and emergency stop function",
+   "url": "https://www.kollmorgen.com/en-us/developer-network/stop-and-emergency-stop-function",
+   "publisher_type": "manufacturer",
+   "accessed_on": "2026-10-13"
+  }
+ },
+ "components": [
+  {
+   "name": "CAN FD (ISO 11898-1:2015)",
+   "manufacturer": "ISO / CAN in Automation (CiA); originated by Bosch",
+   "part_number": "ISO 11898-1:2015 (CAN FD)",
+   "interface": "bus.protocol",
+   "variant_note": "ISO CAN FD differs from the non-ISO 2012 Bosch whitepaper CAN FD (CRC/stuff-count change).",
+   "specs": [
+    {
+     "field": "standard_identifier",
+     "value": "ISO 11898-1:2015",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_linux_can_doc",
+     "quote": "ISO compliant:     The ISO 11898-1:2015 CAN FD implementation (default)",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "max_payload_bytes",
+     "value": 64,
+     "unit": "byte",
+     "conditions": null,
+     "source_id": "e_linux_can_doc",
+     "quote": "CAN FD capable CAN controllers support up to 64 bytes of\npayload",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "max_payload_bytes",
+     "value": 64,
+     "unit": "byte",
+     "conditions": null,
+     "source_id": "e_bosch_canfd",
+     "quote": "expand the number of data bytes per CAN frame from up to 8 to up to 64",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "dual_bitrate",
+     "value": "separate arbitration-phase and data-phase bitrates",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_linux_can_doc",
+     "quote": "support two different bitrates for the arbitration phase and the payload phase of the CAN FD frame",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "nominal_bitrate_max_commonly_cited",
+     "value": 1,
+     "unit": "Mbit/s",
+     "conditions": "Classical CAN / arbitration-phase limit as cited by Bosch; not a value from the ISO text",
+     "source_id": "e_bosch_canfd",
+     "quote": "overcome the Classical CAN's bit rate limitation to 1 Mbps",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "transceiver_standard_data_bitrate_max",
+     "value": 5,
+     "unit": "Mbit/s",
+     "conditions": "ISO 11898-2:2016 transceiver parameter classes, not ISO 11898-1",
+     "source_id": "e_cia_esa_slides",
+     "quote": "ISO 11898-2:2016 standard specifies the parameters for CAN transceivers supporting bit-rates up to 2 Mbit/s and up to 5 Mbit/s",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "ISO 11898-1:2015 text itself is paywalled and iso.org / can-cia.org were unreachable (DNS); no primary fetch.",
+    "Maximum data-phase bitrate is not fixed by ISO 11898-1; secondary sources cite 8 Mbit/s (Microchip) and 10 Mbit/s (Sontheim) - not recorded."
+   ]
+  },
+  {
+   "name": "DYNAMIXEL Protocol 2.0",
+   "manufacturer": "ROBOTIS",
+   "part_number": "DYNAMIXEL Protocol 2.0",
+   "interface": "bus.protocol",
+   "variant_note": "Physical layer and baud rates are per servo model; values here are from the DYNAMIXEL X-series (XM430-W350-T/R) entries of the e-Manual source.",
+   "specs": [
+    {
+     "field": "packet_header_bytes",
+     "value": [
+      "0xFF",
+      "0xFF",
+      "0xFD"
+     ],
+     "unit": null,
+     "conditions": "followed by a Reserved byte 0x00",
+     "source_id": "e_robotis_p2",
+     "quote": "waits for the next header (0xff 0xff 0xfd) before continuing to process packets",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "reserved_byte",
+     "value": "0x00",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_robotis_p2",
+     "quote": "|   0xFF   |   0xFF   |   0xFD   |   0x00   |    ID     |",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "crc_type",
+     "value": "CRC-16 (IBM/ANSI), polynomial 0x8005",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_robotis_crc",
+     "quote": "CRC-16 (IBM/ANSI)\n  - Polynomial : x16 + x15 + x2 + 1 (polynomial representation : 0x8005)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "crc_length_bits",
+     "value": 16,
+     "unit": "bit",
+     "conditions": null,
+     "source_id": "e_robotis_p2",
+     "quote": "A 16bit checksum used to determine if the Packet has been damaged during communication.",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "byte_stuffing",
+     "value": "0xFF 0xFF 0xFD -> 0xFF 0xFF 0xFD 0xFD",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_robotis_p2",
+     "quote": "byte stuffing adds 0xFD to the end of the pattern to convert it to \"0xFF 0xFF 0xFD 0xFD\"",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "physical_layers",
+     "value": [
+      "TTL half-duplex asynchronous serial",
+      "RS-485 asynchronous serial"
+     ],
+     "unit": null,
+     "conditions": "X-series (-T = TTL, -R = RS-485 variants); multidrop bus",
+     "source_id": "e_robotis_xinfo",
+     "quote": "TTL Half Duplex Asynchronous Serial Communication with 8bit, 1stop, No Parity<br />RS-485 Asynchronous Serial Communication with 8bit, 1stop, No Parity",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "supported_baud_rates",
+     "value": [
+      9600,
+      57600,
+      115200,
+      1000000,
+      2000000,
+      3000000,
+      4000000,
+      4500000
+     ],
+     "unit": "bit/s",
+     "conditions": "Default branch of the Baud Rate(8) table (applies to XM430 etc.); XL330/XC330/XM335 tables top out at 4M. Default 57,600 for X430.",
+     "source_id": "e_robotis_baud",
+     "quote": "|     7      |  4.5M [bps]   |    0.000 [%]    |",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "baud_rate_range",
+     "value": "9,600 [bps] ~ 4.5 [Mbps]",
+     "unit": null,
+     "conditions": "X-series default spec value",
+     "source_id": "e_robotis_xinfo",
+     "quote": "baudrate:           &baudrate       \"9,600 [bps] ~ 4.5 [Mbps]\"",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "emanual.robotis.com unreachable (DNS); values read from ROBOTIS's own e-Manual source repo on GitHub (raw.githubusercontent.com)."
+   ]
+  },
+  {
+   "name": "Feetech SCS/STS serial bus servo protocol",
+   "manufacturer": "Feetech (FT Servo)",
+   "part_number": "Feetech SCS/STS protocol (SCServo)",
+   "interface": "bus.protocol",
+   "variant_note": "No Feetech-hosted protocol document was reachable. Most authoritative fetched sources: the feetech-servo-sdk PyPI package (self-described copy of the official Feetech SDK, third-party packaged) and the LeRobot driver tables (community).",
+   "specs": [
+    {
+     "field": "packet_header_bytes",
+     "value": [
+      "0xFF",
+      "0xFF"
+     ],
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_pypi_ftsdk",
+     "quote": "txpacket[PKT_HEADER0] = 0xFF\n        txpacket[PKT_HEADER1] = 0xFF",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "checksum_type",
+     "value": "inverted 8-bit sum (~sum & 0xFF) of bytes after the header",
+     "unit": null,
+     "conditions": "sum over idx 2..len-2 (ID through last parameter)",
+     "source_id": "e_pypi_ftsdk",
+     "quote": "txpacket[total_packet_length - 1] = ~checksum & 0xFF",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "supported_baud_rates",
+     "value": [
+      1000000,
+      500000,
+      250000,
+      128000,
+      115200,
+      57600,
+      38400,
+      19200
+     ],
+     "unit": "bit/s",
+     "conditions": "STS/SMS and SCS series tables are identical in LeRobot",
+     "source_id": "e_lerobot_ft_tables",
+     "quote": "STS_SMS_SERIES_BAUDRATE_TABLE = {\n    1_000_000: 0,",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "default_baud_rate",
+     "value": 1000000,
+     "unit": "bit/s",
+     "conditions": null,
+     "source_id": "e_lerobot_ft_driver",
+     "quote": "DEFAULT_BAUDRATE = 1_000_000",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "default_baud_rate",
+     "value": 1000000,
+     "unit": "bit/s",
+     "conditions": "STS3215",
+     "source_id": "e_coreel_sts3215",
+     "quote": "Customizable (factory default 1Mbps)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "physical_layer",
+     "value": "TTL-level half-duplex UART, 8N1",
+     "unit": null,
+     "conditions": "STS3215; 'TTL half-duplex' wording is from the search summary, not an exact quote",
+     "source_id": "e_coreel_sts3215",
+     "quote": "8bit, 1stop, No Parity",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "No Feetech-published (feetech.cn / gitee ftservo) protocol manual fetched; physical layer only from a search snippet.",
+    "LeRobot notes protocol_version 0 vs 1 (SCS series uses protocol 1 without Sync Read) - not separately sourced from Feetech."
+   ]
+  },
+  {
+   "name": "EtherCAT",
+   "manufacturer": "EtherCAT Technology Group (ETG) / Beckhoff",
+   "part_number": "EtherCAT",
+   "interface": "bus.protocol",
+   "variant_note": null,
+   "specs": [
+    {
+     "field": "topology",
+     "value": [
+      "line",
+      "tree",
+      "star"
+     ],
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_etg_tech",
+     "quote": "line, tree, or star",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "max_devices_per_segment",
+     "value": 65535,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_etg_tech",
+     "quote": "up to 65,535 devices can be connected to one segment",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "cycle_time_capability",
+     "value": "<= 100",
+     "unit": "µs",
+     "conditions": "design-goal figure; not confirmed on an ETG-hosted page",
+     "source_id": "e_iebmedia_ecat",
+     "quote": "short cycle times (≤100 µs), low jitter for accurate synchronization (≤1 µs)",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "ethercat.org unreachable (DNS); ETG's own cycle-time statement not obtained. 12.5 µs figure seen only on an unverified blog - not recorded.",
+    "Standard identifier (IEC number) not sourced - omitted."
+   ]
+  },
+  {
+   "name": "TCAN1042 CAN FD transceiver",
+   "manufacturer": "Texas Instruments",
+   "part_number": "TCAN1042-Q1",
+   "interface": "bus.transceiver",
+   "variant_note": "Max signaling rate depends on variant: G/HG/V variants 5 Mbps; base variant listed at 2 Mbps.",
+   "specs": [
+    {
+     "field": "max_data_rate",
+     "value": 5,
+     "unit": "Mbit/s",
+     "conditions": "TCAN1042HGVDQ1 / TCAN1042GDRBRQ1 listings",
+     "source_id": "e_radiolocman_tcan1042",
+     "quote": "Signaling Rate(Max) 5 Mbps",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "max_data_rate",
+     "value": 2,
+     "unit": "Mbit/s",
+     "conditions": "TCAN1042DRBRQ1 (non-G variant)",
+     "source_id": "e_radiolocman_tcan1042_drb",
+     "quote": "Signaling Rate(Max) of 2 Mbps",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "supply_voltage_range",
+     "value": "4.5 to 5.5",
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_radiolocman_tcan1042",
+     "quote": "Supply Voltage(s) 4.5 to 5.5 V",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "ti.com unreachable (DNS); TI datasheet not fetched."
+   ]
+  },
+  {
+   "name": "MCP2562FD CAN FD transceiver",
+   "manufacturer": "Microchip",
+   "part_number": "MCP2562FD",
+   "interface": "bus.transceiver",
+   "variant_note": "CONFLICT: distributor lists 8 Mbps; product description says loop-delay symmetry guaranteed for up to 5 Mbps CAN FD.",
+   "specs": [
+    {
+     "field": "max_data_rate",
+     "value": 8,
+     "unit": "Mbit/s",
+     "conditions": "distributor listing title",
+     "source_id": "e_farnell_mcp2562fd",
+     "quote": "can-transceiver-8mbps",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "max_data_rate",
+     "value": 5,
+     "unit": "Mbit/s",
+     "conditions": "guaranteed loop delay symmetry",
+     "source_id": "e_radiolocman_mcp2562fd",
+     "quote": "guaranteed to support data rates that are up to 5Mbps for CAN FD",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "supply_voltage_range",
+     "value": "4.5 to 5.5",
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_radiolocman_mcp2562fd",
+     "quote": "Operating Voltage | 4.5 - 5.5 V",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "microchip.com unreachable; MCP2561/2FD datasheet (DS20005284) not fetched; data-rate conflict unresolved."
+   ]
+  },
+  {
+   "name": "RP2040",
+   "manufacturer": "Raspberry Pi",
+   "part_number": "RP2040",
+   "interface": "compute.mcu",
+   "variant_note": "Clock: 133 MHz per Raspberry Pi docs page; certified for 200 MHz at >=1.15 V regulator per pico-sdk 2.1.1 notes (both recorded).",
+   "specs": [
+    {
+     "field": "cpu_cores",
+     "value": 2,
+     "unit": null,
+     "conditions": "Arm Cortex-M0+",
+     "source_id": "e_rpi_doc_rp2040",
+     "quote": "The dual-core Arm Cortex-M0+ processor runs at up to 133 MHz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "max_clock",
+     "value": 133,
+     "unit": "MHz",
+     "conditions": null,
+     "source_id": "e_rpi_doc_rp2040",
+     "quote": "runs at up to 133 MHz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "max_clock",
+     "value": 200,
+     "unit": "MHz",
+     "conditions": "regulator voltage >= 1.15 V",
+     "source_id": "e_picosdk_211",
+     "quote": "RP2040 has now been certified to run at a system clock of 200Mhz when using a regulator voltage of at least 1.15 volts.",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "sram",
+     "value": 264,
+     "unit": "KB",
+     "conditions": null,
+     "source_id": "e_rpi_doc_rp2040",
+     "quote": "The 264 kB of on-chip SRAM in six independent banks",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "internal_flash",
+     "value": 0,
+     "unit": "KB",
+     "conditions": "external QSPI flash",
+     "source_id": "e_rpi_doc_rp2040",
+     "quote": "RP2040 has no built-in flash memory",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "pio_blocks",
+     "value": 2,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_rpi_doc_rp2040",
+     "quote": "two PIO blocks, each with four state machines (eight in total)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "pio_state_machines",
+     "value": 8,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_rpi_doc_rp2040",
+     "quote": "two PIO blocks, each with four state machines (eight in total)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "peripherals",
+     "value": [
+      "2x UART",
+      "2x SPI",
+      "2x I2C",
+      "16 PWM channels",
+      "USB 1.1 host/device",
+      "4-ch 12-bit ADC 500 kS/s"
+     ],
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_rpi_doc_rp2040",
+     "quote": "Two UARTs for serial communication.",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "datasheets.raspberrypi.com / pip.raspberrypi.com unreachable; datasheet PDF not fetched (doc source on GitHub used)."
+   ]
+  },
+  {
+   "name": "RP2350",
+   "manufacturer": "Raspberry Pi",
+   "part_number": "RP2350",
+   "interface": "compute.mcu",
+   "variant_note": "Variants RP2350A/B (no flash), RP2354A/B (2 MB stacked flash).",
+   "specs": [
+    {
+     "field": "cpu_cores",
+     "value": 2,
+     "unit": null,
+     "conditions": "selectable: dual Cortex-M33 or dual Hazard3 RISC-V",
+     "source_id": "e_rpi_doc_rp2350",
+     "quote": "Dual-core Arm Cortex-M33",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "max_clock",
+     "value": 150,
+     "unit": "MHz",
+     "conditions": null,
+     "source_id": "e_rpi_doc_rp2350",
+     "quote": "can run tasks in parallel at up to 150 MHz",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "sram",
+     "value": 520,
+     "unit": "KB",
+     "conditions": null,
+     "source_id": "e_rpi_doc_rp2350",
+     "quote": "The 520 kB of on-chip SRAM in ten independent banks",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "internal_flash",
+     "value": 2048,
+     "unit": "KB",
+     "conditions": "RP2354A/B only; RP2350A/B have none",
+     "source_id": "e_rpi_doc_rp2350",
+     "quote": "Stacked 2 MB flash",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "pio_blocks",
+     "value": 3,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_rpi_doc_rp2350",
+     "quote": "three PIO blocks, each with four state machines (twelve in total)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "pio_state_machines",
+     "value": 12,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_rpi_doc_rp2350",
+     "quote": "three PIO blocks, each with four state machines (twelve in total)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "gpio_count",
+     "value": [
+      30,
+      48
+     ],
+     "unit": null,
+     "conditions": "30 on A (QFN-60), 48 on B (QFN-80)",
+     "source_id": "e_rpi_doc_rp2350",
+     "quote": "|*RP2350B* |QFN-80 |10 x 10 |None |48 |8| 24",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": []
+  },
+  {
+   "name": "STM32G474",
+   "manufacturer": "STMicroelectronics",
+   "part_number": "STM32G474 (RE)",
+   "interface": "compute.mcu",
+   "variant_note": "Flash size depends on suffix; 512 KB applies to STM32G474xE (e.g. RE).",
+   "specs": [
+    {
+     "field": "can_fd_controllers",
+     "value": 3,
+     "unit": null,
+     "conditions": "FDCAN1, FDCAN2, FDCAN3 defined in device header",
+     "source_id": "e_st_cmsis_g474",
+     "quote": "#define FDCAN3              ((FDCAN_GlobalTypeDef *) FDCAN3_BASE)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "max_clock",
+     "value": 170,
+     "unit": "MHz",
+     "conditions": "Arm Cortex-M4F",
+     "source_id": "e_st_g474re",
+     "quote": "frequency up to 170 MHz with 213 DMIPS",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "flash",
+     "value": 512,
+     "unit": "KB",
+     "conditions": "STM32G474RE",
+     "source_id": "e_st_g474re",
+     "quote": "512 Kbytes of Flash memory with ECC support",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "sram1_max",
+     "value": 80,
+     "unit": "KB",
+     "conditions": null,
+     "source_id": "e_st_cmsis_g474",
+     "quote": "maximum SRAM1 size (up to 80 KBytes)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "sram2",
+     "value": 16,
+     "unit": "KB",
+     "conditions": null,
+     "source_id": "e_st_cmsis_g474",
+     "quote": "SRAM2 size (16 KBytes)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "ccm_sram",
+     "value": 32,
+     "unit": "KB",
+     "conditions": null,
+     "source_id": "e_st_cmsis_g474",
+     "quote": "CCMSRAM size (32 KBytes)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "sram_total",
+     "value": 128,
+     "unit": "KB",
+     "conditions": "derived: 80+16+32 from header; consistent with snippet '96 Kbytes of SRAM' + 32 KB CCM",
+     "source_id": "e_st_cmsis_g474",
+     "quote": "CCMSRAM size (32 KBytes)",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "st.com unreachable; clock and flash only from search snippet."
+   ]
+  },
+  {
+   "name": "ESP32-S3",
+   "manufacturer": "Espressif",
+   "part_number": "ESP32-S3",
+   "interface": "compute.mcu",
+   "variant_note": null,
+   "specs": [
+    {
+     "field": "cpu_cores",
+     "value": 2,
+     "unit": null,
+     "conditions": "Xtensa LX7",
+     "source_id": "e_idf_s3_caps",
+     "quote": "#define SOC_CPU_CORES_NUM               2",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "max_clock",
+     "value": 240,
+     "unit": "MHz",
+     "conditions": "highest selectable CPU frequency in ESP-IDF; default 160",
+     "source_id": "e_idf_s3_kconfig",
+     "quote": "bool \"240 MHz\"",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "max_clock",
+     "value": 240,
+     "unit": "MHz",
+     "conditions": null,
+     "source_id": "e_esp32s3_ds",
+     "quote": "clock speed up to 240 MHz",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "sram",
+     "value": 512,
+     "unit": "KB",
+     "conditions": "plus 16 KB RTC SRAM",
+     "source_id": "e_esp32s3_ds",
+     "quote": "512 KB of SRAM",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "wireless",
+     "value": [
+      "Wi-Fi 2.4 GHz 802.11 b/g/n",
+      "Bluetooth 5 (LE)"
+     ],
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_esp32s3_ds",
+     "quote": "Bluetooth 5 (LE)",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "wifi_supported",
+     "value": true,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_idf_s3_caps",
+     "quote": "#define SOC_WIFI_SUPPORTED              1",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "ble_supported",
+     "value": true,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_idf_s3_caps",
+     "quote": "#define SOC_BLE_SUPPORTED               (1)",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "twai_can_controllers",
+     "value": 1,
+     "unit": null,
+     "conditions": "TWAI = classical CAN 2.0 controller",
+     "source_id": "e_idf_s3_caps",
+     "quote": "#define SOC_TWAI_CONTROLLER_NUM         1U",
+     "verification": "fetched_primary"
+    },
+    {
+     "field": "usb_otg",
+     "value": true,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_idf_s3_caps",
+     "quote": "#define SOC_USB_OTG_SUPPORTED           1",
+     "verification": "fetched_primary"
+    }
+   ],
+   "unresolved": [
+    "espressif.com unreachable; datasheet values only from search snippet."
+   ]
+  },
+  {
+   "name": "Teensy 4.1",
+   "manufacturer": "PJRC",
+   "part_number": "Teensy 4.1",
+   "interface": "compute.mcu",
+   "variant_note": "Board using NXP i.MX RT1062.",
+   "specs": [
+    {
+     "field": "max_clock",
+     "value": 600,
+     "unit": "MHz",
+     "conditions": null,
+     "source_id": "e_sparkfun_t41",
+     "quote": "600 MHz ARM Cortex-M7",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "ram",
+     "value": 1024,
+     "unit": "KB",
+     "conditions": "half usable as tightly coupled memory",
+     "source_id": "e_sparkfun_t41",
+     "quote": "1024K RAM",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "can_ports",
+     "value": 3,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_sparkfun_t41",
+     "quote": "three CAN bus channels with one supporting CAN FD",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "can_fd_ports",
+     "value": 1,
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_sparkfun_t41",
+     "quote": "three CAN bus channels with one supporting CAN FD",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "can_fd_port_name",
+     "value": "CAN3",
+     "unit": null,
+     "conditions": "README states this for Teensy 4.0; library targets Teensy 4",
+     "source_id": "e_flexcan_t4",
+     "quote": "Where, on Teensy 4.0, only CAN3 supports FD.",
+     "verification": "fetched_secondary"
+    },
+    {
+     "field": "flash",
+     "value": 8,
+     "unit": "MB",
+     "conditions": "one Solarbotics listing says 4096K - conflict, likely error",
+     "source_id": "e_sparkfun_t41",
+     "quote": "8 MB of flash",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "pjrc.com unreachable; no primary fetch."
+   ]
+  },
+  {
+   "name": "Pololu D36V50F6 step-down regulator",
+   "manufacturer": "Pololu",
+   "part_number": "D36V50F6",
+   "interface": "power.conversion",
+   "variant_note": "Pololu item #4092.",
+   "specs": [
+    {
+     "field": "output_voltage",
+     "value": 6,
+     "unit": "V",
+     "conditions": null,
+     "source_id": "e_pololu_4092",
+     "quote": "Output voltage 6 V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "output_current_typical_max",
+     "value": 5.5,
+     "unit": "A",
+     "conditions": "at 36 V input; achievable continuous current depends on input voltage and thermal limits",
+     "source_id": "e_pololu_4092",
+     "quote": "typical max output current 5.5 A",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "input_voltage_range",
+     "value": "6.5 to 50",
+     "unit": "V",
+     "conditions": "minimum subject to dropout",
+     "source_id": "e_pololu_4092",
+     "quote": "input voltage range 6.5 V – 50 V",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "reverse_voltage_protection_max",
+     "value": 40,
+     "unit": "V",
+     "conditions": "from retailer copy of Pololu description",
+     "source_id": "e_pololu_4092",
+     "quote": "input reverse voltage protection up to 40 V",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "pololu.com unreachable; D24V50F5 not researched."
+   ]
+  },
+  {
+   "name": "ISO 13850 emergency stop function",
+   "manufacturer": "ISO",
+   "part_number": "ISO 13850:2015",
+   "interface": "safety.estop",
+   "variant_note": "Replaces ISO 13850:2006.",
+   "specs": [
+    {
+     "field": "scope",
+     "value": "functional requirements and design principles for the emergency stop function on machinery, independent of the type of energy used",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_iso13850_scope",
+     "quote": "specifies functional requirements and design principles for the emergency stop function on machinery, independent of the type of energy used",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "exclusions",
+     "value": "machines where an emergency stop would not reduce the risk; hand-held or hand-operated machines",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_iso13850_scope",
+     "quote": "machines where an emergency stop would not reduce the risk; hand-held or hand-operated machines",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "electrical_realization_reference",
+     "value": "IEC 60204-1",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_iso13850_scope",
+     "quote": "The requirements for the realization of the emergency stop function based on electrical/electronic technology are described in IEC 60204-1.",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "publication_date",
+     "value": "2015-09-29",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_sis_iso13850",
+     "quote": "Publish date: 2015-09-29",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "iso.org unreachable; scope text from national-body catalogs via search snippets."
+   ]
+  },
+  {
+   "name": "IEC 60204-1 stop categories",
+   "manufacturer": "IEC",
+   "part_number": "IEC 60204-1",
+   "interface": "safety.estop",
+   "variant_note": "Headline definitions from vendor summaries; normative text not fetched.",
+   "specs": [
+    {
+     "field": "stop_category_0",
+     "value": "stopping by immediate removal of power to the machine actuators (uncontrolled stop)",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_lenze_stopcat",
+     "quote": "immediate removal of power",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "stop_category_1",
+     "value": "controlled stop with power available to actuators to achieve the stop, then removal of power when stopped",
+     "unit": null,
+     "conditions": null,
+     "source_id": "e_lenze_stopcat",
+     "quote": "Controlled stopping while maintaining the power supply. The motor slows down and comes to a stop. The energy supply is not cut off until the motor has stopped.",
+     "verification": "search_snippet"
+    },
+    {
+     "field": "stop_category_2",
+     "value": "controlled stop with power left available to the actuators",
+     "unit": null,
+     "conditions": "quote supports suitability note; definition wording paraphrased from search summary",
+     "source_id": "e_kollmorgen_stop",
+     "quote": "Stop category 2 is not usually considered suitable for emergency stops.",
+     "verification": "search_snippet"
+    }
+   ],
+   "unresolved": [
+    "IEC normative wording not obtained; edition (e.g. 2016 / 2016+A1) not confirmed."
+   ]
+  }
+ ]
+}

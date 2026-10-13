@@ -6,7 +6,8 @@ VERIFICATION={'fetched_primary','fetched_secondary','search_snippet','catalog_as
 
 def part(id,**specs):
     return {'id':id,'name':id,'interface':'actuator.smart_servo','specs':[
-        {'field':k,'value':v,'unit':None,'source_id':'t','verification':'fetched_primary'} for k,v in specs.items()]}
+        {'field':k,'value':v,'unit':None,'source_id':'t','verification':'fetched_primary','at_voltage_V':12 if k in swap.VOLTAGE_DEPENDENT else None}
+        for k,v in specs.items()]}
 BASE=dict(supply_voltage_V=[6,12],stall_torque_Nm=3.0,no_load_speed_rpm=50,bus_physical='ttl_half_duplex',protocol='p1',
           mechanical_interface='m1',position_resolution_counts=4096,gear_ratio=300,mass_kg=0.06)
 SLOT={'slot_id':'j1','interface':'actuator.smart_servo','requirements':{'supply_voltage_V':12,'stall_torque_Nm':2.0,
@@ -24,6 +25,13 @@ class SwapRules(unittest.TestCase):
     def test_disjoint_supply_modes(self):
         self.assertTrue(swap.passes('requirement_within_range',[[3.0,3.6],[4.5,5.5]],5.0))
         self.assertFalse(swap.passes('requirement_within_range',[[3.0,3.6],[4.5,5.5]],4.0))
+    def test_rating_at_other_voltage_is_unknown(self):
+        slot={**SLOT,'requirements':{**SLOT['requirements'],'supply_voltage_V':7.4}}
+        r=swap.check(slot,part('cand',**BASE),part('bound',**BASE),INTERFACES)
+        self.assertEqual(r['classification'],'undetermined');self.assertIn('stall_torque_Nm',r['unknown'])
+    def test_rating_selected_by_voltage(self):
+        c=part('cand',**BASE);c['specs'].append({'field':'stall_torque_Nm','value':9.9,'unit':None,'source_id':'t','verification':'fetched_primary','at_voltage_V':14.8})
+        self.assertEqual(swap.spec(c,'stall_torque_Nm',12)[0],3.0);self.assertIsNone(swap.spec(c,'stall_torque_Nm')[0])
     def test_weak_servo_is_incompatible(self): self.assertEqual(self.check(stall_torque_Nm=1.0)['classification'],'incompatible')
     def test_worst_consequence_wins(self): self.assertEqual(self.check(protocol='p2',mechanical_interface='m2')['classification'],'remount')
     def test_missing_value_is_undetermined_not_pass(self):
@@ -31,7 +39,7 @@ class SwapRules(unittest.TestCase):
         r=swap.check(SLOT,c,part('bound',**BASE),INTERFACES)
         self.assertEqual(r['classification'],'undetermined');self.assertIn('stall_torque_Nm',r['unknown'])
     def test_conflicting_sources_are_not_trusted(self):
-        c=part('cand',**BASE);c['specs'].append({'field':'stall_torque_Nm','value':2.5,'unit':None,'source_id':'u','verification':'fetched_primary'})
+        c=part('cand',**BASE);c['specs'].append({'field':'stall_torque_Nm','value':2.5,'unit':None,'source_id':'u','verification':'fetched_primary','at_voltage_V':12})
         r=swap.check(SLOT,c,part('bound',**BASE),INTERFACES)
         self.assertIn('stall_torque_Nm',r['conflicting']);self.assertEqual(r['classification'],'undetermined')
     def test_missing_value_does_not_hide_definite_rewire(self):
@@ -50,7 +58,7 @@ class SwapRules(unittest.TestCase):
 def source(id,limit):
     return {'id':id,'name':id,'interface':'power.source','specs':[{'field':'current_continuous_A','value':limit,'unit':'A','source_id':'t','verification':'fetched_primary'}]}
 def with_current(p,amps):
-    p=copy.deepcopy(p);p['specs'].append({'field':'stall_current_A','value':amps,'unit':'A','source_id':'t','verification':'fetched_primary'});return p
+    p=copy.deepcopy(p);p['specs'].append({'field':'stall_current_A','value':amps,'unit':'A','source_id':'t','verification':'fetched_primary','at_voltage_V':12});return p
 def rig(limit,currents,declared=None):
     parts={f's{i}':with_current(part(f's{i}',**BASE),a) if a is not None else part(f's{i}',**BASE) for i,a in enumerate(currents)}
     parts['psu']=source('psu',limit)
@@ -75,6 +83,10 @@ class RailBudget(unittest.TestCase):
         b,p=rig(5,[2,2]);strong=with_current(part('strong',**BASE),4)
         r=swap.check(b['slots'][1],strong,p['s1'],INTERFACES,b,p)
         self.assertEqual(r['classification'],'incompatible');self.assertEqual(r['findings'][-1]['field'],'rail_budget')
+    def test_swap_on_already_overloaded_rail_is_a_warning(self):
+        b,p=rig(5,[3,3]);r=swap.check(b['slots'][1],with_current(part('cand',**BASE),4),p['s1'],INTERFACES,b,p)
+        self.assertEqual(r['classification'],'drop_in')
+        self.assertEqual((r['warnings'][0]['worst_case_total_A_before'],r['warnings'][0]['worst_case_total_A_after']),(6,7))
     def test_swap_with_unknown_current_is_undetermined(self):
         b,p=rig(5,[2,2]);r=swap.check(b['slots'][1],part('mystery',**BASE),p['s1'],INTERFACES,b,p)
         self.assertEqual(r['classification'],'undetermined');self.assertIn('rail_budget (12V)',r['unknown'])
