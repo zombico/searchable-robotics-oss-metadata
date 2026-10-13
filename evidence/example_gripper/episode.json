@@ -1,0 +1,3246 @@
+{
+  "schema_version": "0.2.0",
+  "origin": "forward_simulation",
+  "episode_id": "example-gripper-sweep-001",
+  "split": "train",
+  "leakage_group": "example-gripper-scripted-sweep",
+  "generator": {
+    "type": "scripted",
+    "revision": "engine_check.py full-effort close/open"
+  },
+  "manifest": {
+    "clock": {
+      "physics_dt_s": 0.001,
+      "control_decimation": 20,
+      "control_hz": 50.0
+    },
+    "asset_sha256": "ea05d71f72cd5e1df0e070243ae7bd8e973e3b78764b0570a0dd50db87254e5c",
+    "seed": 0,
+    "engine": {
+      "name": "mujoco",
+      "version": "3.15.0",
+      "runtime_scope": "CPU mj_step, default solver; see replay_report.json for tolerances"
+    },
+    "action_contract": {
+      "mode": "joint_force",
+      "unit": "N",
+      "frame": "joint",
+      "dimension": 1,
+      "hold": "zero_order",
+      "controller_id": "linear_force_speed_drive_v1",
+      "lower": -5.0,
+      "upper": 5.0
+    },
+    "observation_contract": {
+      "policy_channels": [
+        "qpos"
+      ],
+      "privileged_channels": [
+        "qvel",
+        "actuator_force"
+      ]
+    }
+  },
+  "transitions": [
+    {
+      "t_s": 0.0,
+      "next_t_s": 0.02,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025,
+            0.025
+          ],
+          "unit": "m",
+          "capture_t_s": 0.0,
+          "release_t_s": 0.0
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.023207047909708074,
+            0.023211429523376112
+          ],
+          "unit": "m",
+          "capture_t_s": 0.02,
+          "release_t_s": 0.02
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.02,
+      "next_t_s": 0.04,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.023207047909708074,
+            0.023211429523376112
+          ],
+          "unit": "m",
+          "capture_t_s": 0.02,
+          "release_t_s": 0.02
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02136086441388059,
+            0.021365149943542917
+          ],
+          "unit": "m",
+          "capture_t_s": 0.04,
+          "release_t_s": 0.04
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.04,
+      "next_t_s": 0.06,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02136086441388059,
+            0.021365149943542917
+          ],
+          "unit": "m",
+          "capture_t_s": 0.04,
+          "release_t_s": 0.04
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.019514710490399663,
+            0.019518995769988248
+          ],
+          "unit": "m",
+          "capture_t_s": 0.06,
+          "release_t_s": 0.06
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.06,
+      "next_t_s": 0.08,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.019514710490399663,
+            0.019518995769988248
+          ],
+          "unit": "m",
+          "capture_t_s": 0.06,
+          "release_t_s": 0.06
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.017668556644045322,
+            0.01767284192298091
+          ],
+          "unit": "m",
+          "capture_t_s": 0.08,
+          "release_t_s": 0.08
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.08,
+      "next_t_s": 0.1,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.017668556644045322,
+            0.01767284192298091
+          ],
+          "unit": "m",
+          "capture_t_s": 0.08,
+          "release_t_s": 0.08
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.0158224027978971,
+            0.015826688076831005
+          ],
+          "unit": "m",
+          "capture_t_s": 0.1,
+          "release_t_s": 0.1
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.1,
+      "next_t_s": 0.12,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.0158224027978971,
+            0.015826688076831005
+          ],
+          "unit": "m",
+          "capture_t_s": 0.1,
+          "release_t_s": 0.1
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.01397624895173584,
+            0.013980534230675416
+          ],
+          "unit": "m",
+          "capture_t_s": 0.12,
+          "release_t_s": 0.12
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.12,
+      "next_t_s": 0.14,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.01397624895173584,
+            0.013980534230675416
+          ],
+          "unit": "m",
+          "capture_t_s": 0.12,
+          "release_t_s": 0.12
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.012130095105582666,
+            0.012134380384517734
+          ],
+          "unit": "m",
+          "capture_t_s": 0.14,
+          "release_t_s": 0.14
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.14,
+      "next_t_s": 0.16,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.012130095105582666,
+            0.012134380384517734
+          ],
+          "unit": "m",
+          "capture_t_s": 0.14,
+          "release_t_s": 0.14
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.010283941259428284,
+            0.010288226538353049
+          ],
+          "unit": "m",
+          "capture_t_s": 0.16,
+          "release_t_s": 0.16
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.16,
+      "next_t_s": 0.18,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.010283941259428284,
+            0.010288226538353049
+          ],
+          "unit": "m",
+          "capture_t_s": 0.16,
+          "release_t_s": 0.16
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.008437787413277716,
+            0.008442072692209743
+          ],
+          "unit": "m",
+          "capture_t_s": 0.18,
+          "release_t_s": 0.18
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.18,
+      "next_t_s": 0.2,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.008437787413277716,
+            0.008442072692209743
+          ],
+          "unit": "m",
+          "capture_t_s": 0.18,
+          "release_t_s": 0.18
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.0065916335671206,
+            0.006595918846058438
+          ],
+          "unit": "m",
+          "capture_t_s": 0.2,
+          "release_t_s": 0.2
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.2,
+      "next_t_s": 0.22,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.0065916335671206,
+            0.006595918846058438
+          ],
+          "unit": "m",
+          "capture_t_s": 0.2,
+          "release_t_s": 0.2
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.004745479720965521,
+            0.004749764999916339
+          ],
+          "unit": "m",
+          "capture_t_s": 0.22,
+          "release_t_s": 0.22
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.22,
+      "next_t_s": 0.24,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.004745479720965521,
+            0.004749764999916339
+          ],
+          "unit": "m",
+          "capture_t_s": 0.22,
+          "release_t_s": 0.22
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.002899325874814243,
+            0.0029036111537484905
+          ],
+          "unit": "m",
+          "capture_t_s": 0.24,
+          "release_t_s": 0.24
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.24,
+      "next_t_s": 0.26,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.002899325874814243,
+            0.0029036111537484905
+          ],
+          "unit": "m",
+          "capture_t_s": 0.24,
+          "release_t_s": 0.24
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.0010531720286612752,
+            0.0010574573075956347
+          ],
+          "unit": "m",
+          "capture_t_s": 0.26,
+          "release_t_s": 0.26
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.26,
+      "next_t_s": 0.28,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.0010531720286612752,
+            0.0010574573075956347
+          ],
+          "unit": "m",
+          "capture_t_s": 0.26,
+          "release_t_s": 0.26
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.225415995347332e-05,
+            -1.79134540685409e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.28,
+          "release_t_s": 0.28
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.28,
+      "next_t_s": 0.3,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.225415995347332e-05,
+            -1.79134540685409e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.28,
+          "release_t_s": 0.28
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170201140770666e-05,
+            -1.391097253581693e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.3,
+          "release_t_s": 0.3
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.3,
+      "next_t_s": 0.32,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170201140770666e-05,
+            -1.391097253581693e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.3,
+          "release_t_s": 0.3
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708361142842405e-05,
+            -1.3909364361694528e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.32,
+          "release_t_s": 0.32
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.32,
+      "next_t_s": 0.34,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708361142842405e-05,
+            -1.3909364361694528e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.32,
+          "release_t_s": 0.32
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838931576986e-05,
+            -1.390936239568315e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.34,
+          "release_t_s": 0.34
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.34,
+      "next_t_s": 0.36,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838931576986e-05,
+            -1.390936239568315e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.34,
+          "release_t_s": 0.34
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.17083894470308e-05,
+            -1.3909362392872096e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.36,
+          "release_t_s": 0.36
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.36,
+      "next_t_s": 0.38,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.17083894470308e-05,
+            -1.3909362392872096e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.36,
+          "release_t_s": 0.36
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944801019e-05,
+            -1.390936240869116e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.38,
+          "release_t_s": 0.38
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.38,
+      "next_t_s": 0.4,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944801019e-05,
+            -1.390936240869116e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.38,
+          "release_t_s": 0.38
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389443216466e-05,
+            -1.39093624054159e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.4,
+          "release_t_s": 0.4
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.4,
+      "next_t_s": 0.42,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389443216466e-05,
+            -1.39093624054159e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.4,
+          "release_t_s": 0.4
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389438861125e-05,
+            -1.3909362399209385e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.42,
+          "release_t_s": 0.42
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.42,
+      "next_t_s": 0.44,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389438861125e-05,
+            -1.3909362399209385e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.42,
+          "release_t_s": 0.42
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944678365e-05,
+            -1.3909362410092532e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.44,
+          "release_t_s": 0.44
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.44,
+      "next_t_s": 0.46,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944678365e-05,
+            -1.3909362410092532e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.44,
+          "release_t_s": 0.44
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944457268e-05,
+            -1.3909362407129504e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.46,
+          "release_t_s": 0.46
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.46,
+      "next_t_s": 0.48,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944457268e-05,
+            -1.3909362407129504e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.46,
+          "release_t_s": 0.46
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944032581e-05,
+            -1.3909362401039515e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.48,
+          "release_t_s": 0.48
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.48,
+      "next_t_s": 0.5,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944032581e-05,
+            -1.3909362401039515e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.48,
+          "release_t_s": 0.48
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389448550273e-05,
+            -1.3909362412597157e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.5,
+          "release_t_s": 0.5
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.5,
+      "next_t_s": 0.52,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389448550273e-05,
+            -1.3909362412597157e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.5,
+          "release_t_s": 0.5
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944519945e-05,
+            -1.3909362407282027e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.52,
+          "release_t_s": 0.52
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.52,
+      "next_t_s": 0.54,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944519945e-05,
+            -1.3909362407282027e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.52,
+          "release_t_s": 0.52
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389441403904e-05,
+            -1.3909362402446221e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.54,
+          "release_t_s": 0.54
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.54,
+      "next_t_s": 0.56,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389441403904e-05,
+            -1.3909362402446221e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.54,
+          "release_t_s": 0.54
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389441390846e-05,
+            -1.3909362402943753e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.56,
+          "release_t_s": 0.56
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.56,
+      "next_t_s": 0.58,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389441390846e-05,
+            -1.3909362402943753e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.56,
+          "release_t_s": 0.56
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944495376e-05,
+            -1.3909362407171779e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.58,
+          "release_t_s": 0.58
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.58,
+      "next_t_s": 0.6,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944495376e-05,
+            -1.3909362407171779e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.58,
+          "release_t_s": 0.58
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389442471504e-05,
+            -1.3909362403201271e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.6,
+          "release_t_s": 0.6
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.6,
+      "next_t_s": 0.62,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389442471504e-05,
+            -1.3909362403201271e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.6,
+          "release_t_s": 0.6
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389443131756e-05,
+            -1.390936240506423e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.62,
+          "release_t_s": 0.62
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.62,
+      "next_t_s": 0.64,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389443131756e-05,
+            -1.390936240506423e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.62,
+          "release_t_s": 0.62
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838943958551e-05,
+            -1.3909362400533079e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.64,
+          "release_t_s": 0.64
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.64,
+      "next_t_s": 0.66,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838943958551e-05,
+            -1.3909362400533079e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.64,
+          "release_t_s": 0.64
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944981017e-05,
+            -1.3909362414385228e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.66,
+          "release_t_s": 0.66
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.66,
+      "next_t_s": 0.68,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944981017e-05,
+            -1.3909362414385228e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.66,
+          "release_t_s": 0.66
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944738272e-05,
+            -1.3909362410706778e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.68,
+          "release_t_s": 0.68
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.68,
+      "next_t_s": 0.7,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944738272e-05,
+            -1.3909362410706778e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.68,
+          "release_t_s": 0.68
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389441402596e-05,
+            -1.3909362402345228e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.7,
+          "release_t_s": 0.7
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.7,
+      "next_t_s": 0.72,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389441402596e-05,
+            -1.3909362402345228e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.7,
+          "release_t_s": 0.7
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944668746e-05,
+            -1.390936241024387e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.72,
+          "release_t_s": 0.72
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.72,
+      "next_t_s": 0.74,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944668746e-05,
+            -1.390936241024387e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.72,
+          "release_t_s": 0.72
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944755575e-05,
+            -1.3909362411224408e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.74,
+          "release_t_s": 0.74
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.74,
+      "next_t_s": 0.76,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944755575e-05,
+            -1.3909362411224408e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.74,
+          "release_t_s": 0.74
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944361073e-05,
+            -1.3909362405182297e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.76,
+          "release_t_s": 0.76
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.76,
+      "next_t_s": 0.78,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944361073e-05,
+            -1.3909362405182297e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.76,
+          "release_t_s": 0.76
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389438687584e-05,
+            -1.3909362398832558e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.78,
+          "release_t_s": 0.78
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.78,
+      "next_t_s": 0.8,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389438687584e-05,
+            -1.3909362398832558e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.78,
+          "release_t_s": 0.78
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389445487626e-05,
+            -1.3909362408632204e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.8,
+          "release_t_s": 0.8
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.8,
+      "next_t_s": 0.82,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389445487626e-05,
+            -1.3909362408632204e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.8,
+          "release_t_s": 0.8
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944388973e-05,
+            -1.3909362405734035e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.82,
+          "release_t_s": 0.82
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.82,
+      "next_t_s": 0.84,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944388973e-05,
+            -1.3909362405734035e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.82,
+          "release_t_s": 0.82
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944555192e-05,
+            -1.3909362408370942e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.84,
+          "release_t_s": 0.84
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.84,
+      "next_t_s": 0.86,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944555192e-05,
+            -1.3909362408370942e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.84,
+          "release_t_s": 0.84
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838943988988e-05,
+            -1.3909362400360875e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.86,
+          "release_t_s": 0.86
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.86,
+      "next_t_s": 0.88,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838943988988e-05,
+            -1.3909362400360875e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.86,
+          "release_t_s": 0.86
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944249147e-05,
+            -1.390936240404404e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.88,
+          "release_t_s": 0.88
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.88,
+      "next_t_s": 0.9,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944249147e-05,
+            -1.390936240404404e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.88,
+          "release_t_s": 0.88
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944675161e-05,
+            -1.3909362410166628e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.9,
+          "release_t_s": 0.9
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.9,
+      "next_t_s": 0.92,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944675161e-05,
+            -1.3909362410166628e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.9,
+          "release_t_s": 0.9
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389443266136e-05,
+            -1.3909362405264944e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.92,
+          "release_t_s": 0.92
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.92,
+      "next_t_s": 0.94,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389443266136e-05,
+            -1.3909362405264944e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.92,
+          "release_t_s": 0.92
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389438826335e-05,
+            -1.3909362399152257e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.94,
+          "release_t_s": 0.94
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.94,
+      "next_t_s": 0.96,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389438826335e-05,
+            -1.3909362399152257e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.94,
+          "release_t_s": 0.94
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944670891e-05,
+            -1.3909362410001741e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.96,
+          "release_t_s": 0.96
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.96,
+      "next_t_s": 0.98,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944670891e-05,
+            -1.3909362410001741e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.96,
+          "release_t_s": 0.96
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.1708389444510706e-05,
+            -1.39093624070475e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.98,
+          "release_t_s": 0.98
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 0.98,
+      "next_t_s": 1.0,
+      "action": [
+        -5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.1708389444510706e-05,
+            -1.39093624070475e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 0.98,
+          "release_t_s": 0.98
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            -4.170838944028066e-05,
+            -1.3909362400983844e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 1.0,
+          "release_t_s": 1.0
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.0,
+      "next_t_s": 1.02,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            -4.170838944028066e-05,
+            -1.3909362400983844e-05
+          ],
+          "unit": "m",
+          "capture_t_s": 1.0,
+          "release_t_s": 1.0
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.0017518051591530253,
+            0.0017475104453661564
+          ],
+          "unit": "m",
+          "capture_t_s": 1.02,
+          "release_t_s": 1.02
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.02,
+      "next_t_s": 1.04,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.0017518051591530253,
+            0.0017475104453661564
+          ],
+          "unit": "m",
+          "capture_t_s": 1.02,
+          "release_t_s": 1.02
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.0035979618632641726,
+            0.0035936765596869145
+          ],
+          "unit": "m",
+          "capture_t_s": 1.04,
+          "release_t_s": 1.04
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.04,
+      "next_t_s": 1.06,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.0035979618632641726,
+            0.0035936765596869145
+          ],
+          "unit": "m",
+          "capture_t_s": 1.04,
+          "release_t_s": 1.04
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.005444115717005533,
+            0.005439830438029125
+          ],
+          "unit": "m",
+          "capture_t_s": 1.06,
+          "release_t_s": 1.06
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.06,
+      "next_t_s": 1.08,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.005444115717005533,
+            0.005439830438029125
+          ],
+          "unit": "m",
+          "capture_t_s": 1.06,
+          "release_t_s": 1.06
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.007290269563192,
+            0.007285984284251389
+          ],
+          "unit": "m",
+          "capture_t_s": 1.08,
+          "release_t_s": 1.08
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.08,
+      "next_t_s": 1.1,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.007290269563192,
+            0.007285984284251389
+          ],
+          "unit": "m",
+          "capture_t_s": 1.08,
+          "release_t_s": 1.08
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.009136423409344837,
+            0.009132138130409905
+          ],
+          "unit": "m",
+          "capture_t_s": 1.1,
+          "release_t_s": 1.1
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.1,
+      "next_t_s": 1.12,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.009136423409344837,
+            0.009132138130409905
+          ],
+          "unit": "m",
+          "capture_t_s": 1.1,
+          "release_t_s": 1.1
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.010982577255499493,
+            0.010978291976578371
+          ],
+          "unit": "m",
+          "capture_t_s": 1.12,
+          "release_t_s": 1.12
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.12,
+      "next_t_s": 1.14,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.010982577255499493,
+            0.010978291976578371
+          ],
+          "unit": "m",
+          "capture_t_s": 1.12,
+          "release_t_s": 1.12
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.012828731101649046,
+            0.012824445822718378
+          ],
+          "unit": "m",
+          "capture_t_s": 1.14,
+          "release_t_s": 1.14
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.14,
+      "next_t_s": 1.16,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.012828731101649046,
+            0.012824445822718378
+          ],
+          "unit": "m",
+          "capture_t_s": 1.14,
+          "release_t_s": 1.14
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.014674884947807403,
+            0.014670599668869473
+          ],
+          "unit": "m",
+          "capture_t_s": 1.16,
+          "release_t_s": 1.16
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.16,
+      "next_t_s": 1.18,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.014674884947807403,
+            0.014670599668869473
+          ],
+          "unit": "m",
+          "capture_t_s": 1.16,
+          "release_t_s": 1.16
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.016521038793960396,
+            0.01651675351502503
+          ],
+          "unit": "m",
+          "capture_t_s": 1.18,
+          "release_t_s": 1.18
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.18,
+      "next_t_s": 1.2,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.016521038793960396,
+            0.01651675351502503
+          ],
+          "unit": "m",
+          "capture_t_s": 1.18,
+          "release_t_s": 1.18
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.01836719264011313,
+            0.01836290736117957
+          ],
+          "unit": "m",
+          "capture_t_s": 1.2,
+          "release_t_s": 1.2
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.2,
+      "next_t_s": 1.22,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.01836719264011313,
+            0.01836290736117957
+          ],
+          "unit": "m",
+          "capture_t_s": 1.2,
+          "release_t_s": 1.2
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02021334648626541,
+            0.020209061207331132
+          ],
+          "unit": "m",
+          "capture_t_s": 1.22,
+          "release_t_s": 1.22
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.22,
+      "next_t_s": 1.24,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02021334648626541,
+            0.020209061207331132
+          ],
+          "unit": "m",
+          "capture_t_s": 1.22,
+          "release_t_s": 1.22
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.022059500332422335,
+            0.022055215053484838
+          ],
+          "unit": "m",
+          "capture_t_s": 1.24,
+          "release_t_s": 1.24
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.24,
+      "next_t_s": 1.26,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.022059500332422335,
+            0.022055215053484838
+          ],
+          "unit": "m",
+          "capture_t_s": 1.24,
+          "release_t_s": 1.24
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.023905654178578983,
+            0.023901368899639834
+          ],
+          "unit": "m",
+          "capture_t_s": 1.26,
+          "release_t_s": 1.26
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.26,
+      "next_t_s": 1.28,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.023905654178578983,
+            0.023901368899639834
+          ],
+          "unit": "m",
+          "capture_t_s": 1.26,
+          "release_t_s": 1.26
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02503791263467119,
+            0.02501400678029849
+          ],
+          "unit": "m",
+          "capture_t_s": 1.28,
+          "release_t_s": 1.28
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.28,
+      "next_t_s": 1.3,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02503791263467119,
+            0.02501400678029849
+          ],
+          "unit": "m",
+          "capture_t_s": 1.28,
+          "release_t_s": 1.28
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504169335139672,
+            0.025013910306983515
+          ],
+          "unit": "m",
+          "capture_t_s": 1.3,
+          "release_t_s": 1.3
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.3,
+      "next_t_s": 1.32,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504169335139672,
+            0.025013910306983515
+          ],
+          "unit": "m",
+          "capture_t_s": 1.3,
+          "release_t_s": 1.3
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170832932237,
+            0.02501390936662002
+          ],
+          "unit": "m",
+          "capture_t_s": 1.32,
+          "release_t_s": 1.32
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.32,
+      "next_t_s": 1.34,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170832932237,
+            0.02501390936662002
+          ],
+          "unit": "m",
+          "capture_t_s": 1.32,
+          "release_t_s": 1.32
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389188125,
+            0.02501390936240477
+          ],
+          "unit": "m",
+          "capture_t_s": 1.34,
+          "release_t_s": 1.34
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.34,
+      "next_t_s": 1.36,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389188125,
+            0.02501390936240477
+          ],
+          "unit": "m",
+          "capture_t_s": 1.34,
+          "release_t_s": 1.34
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838945314,
+            0.025013909362387864
+          ],
+          "unit": "m",
+          "capture_t_s": 1.36,
+          "release_t_s": 1.36
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.36,
+      "next_t_s": 1.38,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838945314,
+            0.025013909362387864
+          ],
+          "unit": "m",
+          "capture_t_s": 1.36,
+          "release_t_s": 1.36
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389445135,
+            0.025013909362400527
+          ],
+          "unit": "m",
+          "capture_t_s": 1.38,
+          "release_t_s": 1.38
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.38,
+      "next_t_s": 1.4,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389445135,
+            0.025013909362400527
+          ],
+          "unit": "m",
+          "capture_t_s": 1.38,
+          "release_t_s": 1.38
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389445916,
+            0.02501390936240846
+          ],
+          "unit": "m",
+          "capture_t_s": 1.4,
+          "release_t_s": 1.4
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.4,
+      "next_t_s": 1.42,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389445916,
+            0.02501390936240846
+          ],
+          "unit": "m",
+          "capture_t_s": 1.4,
+          "release_t_s": 1.4
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944262,
+            0.02501390936240385
+          ],
+          "unit": "m",
+          "capture_t_s": 1.42,
+          "release_t_s": 1.42
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.42,
+      "next_t_s": 1.44,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944262,
+            0.02501390936240385
+          ],
+          "unit": "m",
+          "capture_t_s": 1.42,
+          "release_t_s": 1.42
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389443956,
+            0.025013909362406335
+          ],
+          "unit": "m",
+          "capture_t_s": 1.44,
+          "release_t_s": 1.44
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.44,
+      "next_t_s": 1.46,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389443956,
+            0.025013909362406335
+          ],
+          "unit": "m",
+          "capture_t_s": 1.44,
+          "release_t_s": 1.44
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389440278,
+            0.025013909362401412
+          ],
+          "unit": "m",
+          "capture_t_s": 1.46,
+          "release_t_s": 1.46
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.46,
+      "next_t_s": 1.48,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389440278,
+            0.025013909362401412
+          ],
+          "unit": "m",
+          "capture_t_s": 1.46,
+          "release_t_s": 1.46
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944211,
+            0.025013909362402855
+          ],
+          "unit": "m",
+          "capture_t_s": 1.48,
+          "release_t_s": 1.48
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.48,
+      "next_t_s": 1.5,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944211,
+            0.025013909362402855
+          ],
+          "unit": "m",
+          "capture_t_s": 1.48,
+          "release_t_s": 1.48
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944517,
+            0.02501390936240782
+          ],
+          "unit": "m",
+          "capture_t_s": 1.5,
+          "release_t_s": 1.5
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.5,
+      "next_t_s": 1.52,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944517,
+            0.02501390936240782
+          ],
+          "unit": "m",
+          "capture_t_s": 1.5,
+          "release_t_s": 1.5
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389441898,
+            0.025013909362403525
+          ],
+          "unit": "m",
+          "capture_t_s": 1.52,
+          "release_t_s": 1.52
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.52,
+      "next_t_s": 1.54,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389441898,
+            0.025013909362403525
+          ],
+          "unit": "m",
+          "capture_t_s": 1.52,
+          "release_t_s": 1.52
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389447876,
+            0.025013909362411758
+          ],
+          "unit": "m",
+          "capture_t_s": 1.54,
+          "release_t_s": 1.54
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.54,
+      "next_t_s": 1.56,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389447876,
+            0.025013909362411758
+          ],
+          "unit": "m",
+          "capture_t_s": 1.54,
+          "release_t_s": 1.54
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944879,
+            0.02501390936241282
+          ],
+          "unit": "m",
+          "capture_t_s": 1.56,
+          "release_t_s": 1.56
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.56,
+      "next_t_s": 1.58,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944879,
+            0.02501390936241282
+          ],
+          "unit": "m",
+          "capture_t_s": 1.56,
+          "release_t_s": 1.56
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389443404,
+            0.025013909362404902
+          ],
+          "unit": "m",
+          "capture_t_s": 1.58,
+          "release_t_s": 1.58
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.58,
+      "next_t_s": 1.6,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389443404,
+            0.025013909362404902
+          ],
+          "unit": "m",
+          "capture_t_s": 1.58,
+          "release_t_s": 1.58
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389439202,
+            0.025013909362399663
+          ],
+          "unit": "m",
+          "capture_t_s": 1.6,
+          "release_t_s": 1.6
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.6,
+      "next_t_s": 1.62,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389439202,
+            0.025013909362399663
+          ],
+          "unit": "m",
+          "capture_t_s": 1.6,
+          "release_t_s": 1.6
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389446558,
+            0.02501390936241002
+          ],
+          "unit": "m",
+          "capture_t_s": 1.62,
+          "release_t_s": 1.62
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.62,
+      "next_t_s": 1.64,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389446558,
+            0.02501390936241002
+          ],
+          "unit": "m",
+          "capture_t_s": 1.62,
+          "release_t_s": 1.62
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389444858,
+            0.025013909362406935
+          ],
+          "unit": "m",
+          "capture_t_s": 1.64,
+          "release_t_s": 1.64
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.64,
+      "next_t_s": 1.66,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389444858,
+            0.025013909362406935
+          ],
+          "unit": "m",
+          "capture_t_s": 1.64,
+          "release_t_s": 1.64
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389440826,
+            0.025013909362401134
+          ],
+          "unit": "m",
+          "capture_t_s": 1.66,
+          "release_t_s": 1.66
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.66,
+      "next_t_s": 1.68,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389440826,
+            0.025013909362401134
+          ],
+          "unit": "m",
+          "capture_t_s": 1.66,
+          "release_t_s": 1.66
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389440226,
+            0.025013909362401304
+          ],
+          "unit": "m",
+          "capture_t_s": 1.68,
+          "release_t_s": 1.68
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.68,
+      "next_t_s": 1.7,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389440226,
+            0.025013909362401304
+          ],
+          "unit": "m",
+          "capture_t_s": 1.68,
+          "release_t_s": 1.68
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389443352,
+            0.025013909362405176
+          ],
+          "unit": "m",
+          "capture_t_s": 1.7,
+          "release_t_s": 1.7
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.7,
+      "next_t_s": 1.72,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389443352,
+            0.025013909362405176
+          ],
+          "unit": "m",
+          "capture_t_s": 1.7,
+          "release_t_s": 1.7
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389447942,
+            0.02501390936241169
+          ],
+          "unit": "m",
+          "capture_t_s": 1.72,
+          "release_t_s": 1.72
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.72,
+      "next_t_s": 1.74,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389447942,
+            0.02501390936241169
+          ],
+          "unit": "m",
+          "capture_t_s": 1.72,
+          "release_t_s": 1.72
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944421,
+            0.02501390936240646
+          ],
+          "unit": "m",
+          "capture_t_s": 1.74,
+          "release_t_s": 1.74
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.74,
+      "next_t_s": 1.76,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944421,
+            0.02501390936240646
+          ],
+          "unit": "m",
+          "capture_t_s": 1.74,
+          "release_t_s": 1.74
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838943877,
+            0.025013909362399094
+          ],
+          "unit": "m",
+          "capture_t_s": 1.76,
+          "release_t_s": 1.76
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.76,
+      "next_t_s": 1.78,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838943877,
+            0.025013909362399094
+          ],
+          "unit": "m",
+          "capture_t_s": 1.76,
+          "release_t_s": 1.76
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389447734,
+            0.025013909362411647
+          ],
+          "unit": "m",
+          "capture_t_s": 1.78,
+          "release_t_s": 1.78
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.78,
+      "next_t_s": 1.8,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389447734,
+            0.025013909362411647
+          ],
+          "unit": "m",
+          "capture_t_s": 1.78,
+          "release_t_s": 1.78
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389445538,
+            0.025013909362408354
+          ],
+          "unit": "m",
+          "capture_t_s": 1.8,
+          "release_t_s": 1.8
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.8,
+      "next_t_s": 1.82,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389445538,
+            0.025013909362408354
+          ],
+          "unit": "m",
+          "capture_t_s": 1.8,
+          "release_t_s": 1.8
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389441027,
+            0.025013909362401873
+          ],
+          "unit": "m",
+          "capture_t_s": 1.82,
+          "release_t_s": 1.82
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.82,
+      "next_t_s": 1.84,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389441027,
+            0.025013909362401873
+          ],
+          "unit": "m",
+          "capture_t_s": 1.82,
+          "release_t_s": 1.82
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944582,
+            0.025013909362407702
+          ],
+          "unit": "m",
+          "capture_t_s": 1.84,
+          "release_t_s": 1.84
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.84,
+      "next_t_s": 1.86,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944582,
+            0.025013909362407702
+          ],
+          "unit": "m",
+          "capture_t_s": 1.84,
+          "release_t_s": 1.84
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389445753,
+            0.025013909362408746
+          ],
+          "unit": "m",
+          "capture_t_s": 1.86,
+          "release_t_s": 1.86
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.86,
+      "next_t_s": 1.88,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389445753,
+            0.025013909362408746
+          ],
+          "unit": "m",
+          "capture_t_s": 1.86,
+          "release_t_s": 1.86
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944215,
+            0.02501390936240338
+          ],
+          "unit": "m",
+          "capture_t_s": 1.88,
+          "release_t_s": 1.88
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.88,
+      "next_t_s": 1.9,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944215,
+            0.02501390936240338
+          ],
+          "unit": "m",
+          "capture_t_s": 1.88,
+          "release_t_s": 1.88
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389442145,
+            0.025013909362403892
+          ],
+          "unit": "m",
+          "capture_t_s": 1.9,
+          "release_t_s": 1.9
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.9,
+      "next_t_s": 1.92,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.025041708389442145,
+            0.025013909362403892
+          ],
+          "unit": "m",
+          "capture_t_s": 1.9,
+          "release_t_s": 1.9
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944593,
+            0.025013909362408375
+          ],
+          "unit": "m",
+          "capture_t_s": 1.92,
+          "release_t_s": 1.92
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.92,
+      "next_t_s": 1.94,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944593,
+            0.025013909362408375
+          ],
+          "unit": "m",
+          "capture_t_s": 1.92,
+          "release_t_s": 1.92
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944258,
+            0.025013909362403736
+          ],
+          "unit": "m",
+          "capture_t_s": 1.94,
+          "release_t_s": 1.94
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.94,
+      "next_t_s": 1.96,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944258,
+            0.025013909362403736
+          ],
+          "unit": "m",
+          "capture_t_s": 1.94,
+          "release_t_s": 1.94
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944388,
+            0.02501390936240622
+          ],
+          "unit": "m",
+          "capture_t_s": 1.96,
+          "release_t_s": 1.96
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.96,
+      "next_t_s": 1.98,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944388,
+            0.02501390936240622
+          ],
+          "unit": "m",
+          "capture_t_s": 1.96,
+          "release_t_s": 1.96
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944021,
+            0.02501390936240133
+          ],
+          "unit": "m",
+          "capture_t_s": 1.98,
+          "release_t_s": 1.98
+        }
+      },
+      "terminated": false,
+      "truncated": false,
+      "outcome": "ongoing"
+    },
+    {
+      "t_s": 1.98,
+      "next_t_s": 2.0,
+      "action": [
+        5.0
+      ],
+      "observation": {
+        "qpos": {
+          "value": [
+            0.02504170838944021,
+            0.02501390936240133
+          ],
+          "unit": "m",
+          "capture_t_s": 1.98,
+          "release_t_s": 1.98
+        }
+      },
+      "next_observation": {
+        "qpos": {
+          "value": [
+            0.025041708389442047,
+            0.02501390936240277
+          ],
+          "unit": "m",
+          "capture_t_s": 2.0,
+          "release_t_s": 2.0
+        }
+      },
+      "terminated": false,
+      "truncated": true,
+      "outcome": "timeout"
+    }
+  ]
+}

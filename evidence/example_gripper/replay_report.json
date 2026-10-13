@@ -1,0 +1,27 @@
+{
+  "asset": "example.mjcf.xml",
+  "asset_sha256": "ea05d71f72cd5e1df0e070243ae7bd8e973e3b78764b0570a0dd50db87254e5c",
+  "environment": {
+    "mujoco": "3.15.0",
+    "numpy": "2.5.3",
+    "python": "3.13.16",
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "scope": "example gripper demonstrator in MuJoCo only; not physical validation",
+  "kind": "replay_report",
+  "metrics": {
+    "replay_same_process_m": 0.0,
+    "continuation_m": 0.0
+  },
+  "thresholds": {
+    "replay_same_process_m": 0.0,
+    "continuation_m": 0.0,
+    "replay_cross_machine_m": 1e-06
+  },
+  "method": {
+    "action_replay": "recorded actions replayed from the open keyframe; qpos compared at every control instant",
+    "continuation": "mjSTATE_INTEGRATION captured at t=1.0 s, restored in a fresh MjData, remaining actions applied",
+    "cross_machine": "CI replays the committed episode on its runner (engine_check.py --replay); bitwise equality across platforms is not claimed"
+  }
+}
