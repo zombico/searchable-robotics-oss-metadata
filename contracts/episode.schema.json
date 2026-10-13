@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Minimal timed force-controlled jaw episode v0.2",
+  "title": "Timed joint-force episode v0.2",
   "type": "object",
   "required": ["schema_version", "origin", "episode_id", "split", "leakage_group", "manifest", "transitions"],
   "properties": {
@@ -16,11 +16,11 @@
         "asset_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
         "seed": {"type": "integer"},
         "engine": {"type": "object", "required": ["name", "version", "runtime_scope"]},
-        "action_contract": {"type": "object", "required": ["mode", "unit", "frame", "dimension", "hold", "controller_id", "lower", "upper"], "properties": {"mode": {"const": "joint_force"}, "unit": {"const": "N"}, "frame": {"const": "joint"}, "dimension": {"const": 1}, "hold": {"const": "zero_order"}}},
-        "observation_contract": {"type": "object", "required": ["policy_channels", "privileged_channels"]}
+        "action_contract": {"type": "object", "required": ["mode", "unit", "frame", "dimension", "hold", "controller_id", "lower", "upper"], "properties": {"mode": {"const": "joint_force"}, "unit": {"const": "N"}, "frame": {"const": "joint"}, "dimension": {"type": "integer", "minimum": 1}, "lower": {"type": ["number", "array"]}, "upper": {"type": ["number", "array"]}, "hold": {"const": "zero_order"}}},
+        "observation_contract": {"type": "object", "required": ["policy_channels", "privileged_channels"], "properties": {"channel_dims": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 1}}, "channel_units": {"type": "object", "additionalProperties": {"type": "string"}}}}
       }
     },
     "transitions": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["t_s", "next_t_s", "action", "observation", "next_observation", "terminated", "truncated", "outcome"]}}
   },
-  "description": "Minimal fixture contract; runtime validator checks causal timing and semantics. Other action spaces, cameras, depth, checkpoints and rewards are future extensions."
+  "description": "Runtime validator checks causal timing and semantics. Without channel_dims/channel_units the legacy jaw contract applies (one qpos channel, 2 values, m). Cameras, depth, checkpoints and rewards are future extensions."
 }

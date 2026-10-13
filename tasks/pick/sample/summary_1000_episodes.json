@@ -1,0 +1,68 @@
+{
+  "task": "pick_box_v0",
+  "attempted": 1000,
+  "valid": 1000,
+  "quarantined": 0,
+  "outcomes": {
+    "slip": 125,
+    "success": 875
+  },
+  "outcomes_by_split": {
+    "train": {
+      "slip": 86,
+      "success": 578
+    },
+    "validation": {
+      "slip": 30,
+      "success": 75
+    },
+    "test": {
+      "slip": 9,
+      "success": 222
+    }
+  },
+  "episodes_by_group": {
+    "w0-m0": 93,
+    "w0-m1": 114,
+    "w0-m2": 106,
+    "w1-m0": 129,
+    "w1-m1": 123,
+    "w1-m2": 105,
+    "w2-m0": 117,
+    "w2-m1": 110,
+    "w2-m2": 103
+  },
+  "success_rate": 0.875,
+  "mean_duration_s": 2.126,
+  "positive_mechanical_work_J_mean": [
+    0.06376,
+    0.4819,
+    0.00904
+  ],
+  "positive_mechanical_work_J_max": [
+    0.11056,
+    0.58305,
+    0.02182
+  ],
+  "slip_vs_friction_mass": "slips concentrate where object weight exceeds pad friction capacity; see per-episode sampled_parameters",
+  "throughput": {
+    "episodes_per_hour": 56150,
+    "seconds": 64.11,
+    "environment": {
+      "mujoco": "3.15.0",
+      "numpy": "2.5.3",
+      "python": "3.13.16",
+      "machine": "x86_64"
+    },
+    "note": "single process, machine-dependent"
+  },
+  "generator": {
+    "type": "scripted",
+    "source": "tasks/pick/scripted.py",
+    "source_sha256": "cfc0073bb57150cadb12e172bfb50dd09478761839448dbba80e86516c66eae9"
+  },
+  "seeds": [
+    0,
+    999
+  ]
+}

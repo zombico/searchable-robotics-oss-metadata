@@ -15,6 +15,8 @@ jobs:
       - run: python verify_release.py fixtures/release.json
       - run: python verify_release.py evidence/example_gripper/episode.json
       - run: python verify_release.py evidence/example_gripper/release.json
+      - run: python tasks/pick/scene.py
+      - run: git diff --exit-code tasks/pick/pick_scene.mjcf.xml
       - run: python electronics/build_components.py
       - run: git diff --exit-code electronics/components.json
       - run: python electronics/swap.py electronics/bindings/so101_follower.json --audit
@@ -32,6 +34,9 @@ jobs:
       - run: python smoke_sim.py
       - run: python engine_check.py --out "$RUNNER_TEMP/evidence"
       - run: python engine_check.py --replay evidence/example_gripper/episode.json
-      - run: python -m unittest tests.test_engine -v
+      - run: python tasks/pick/generate.py --episodes 50 --out "$RUNNER_TEMP/pick"
+      - run: python tasks/pick/generate.py --replay tasks/pick/sample/pick-v0-seed0_success.json
+      - run: python tasks/pick/generate.py --replay tasks/pick/sample/pick-v0-seed1_slip.json
+      - run: python -m unittest tests.test_engine tests.test_pick_engine -v
         env:
           REQUIRE_ENGINE: '1'
