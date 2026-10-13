@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="pick_box_v0">
+  <compiler angle="radian" />
+  <option timestep="0.001" gravity="0 0 -9.81" />
+  <default>
+    <geom friction="1 0.005 0.0001" condim="4" />
+  </default>
+  <worldbody>
+    <geom name="floor" type="plane" size="0.5 0.5 0.05" rgba="0.8 0.8 0.8 1" />
+    <body name="carriage_x" pos="0 0 0.25">
+      <joint name="x_slide" type="slide" axis="1 0 0" range="-0.1 0.1" limited="true" damping="2" frictionloss="0.5" solreflimit="0.002 1" />
+      <geom type="box" size="0.02 0.02 0.02" pos="0 0 0.05" mass="0.5" contype="0" conaffinity="0" rgba="0.4 0.4 0.4 1" />
+      <body name="carriage_z">
+        <joint name="z_slide" type="slide" axis="0 0 1" range="-0.175 0" limited="true" damping="2" frictionloss="0.5" solreflimit="0.002 1" />
+        <geom type="box" size="0.015 0.015 0.02" pos="0 0 0.03" mass="0.3" contype="0" conaffinity="0" rgba="0.4 0.4 0.4 1" />
+        <geom name="base" type="box" size="0.05 0.025 0.01" mass="0.2" rgba="0.2 0.3 0.5 1" />
+        <body name="left" pos="-0.011 0 -0.04">
+          <joint name="left_slide" type="slide" axis="-1 0 0" range="0 0.025" limited="true" damping="1" frictionloss="0.1" solreflimit="0.002 1" />
+          <geom name="left_pad" type="box" size="0.006 0.01 0.03" mass="0.04" friction="0 0 0" rgba="0.3 0.65 0.9 1" />
+        </body>
+        <body name="right" pos="0.011 0 -0.04">
+          <joint name="right_slide" type="slide" axis="1 0 0" range="0 0.025" limited="true" damping="1" frictionloss="0.1" solreflimit="0.002 1" />
+          <geom name="right_pad" type="box" size="0.006 0.01 0.03" mass="0.04" friction="0 0 0" rgba="0.3 0.65 0.9 1" />
+        </body>
+      </body>
+    </body>
+    <body name="object" pos="0 0 0.02">
+      <freejoint name="object_free" />
+      <geom name="object" type="box" size="0.015 0.015 0.02" mass="0.1" friction="0.7 0.005 0.0001" rgba="0.9 0.5 0.2 1" />
+    </body>
+  </worldbody>
+  <equality>
+    <joint joint1="right_slide" joint2="left_slide" polycoef="0 1 0 0 0" solref="0.002 1" />
+  </equality>
+  <actuator>
+    <general name="x_drive" joint="x_slide" gear="1" ctrllimited="true" ctrlrange="-20 20" forcelimited="true" forcerange="-20 20" gaintype="fixed" gainprm="1" biastype="affine" biasprm="0 0 -66.66666667" />
+    <general name="z_drive" joint="z_slide" gear="1" ctrllimited="true" ctrlrange="-30 30" forcelimited="true" forcerange="-30 30" gaintype="fixed" gainprm="1" biastype="affine" biasprm="0 0 -150" />
+    <general name="jaw_drive" joint="left_slide" gear="1" ctrllimited="true" ctrlrange="-5 5" forcelimited="true" forcerange="-5 5" gaintype="fixed" gainprm="1" biastype="affine" biasprm="0 0 -50" />
+  </actuator>
+</mujoco>

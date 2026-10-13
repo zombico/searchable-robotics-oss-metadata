@@ -66,7 +66,7 @@ The original proposal jumped to pick-and-place. First isolate mechanisms:
 | M5 | Train a small policy and test held-out conditions | Dataset learning value | Baseline metrics and ablations |
 | M6 | Real-hardware transfer evaluation | Deployment utility | Trial report and qualified operating envelope |
 
-The current box gripper has a fixed base and cannot perform pick-and-place by itself. M4 requires a new carriage or arm, actuators, objects, sensors and reset logic; those are not implemented. Start with a simple Cartesian carriage to avoid conflating arm kinematics with gripper contact failures. A specific SO-101 hardware variant is an alternative if actual calibration hardware is available.
+The example gripper on its own has a fixed base. A synthetic M4 environment now exists in `tasks/pick/`: an x/z carriage, three force-speed drives, randomized boxes, a noisy object-position channel, reset logic and a scripted demonstrator. It is uncalibrated and has no camera; the physical M1–M3 measurements it would rest on are still missing. Start with a simple Cartesian carriage to avoid conflating arm kinematics with gripper contact failures. A specific SO-101 hardware variant is an alternative if actual calibration hardware is available.
 
 Do not invent universal tolerance numbers. Define task tolerances before fitting, based on physical measurement uncertainty and deployment needs. Record units and whether metrics represent worst-case, mean, percentile or a confidence bound.
 

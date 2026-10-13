@@ -6,6 +6,8 @@ Goal: synthetic sensorimotor data from compiled mechanisms, with reproducibility
 
 **Implemented:** research tables, illustrative fixed-gripper URDF/MJCF exporter, minimal timed-episode/release validator, rejection tests, MuJoCo engine checks for the example gripper, and CI for both. **Not implemented:** actual training episodes, calibration evidence, image/export adapters, general compiler or trained policy.
 
+**Pick task** ([`tasks/pick/`](tasks/pick/README.md)): the example gripper on an x/z carriage picks randomized boxes. Gymnasium-style environment, a scripted demonstrator using only policy observations, and a validated dataset generator with outcome labels (success/slip/miss/collision/timeout), privileged diagnostics including mechanical power, quarantine of invalid physics and group-based splits. A 1,000-episode run: 87.5% success, 12.5% friction-limited slips, nothing quarantined.
+
 **Electronics** (drives, servos, sensors, buses, compute, power, e-stop) are a separate concern in [`electronics/`](electronics/README.md): swappable-slot contracts, 34 sourced components, a swap checker (`drop_in` / `retune` / `rewire` / `remount` / `incompatible`) and a static supply-rail budget, with an SO-101 worked example.
 
 ## Quickstart
@@ -29,7 +31,8 @@ python -m venv .venv && . .venv/bin/activate
 pip install -r requirements-sim.txt
 python smoke_sim.py
 python engine_check.py
-REQUIRE_ENGINE=1 python -m unittest tests.test_engine -v
+python tasks/pick/generate.py --episodes 100 --out datasets/pick_v0
+REQUIRE_ENGINE=1 python -m unittest tests.test_engine tests.test_pick_engine -v
 ```
 
 Without MuJoCo, `tests/test_engine.py` is skipped; `REQUIRE_ENGINE=1` turns that skip into a failure, as in CI. The engine tests drive the gripper closed and open at the full ±5 N drive limit and check finite state, both stops reached and respected within 1 mm, jaw coupling within 0.2 mm, sensitivity to halving the timestep, and in-process repeatability. `python engine_check.py` turns these checks into hashed evidence in `evidence/example_gripper/`: a forward-simulated episode, engine, replay (action replay and mid-episode state continuation) and convergence (dt, dt/2, dt/4) reports, and a release declaration at `engine_checked`. That label covers this demonstrator in the declared MuJoCo test envelope only; it is not physical validation and makes no accuracy claim. CI regenerates the evidence on its own runner, replays the committed episode there, and fails if the model changes without regenerating the evidence.

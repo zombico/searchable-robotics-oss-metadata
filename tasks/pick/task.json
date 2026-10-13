@@ -1,0 +1,106 @@
+{
+  "schema_version": "0.1.0",
+  "task": "pick_box_v0",
+  "status": "proposed_demonstrator_not_validated_hardware",
+  "description": "Example gripper on an x/z Cartesian carriage picks a box from the floor and holds it lifted.",
+  "gripper": "example.json (jaws, travel, drive and friction assumptions reused)",
+  "carriage": {
+    "home_height_m": 0.25,
+    "x_range_m": [
+      -0.1,
+      0.1
+    ],
+    "z_travel_m": 0.175,
+    "x_mass_kg": 0.5,
+    "z_mass_kg": 0.3,
+    "x_drive": {
+      "effort_limit_N": 20,
+      "no_load_speed_m_s": 0.3
+    },
+    "z_drive": {
+      "effort_limit_N": 30,
+      "no_load_speed_m_s": 0.2
+    },
+    "damping_N_s_m": 2,
+    "joint_friction_N": 0.5
+  },
+  "clock": {
+    "physics_dt_s": 0.001,
+    "control_decimation": 20,
+    "episode_s": 6.0
+  },
+  "object_randomization": {
+    "width_m": [
+      0.02,
+      0.045
+    ],
+    "depth_m": [
+      0.02,
+      0.04
+    ],
+    "height_m": [
+      0.03,
+      0.05
+    ],
+    "mass_kg": [
+      0.02,
+      0.3
+    ],
+    "friction": [
+      0.3,
+      1.0
+    ],
+    "x_m": [
+      -0.08,
+      0.08
+    ],
+    "distribution": "independent uniform per parameter"
+  },
+  "sensor": {
+    "object_x_measured": {
+      "noise_std_m": 0.001,
+      "latency_s": 0.0,
+      "model": "true object x plus Gaussian noise, captured and released at each control step"
+    }
+  },
+  "success": {
+    "lift_m": 0.03,
+    "hold_s": 0.5
+  },
+  "failure_rules": {
+    "slip": "object was gripped (pad normal force above gripped_force_N) and lost: back within 0.003 m of the floor after lifting at least 0.01 m, or jaws fully closed after contact",
+    "collision": "object tilted more than 30 degrees",
+    "miss": "jaws closed to within 0.002 m of full travel without ever gripping the object",
+    "timeout": "none of the above by episode end"
+  },
+  "quarantine_rules": {
+    "non_finite_state": true,
+    "max_penetration_m": 0.005
+  },
+  "splits": {
+    "leakage_group": "object family: width bin x mass bin (3 x 3)",
+    "width_bins_m": [
+      0.02,
+      0.0283,
+      0.0367,
+      0.045
+    ],
+    "mass_bins_kg": [
+      0.02,
+      0.113,
+      0.207,
+      0.3
+    ],
+    "validation_groups": [
+      "w1-m2"
+    ],
+    "test_groups": [
+      "w2-m0",
+      "w0-m1"
+    ]
+  },
+  "assumption_scope": "All carriage masses, drives, ranges, randomization bounds, sensor noise and outcome thresholds are demonstration choices, not measured hardware.",
+  "failure_thresholds": {
+    "gripped_force_N": 0.5
+  }
+}

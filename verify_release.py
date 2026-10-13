@@ -20,21 +20,27 @@ def validate_episode(e):
     require(all(m['engine'].get(k) for k in ['name','version','runtime_scope']),'engine identity')
     if e['origin']=='forward_simulation': require(m['engine']['name']!='not_run' and m['asset_sha256']!='0'*64,'forward simulation needs engine/asset')
     require(a['mode']=='joint_force' and a['unit']=='N' and a['frame']=='joint','action semantics')
-    require(a['dimension']==1 and a['hold']=='zero_order' and bool(a['controller_id']),'controller contract')
-    require(number(a['lower']) and number(a['upper']) and a['lower']<a['upper'],'action limits')
-    require(o['policy_channels']==['qpos'] and isinstance(o['privileged_channels'],list) and 'qpos' not in o['privileged_channels'],'observation contract')
+    n=a['dimension'];require(type(n) is int and n>=1 and a['hold']=='zero_order' and bool(a['controller_id']),'controller contract')
+    lower=a['lower'] if isinstance(a['lower'],list) else [a['lower']]*n;upper=a['upper'] if isinstance(a['upper'],list) else [a['upper']]*n
+    require(vector(lower,n) and vector(upper,n) and all(l<u for l,u in zip(lower,upper)),'action limits')
+    policy=o['policy_channels'];privileged=o['privileged_channels']
+    require(isinstance(policy,list) and policy and isinstance(privileged,list) and not set(policy)&set(privileged),'observation contract')
+    # Legacy v0.2 jaw contract: one qpos channel of two jaw positions in metres.
+    dims=o.get('channel_dims',{'qpos':2});units=o.get('channel_units',{'qpos':'m'})
+    require(set(dims)==set(policy) and set(units)==set(policy) and all(type(v) is int and v>0 for v in dims.values()),'observation contract')
     def obs(d,t):
-        require(set(d)=={'qpos'},'undeclared or privileged policy channel')
-        q=d['qpos'];require(vector(q['value'],2) and q['unit']=='m','qpos')
-        require(number(q['capture_t_s']) and number(q['release_t_s']),'sensor times')
-        require(q['capture_t_s']<=q['release_t_s']<=t+1e-9,'future sensor leakage')
-        require(q['release_t_s']>=t-dt-1e-9,'stale sensor for this contract')
+        require(set(d)==set(policy),'undeclared or privileged policy channel')
+        for name in policy:
+            q=d[name];require(vector(q['value'],dims[name]) and q['unit']==units[name],name)
+            require(number(q['capture_t_s']) and number(q['release_t_s']),'sensor times')
+            require(q['capture_t_s']<=q['release_t_s']<=t+1e-9,'future sensor leakage')
+            require(q['release_t_s']>=t-dt-1e-9,'stale sensor for this contract')
     require(bool(e['transitions']),'empty episode');previous=None
     for i,tr in enumerate(e['transitions']):
         t=tr['t_s'];nt=tr['next_t_s']
         require(number(t) and number(nt) and t>=0 and math.isclose(nt-t,dt,rel_tol=1e-8,abs_tol=1e-9),'transition timing')
         if previous is not None: require(math.isclose(t,previous,abs_tol=1e-9),'noncontiguous transition')
-        require(vector(tr['action'],1) and a['lower']<=tr['action'][0]<=a['upper'],'action outside contract')
+        require(vector(tr['action'],n) and all(l<=x<=u for x,l,u in zip(tr['action'],lower,upper)),'action outside contract')
         obs(tr['observation'],t);obs(tr['next_observation'],nt)
         require(type(tr['terminated']) is bool and type(tr['truncated']) is bool,'terminal flags')
         require(tr['outcome'] in ['ongoing','success','slip','miss','collision','timeout'],'outcome')

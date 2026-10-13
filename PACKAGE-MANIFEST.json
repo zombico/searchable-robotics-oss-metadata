@@ -3,7 +3,7 @@
   "files": [
     {
       "path": ".github/workflows/contracts.yml",
-      "sha256": "eca41341c2c6e34f76aecae8be841282bf5a5e21274da4ecbd72836a1470c1f8"
+      "sha256": "b4dd68241658e13d808bd477e977f0ba8ad6c4db584029fad5d21bcc9ef70b57"
     },
     {
       "path": ".gitignore",
@@ -11,7 +11,7 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "bf4af5a85ca8f6f67d40982b4d696f9d582d1c5ffbbc8e8833439c9cdc3ccc21"
+      "sha256": "d2e7d7948bc24ca70361dedc874fb6afb30c69dc300a78ad80499315a4b42bb9"
     },
     {
       "path": "LICENSING.md",
@@ -23,11 +23,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "83f715ad9483bc6631fd648f55d43b7db9a6922de3afff30597b982a78d2a89a"
+      "sha256": "caa1987b5f572ad3e91bee945025b4e5f23967129750f068449c1a9f9fa14981"
     },
     {
       "path": "SOLUTION-V2.md",
-      "sha256": "8f1dbf6e7627af35e101265d791c7e0f03e26df16c9c9c9e7cca2100347eb6bb"
+      "sha256": "fdff93c15ec56bc4a5ba4ac9009cd971e2ce2de73fb56471c186f2e4c7f8a852"
     },
     {
       "path": "VALIDATION-REPORT.json",
@@ -51,7 +51,7 @@
     },
     {
       "path": "contracts/episode.schema.json",
-      "sha256": "c9b8920118d33a17b7b313c12ebcd3eb1170775744585400b601366cb006d385"
+      "sha256": "4e26c5f098a1be4c76bb242fab28a29536f33777b896557fcb67650b3651a2ec"
     },
     {
       "path": "electronics/README.md",
@@ -150,6 +150,46 @@
       "sha256": "e3278a896ffafc767b3a877e0c0f56835071484a6fa7a4c11ed47c6b515556eb"
     },
     {
+      "path": "tasks/pick/README.md",
+      "sha256": "27f09f70038d2d5ec9fc25826e15a56bac1043bcc10d6b693bd2243c2e8bbcd2"
+    },
+    {
+      "path": "tasks/pick/env.py",
+      "sha256": "207a331bc30ed47c27df2c88ce13f57891f846500f9b66900e99f5b76ccf3c73"
+    },
+    {
+      "path": "tasks/pick/generate.py",
+      "sha256": "9f27eef8bde94d8f6197714fa000834c8f3aee3712fc25bda9dccf1f2029b9ad"
+    },
+    {
+      "path": "tasks/pick/pick_scene.mjcf.xml",
+      "sha256": "a0a489210bd63d89fa98943c68bf3ab67023f85518345e8e9b91e0aefd8f263c"
+    },
+    {
+      "path": "tasks/pick/sample/pick-v0-seed0_success.json",
+      "sha256": "fd0cc2300d753afcba2586eb9457edf44d40e8212c50e3900603ba1b66c780b3"
+    },
+    {
+      "path": "tasks/pick/sample/pick-v0-seed1_slip.json",
+      "sha256": "120f1a6bdc77f019fce5d8a1539ff18f07588f6d6fc17e0cb3e8cf8a601f17e6"
+    },
+    {
+      "path": "tasks/pick/sample/summary_1000_episodes.json",
+      "sha256": "70b241283d5ed09501bacc601b2e94516f19ec68df69c392ccd743546a4159a9"
+    },
+    {
+      "path": "tasks/pick/scene.py",
+      "sha256": "aecf45c9d178e431b68d3a084eed8129a0978cd1e7d73d3f46678dc4c8c8140b"
+    },
+    {
+      "path": "tasks/pick/scripted.py",
+      "sha256": "cfc0073bb57150cadb12e172bfb50dd09478761839448dbba80e86516c66eae9"
+    },
+    {
+      "path": "tasks/pick/task.json",
+      "sha256": "cecc6c9c55738e0938b437f23ce6f5079a58fe012bdba93ed76203b00259e744"
+    },
+    {
       "path": "tests/test_contracts.py",
       "sha256": "178a4c22e73249c00458e104223c0db0e894b0be532b0b64c813c1f3cf5d7e68"
     },
@@ -166,6 +206,14 @@
       "sha256": "17e3822e8703fe6c26ef3f4dc59a1efc0151e0c6328b76c8baeafd81d72fea26"
     },
     {
+      "path": "tests/test_pick_contract.py",
+      "sha256": "0bba05a532bdcf8167405c300c5fc468339ca4ccf10fcc3815e132b51dc327b4"
+    },
+    {
+      "path": "tests/test_pick_engine.py",
+      "sha256": "cffe2e0efc56907457676ba1c986685252af55887ff8a7bc1b20fb743678ebc2"
+    },
+    {
       "path": "training_findings.html",
       "sha256": "967623e1e85df39df22f4134c82ddff411a8794163071578ecd7004dd06a4c76"
     },
@@ -179,7 +227,7 @@
     },
     {
       "path": "verify_release.py",
-      "sha256": "e06c15b69eea161bc28b85a41d522125581e2b088763b2dac904ecf881f4b9bc"
+      "sha256": "1c3633ca49cc07418fe4455410c55920fa02eb0e4d79f6f81cd4d4cf9ee439fe"
     }
   ]
 }
