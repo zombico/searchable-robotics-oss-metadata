@@ -2,7 +2,7 @@ import copy,json,pathlib,sys,unittest
 ROOT=pathlib.Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'electronics'))
 import swap
 INTERFACES,CATALOG=swap.load()
-VERIFICATION={'fetched_primary','fetched_secondary','search_snippet'}
+VERIFICATION={'fetched_primary','fetched_secondary','search_snippet','catalog_assigned'}
 
 def part(id,**specs):
     return {'id':id,'name':id,'interface':'actuator.smart_servo','specs':[
@@ -21,6 +21,9 @@ class SwapRules(unittest.TestCase):
     def test_protocol_is_rewire(self): self.assertEqual(self.check(protocol='p2')['classification'],'rewire')
     def test_mount_is_remount(self): self.assertEqual(self.check(mechanical_interface='m2')['classification'],'remount')
     def test_voltage_outside_range_is_incompatible(self): self.assertEqual(self.check(supply_voltage_V=[6,8.4])['classification'],'incompatible')
+    def test_disjoint_supply_modes(self):
+        self.assertTrue(swap.passes('requirement_within_range',[[3.0,3.6],[4.5,5.5]],5.0))
+        self.assertFalse(swap.passes('requirement_within_range',[[3.0,3.6],[4.5,5.5]],4.0))
     def test_weak_servo_is_incompatible(self): self.assertEqual(self.check(stall_torque_Nm=1.0)['classification'],'incompatible')
     def test_worst_consequence_wins(self): self.assertEqual(self.check(protocol='p2',mechanical_interface='m2')['classification'],'remount')
     def test_missing_value_is_undetermined_not_pass(self):
@@ -43,6 +46,38 @@ class SwapRules(unittest.TestCase):
     def test_torque_speed_line(self):
         p=swap.solver_parameters(part('x',**BASE))
         self.assertEqual(p['forcerange_Nm'],[-3.0,3.0]);self.assertAlmostEqual(p['torque_speed_slope_Nm_s_rad'],-3.0/(50*swap.RPM))
+
+def source(id,limit):
+    return {'id':id,'name':id,'interface':'power.source','specs':[{'field':'current_continuous_A','value':limit,'unit':'A','source_id':'t','verification':'fetched_primary'}]}
+def with_current(p,amps):
+    p=copy.deepcopy(p);p['specs'].append({'field':'stall_current_A','value':amps,'unit':'A','source_id':'t','verification':'fetched_primary'});return p
+def rig(limit,currents,declared=None):
+    parts={f's{i}':with_current(part(f's{i}',**BASE),a) if a is not None else part(f's{i}',**BASE) for i,a in enumerate(currents)}
+    parts['psu']=source('psu',limit)
+    slots=[{**SLOT,'slot_id':f'j{i}','bound_component':f's{i}'} for i in range(len(currents))]
+    if declared: slots[declared[0]]['declared_current_A']={'value':declared[1],'status':'proposed'}
+    return {'slots':slots,'rails':[{'rail_id':'12V','voltage_V':12,'source_component':'psu','loads':[s['slot_id'] for s in slots]}]},parts
+
+class RailBudget(unittest.TestCase):
+    def test_within(self):
+        b,p=rig(5,[2,2]);r=swap.rail_budget(b,p)[0]
+        self.assertEqual((r['status'],r['worst_case_total_A'],r['headroom_A']),('within_budget',4,1))
+    def test_over(self): b,p=rig(5,[3,3]);self.assertEqual(swap.rail_budget(b,p)[0]['status'],'over_budget')
+    def test_unknown_load_is_undetermined(self):
+        b,p=rig(5,[2,None]);r=swap.rail_budget(b,p)[0]
+        self.assertEqual((r['status'],r['unknown_loads']),('undetermined',['j1']))
+    def test_known_overload_is_definite_despite_unknowns(self):
+        b,p=rig(5,[6,None]);self.assertEqual(swap.rail_budget(b,p)[0]['status'],'over_budget')
+    def test_declared_current_is_reported_as_assumption(self):
+        b,p=rig(5,[2,None],declared=(1,1.5));r=swap.rail_budget(b,p)[0]
+        self.assertEqual((r['status'],r['assumed_loads']),('within_budget',['j1']))
+    def test_swap_that_overloads_rail_is_incompatible(self):
+        b,p=rig(5,[2,2]);strong=with_current(part('strong',**BASE),4)
+        r=swap.check(b['slots'][1],strong,p['s1'],INTERFACES,b,p)
+        self.assertEqual(r['classification'],'incompatible');self.assertEqual(r['findings'][-1]['field'],'rail_budget')
+    def test_swap_with_unknown_current_is_undetermined(self):
+        b,p=rig(5,[2,2]);r=swap.check(b['slots'][1],part('mystery',**BASE),p['s1'],INTERFACES,b,p)
+        self.assertEqual(r['classification'],'undetermined');self.assertIn('rail_budget (12V)',r['unknown'])
 
 class CatalogIntegrity(unittest.TestCase):
     def test_components(self):
