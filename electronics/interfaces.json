@@ -1,0 +1,205 @@
+{
+  "schema_version": "0.1.0",
+  "purpose": "Swappable-slot contracts for electronics (drives, servos, sensors, buses, compute, power). A slot names an interface; any component implementing that interface can be checked against the slot's requirements.",
+  "consequences": {
+    "drop_in": "Same interface, connection, mount and simulation-facing parameters. Existing qualification may still need review.",
+    "retune": "Connection and mount unchanged, but simulation-facing parameters differ: regenerate the model and requalify (release level reverts to synthetic_only).",
+    "rewire": "Function fits, but bus, protocol, connector or command interface differs: wiring, adapter, firmware or driver change required, then retune.",
+    "remount": "Mechanical interface differs: the mechanical layer must change, then rewire/retune as applicable.",
+    "incompatible": "A hard electrical or performance requirement is not met."
+  },
+  "rules": {
+    "requirement_within_range": "Slot requirement (scalar) must lie inside the component's published [min, max].",
+    "component_at_least": "Component value must be >= the slot requirement.",
+    "component_at_most": "Component value must be <= the slot requirement.",
+    "equals": "Component value must equal the slot requirement.",
+    "contains": "Component list must contain the slot requirement (or every item of a required list).",
+    "sim_compare": "Not a requirement: compared with the currently bound component; any difference beyond rel_tol means retune."
+  },
+  "interfaces": {
+    "actuator.smart_servo": {
+      "layer": "actuation",
+      "description": "Integrated motor, gearbox, driver and position sensor on a serial bus.",
+      "fields": {
+        "supply_voltage_V": {"rule": "requirement_within_range", "on_fail": "incompatible"},
+        "stall_torque_Nm": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true},
+        "no_load_speed_rpm": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true},
+        "bus_physical": {"rule": "equals", "on_fail": "rewire"},
+        "protocol": {"rule": "equals", "on_fail": "rewire"},
+        "mechanical_interface": {"rule": "equals", "on_fail": "remount"},
+        "position_resolution_counts": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true},
+        "gear_ratio": {"rule": "sim_compare", "sim": true},
+        "mass_kg": {"rule": "component_at_most", "on_fail": "incompatible", "sim": true}
+      },
+      "solver_mapping": {
+        "stall_torque_Nm, no_load_speed_rpm": "Linear torque-speed line: MuJoCo general actuator with forcerange = +/-stall torque and affine bias slope = -stall_torque / no_load_speed (rad/s). Published stall and no-load points are different operating points; the line between them is an assumption.",
+        "position_resolution_counts": "Observation quantization step = 2*pi / counts.",
+        "gear_ratio": "Reflected rotor inertia (armature) = N^2 * J_rotor when J_rotor is known; otherwise unknown, not zero.",
+        "mass_kg": "Link mass contribution of the servo body.",
+        "protocol, baud": "Bus round-trip latency per control step; sets the feasible control rate for a daisy chain."
+      }
+    },
+    "drive.stepper": {
+      "layer": "actuation",
+      "description": "Bipolar stepper driver (IC or module) commanded by step/dir or serial.",
+      "fields": {
+        "supply_voltage_V": {"rule": "requirement_within_range", "on_fail": "incompatible"},
+        "phase_current_rms_A": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true},
+        "microsteps_max": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true},
+        "command_interfaces": {"rule": "contains", "on_fail": "rewire"},
+        "mechanical_interface": {"rule": "equals", "on_fail": "remount"}
+      },
+      "solver_mapping": {
+        "phase_current_rms_A": "Caps motor torque via the motor's torque-current curve; the driver does not define torque alone.",
+        "microsteps_max": "Commanded position quantization = full step / microsteps.",
+        "command_interfaces": "Step/dir: command is position increments; open-loop step loss must be modeled or excluded."
+      }
+    },
+    "drive.bldc_foc": {
+      "layer": "actuation",
+      "description": "Field-oriented brushless motor controller with current/torque, velocity and position modes.",
+      "fields": {
+        "supply_voltage_V": {"rule": "requirement_within_range", "on_fail": "incompatible"},
+        "phase_current_peak_A": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true},
+        "command_bus": {"rule": "equals", "on_fail": "rewire"},
+        "mechanical_interface": {"rule": "equals", "on_fail": "remount"},
+        "control_rate_hz": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true}
+      },
+      "solver_mapping": {
+        "phase_current_peak_A": "Torque limit = Kt * current limit for the bound motor; Kt belongs to the motor, not the controller.",
+        "control_rate_hz": "Inner-loop update period; must be faster than the policy action period declared in the episode clock.",
+        "command_bus": "Bus latency between policy action and applied setpoint."
+      }
+    },
+    "drive.dc_brushed": {
+      "layer": "actuation",
+      "description": "H-bridge driver for brushed DC (gear)motors.",
+      "fields": {
+        "supply_voltage_V": {"rule": "requirement_within_range", "on_fail": "incompatible"},
+        "current_continuous_A": {"rule": "component_at_least", "on_fail": "incompatible"},
+        "command_interfaces": {"rule": "contains", "on_fail": "rewire"}
+      },
+      "solver_mapping": {
+        "current_continuous_A": "Caps sustained motor torque via the motor's torque constant; transient limits need the peak rating and thermal model."
+      }
+    },
+    "sensor.angle_absolute": {
+      "layer": "sensing",
+      "description": "Absolute rotary position sensor (e.g. magnetic).",
+      "fields": {
+        "supply_voltage_V": {"rule": "requirement_within_range", "on_fail": "incompatible"},
+        "resolution_bits": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true},
+        "interface": {"rule": "contains", "on_fail": "rewire"},
+        "mechanical_interface": {"rule": "equals", "on_fail": "remount"}
+      },
+      "solver_mapping": {
+        "resolution_bits": "Quantization step = 2*pi / 2^bits; accuracy/INL is a separate (usually larger) error term.",
+        "interface": "Read latency and sample period on the sensor clock."
+      }
+    },
+    "sensor.encoder_incremental": {
+      "layer": "sensing",
+      "description": "Incremental quadrature encoder.",
+      "fields": {
+        "supply_voltage_V": {"rule": "requirement_within_range", "on_fail": "incompatible"},
+        "ppr": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true},
+        "outputs": {"rule": "contains", "on_fail": "rewire"},
+        "mechanical_interface": {"rule": "equals", "on_fail": "remount"}
+      },
+      "solver_mapping": {
+        "ppr": "Quadrature counts = 4 * ppr per encoder-shaft revolution; joint resolution also divides by gear ratio when motor-side."
+      }
+    },
+    "sensor.imu": {
+      "layer": "sensing",
+      "description": "Accelerometer + gyroscope.",
+      "fields": {
+        "supply_voltage_V": {"rule": "requirement_within_range", "on_fail": "incompatible"},
+        "gyro_range_dps": {"rule": "contains", "on_fail": "incompatible", "sim": true},
+        "accel_range_g": {"rule": "contains", "on_fail": "incompatible", "sim": true},
+        "gyro_odr_hz_max": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true},
+        "gyro_noise_density": {"rule": "sim_compare", "sim": true},
+        "accel_noise_density": {"rule": "sim_compare", "sim": true},
+        "interface": {"rule": "contains", "on_fail": "rewire"}
+      },
+      "solver_mapping": {
+        "noise_density": "White-noise std per sample = density * sqrt(bandwidth); bias instability and temperature drift need separate terms.",
+        "odr": "Sensor clock rate; capture/release times recorded per sample in the episode contract.",
+        "range": "Saturation limits of the simulated measurement."
+      }
+    },
+    "sensor.current_monitor": {
+      "layer": "sensing",
+      "description": "Shunt current / bus voltage monitor.",
+      "fields": {
+        "bus_voltage_range_V": {"rule": "requirement_within_range", "on_fail": "incompatible"},
+        "adc_resolution_bits": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true},
+        "interface": {"rule": "contains", "on_fail": "rewire"}
+      },
+      "solver_mapping": {
+        "adc_resolution_bits": "Current-measurement quantization; with a motor torque constant this approximates measured actuator effort."
+      }
+    },
+    "sensor.force_adc": {
+      "layer": "sensing",
+      "description": "Bridge (load-cell) ADC.",
+      "fields": {
+        "adc_resolution_bits": {"rule": "component_at_least", "on_fail": "incompatible", "sim": true},
+        "output_data_rate_hz": {"rule": "contains", "on_fail": "incompatible", "sim": true},
+        "interface": {"rule": "contains", "on_fail": "rewire"}
+      },
+      "solver_mapping": {
+        "output_data_rate_hz": "Force-sensor clock; solver contact forces must be filtered/aggregated to this bandwidth before use as a sensor."
+      }
+    },
+    "adapter.bus_bridge": {
+      "layer": "communication",
+      "description": "Host-to-actuator-bus adapter.",
+      "fields": {
+        "host_interface": {"rule": "equals", "on_fail": "rewire"},
+        "bus_physical": {"rule": "contains", "on_fail": "rewire"},
+        "baud_max_bps": {"rule": "component_at_least", "on_fail": "incompatible"}
+      },
+      "solver_mapping": {"baud_max_bps": "Upper bound on bus throughput and hence latency/control rate."}
+    },
+    "bus.protocol": {
+      "layer": "communication",
+      "description": "Bus or protocol specification (not a part).",
+      "fields": {},
+      "solver_mapping": {"*": "Packet size and bitrate determine per-command latency; record it in the clock contract."}
+    },
+    "bus.transceiver": {
+      "layer": "communication",
+      "description": "Physical-layer transceiver IC.",
+      "fields": {
+        "supply_voltage_V": {"rule": "requirement_within_range", "on_fail": "incompatible"},
+        "data_rate_max_bps": {"rule": "component_at_least", "on_fail": "incompatible"}
+      },
+      "solver_mapping": {}
+    },
+    "compute.mcu": {
+      "layer": "compute",
+      "description": "Microcontroller running low-level control loops.",
+      "fields": {
+        "clock_max_MHz": {"rule": "component_at_least", "on_fail": "incompatible"},
+        "peripherals": {"rule": "contains", "on_fail": "rewire"}
+      },
+      "solver_mapping": {"clock_max_MHz": "Bounds feasible control-loop rate and jitter; measure jitter rather than infer it."}
+    },
+    "power.conversion": {
+      "layer": "power",
+      "description": "Voltage regulator or converter.",
+      "fields": {
+        "input_voltage_V": {"rule": "requirement_within_range", "on_fail": "incompatible"},
+        "output_current_A": {"rule": "component_at_least", "on_fail": "incompatible"}
+      },
+      "solver_mapping": {"output_current_A": "Shared supply limit across actuators; simultaneous stall currents can exceed it (brownout is not modeled by default)."}
+    },
+    "safety.estop": {
+      "layer": "safety",
+      "description": "Emergency-stop function and stop category.",
+      "fields": {},
+      "solver_mapping": {"*": "A stop category defines how actuation is removed (torque off vs controlled stop); simulate as an episode termination mode, not a reward."}
+    }
+  }
+}
