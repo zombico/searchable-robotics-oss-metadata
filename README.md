@@ -6,6 +6,8 @@ Goal: synthetic sensorimotor data from compiled mechanisms, with reproducibility
 
 **Implemented:** research tables, illustrative fixed-gripper URDF/MJCF exporter, minimal timed-episode/release validator, rejection tests, MuJoCo engine checks for the example gripper, and CI for both. **Not implemented:** actual training episodes, calibration evidence, image/export adapters, general compiler or trained policy.
 
+**Electronics** (drives, servos, sensors, buses, compute, power, e-stop) are a separate concern in [`electronics/`](electronics/README.md): swappable-slot contracts, 34 sourced components, a swap checker (`drop_in` / `retune` / `rewire` / `remount` / `incompatible`) and a static supply-rail budget, with an SO-101 worked example.
+
 ## Quickstart
 
 Core checks need only Python 3 (standard library). Run from the repository root:
@@ -16,6 +18,8 @@ python validate.py
 python -m unittest discover -s tests -v
 python verify_release.py fixtures/episode.json
 python verify_release.py fixtures/release.json
+python electronics/build_components.py
+python electronics/swap.py electronics/bindings/so101_follower_12v.json shoulder_lift
 ```
 
 Engine checks need MuJoCo (Python 3.12+; CI uses 3.13):

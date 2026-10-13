@@ -1,0 +1,92 @@
+{
+  "schema_version": "0.1.0",
+  "assembly": "SO-101 follower arm (default 7.4 V servos, 5 V supply)",
+  "description": "Six STS3215 C001 (1/345) servos on one serial bus, powered by the BOM 5 V supply.",
+  "requirements_basis": "As-built reference design (supply, protocol, mount). No task-derived torque or speed requirement is declared; differences from the bound servo show as retune.",
+  "sources": [
+    "https://github.com/TheRobotStudio/SO-ARM100/blob/main/README.md",
+    "https://huggingface.co/docs/lerobot/so101"
+  ],
+  "not_modeled": [
+    "Waveshare serial bus servo driver board (BOM \"Motor Control Board\"): not yet researched",
+    "host computer and USB link",
+    "leader arm"
+  ],
+  "slots": [
+    {
+      "slot_id": "shoulder_pan",
+      "interface": "actuator.smart_servo",
+      "bound_component": "E03",
+      "requirements": {
+        "supply_voltage_V": 5,
+        "protocol": "feetech_sts_serial (SCServo SDK protocol 0)",
+        "mechanical_interface": "feetech_sts3215"
+      }
+    },
+    {
+      "slot_id": "shoulder_lift",
+      "interface": "actuator.smart_servo",
+      "bound_component": "E03",
+      "requirements": {
+        "supply_voltage_V": 5,
+        "protocol": "feetech_sts_serial (SCServo SDK protocol 0)",
+        "mechanical_interface": "feetech_sts3215"
+      }
+    },
+    {
+      "slot_id": "elbow_flex",
+      "interface": "actuator.smart_servo",
+      "bound_component": "E03",
+      "requirements": {
+        "supply_voltage_V": 5,
+        "protocol": "feetech_sts_serial (SCServo SDK protocol 0)",
+        "mechanical_interface": "feetech_sts3215"
+      }
+    },
+    {
+      "slot_id": "wrist_flex",
+      "interface": "actuator.smart_servo",
+      "bound_component": "E03",
+      "requirements": {
+        "supply_voltage_V": 5,
+        "protocol": "feetech_sts_serial (SCServo SDK protocol 0)",
+        "mechanical_interface": "feetech_sts3215"
+      }
+    },
+    {
+      "slot_id": "wrist_roll",
+      "interface": "actuator.smart_servo",
+      "bound_component": "E03",
+      "requirements": {
+        "supply_voltage_V": 5,
+        "protocol": "feetech_sts_serial (SCServo SDK protocol 0)",
+        "mechanical_interface": "feetech_sts3215"
+      }
+    },
+    {
+      "slot_id": "gripper",
+      "interface": "actuator.smart_servo",
+      "bound_component": "E03",
+      "requirements": {
+        "supply_voltage_V": 5,
+        "protocol": "feetech_sts_serial (SCServo SDK protocol 0)",
+        "mechanical_interface": "feetech_sts3215"
+      }
+    }
+  ],
+  "rails": [
+    {
+      "rail_id": "servo_5V",
+      "voltage_V": 5,
+      "source_component": "E71",
+      "loads": [
+        "shoulder_pan",
+        "shoulder_lift",
+        "elbow_flex",
+        "wrist_flex",
+        "wrist_roll",
+        "gripper"
+      ]
+    }
+  ]
+}
