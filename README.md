@@ -4,9 +4,11 @@ Goal: synthetic sensorimotor data from compiled mechanisms, with reproducibility
 
 **Start with [SOLUTION-V2.md](SOLUTION-V2.md)** for the updated architecture and implementation plan. [training_findings.html](training_findings.html) contains 20 new findings from 16 primary sources. `training_findings.json` is machine-readable. The 53-row catalog now includes training profiles. The original report is preserved as `MECHANISM-RESEARCH.md`.
 
-**Implemented:** research tables, illustrative fixed-gripper URDF/MJCF exporter, minimal timed-episode/release validator, rejection tests and portable CI. **Not implemented:** actual training episodes, engine-run/calibration evidence, image/export adapters, general compiler or trained policy.
+**Implemented:** research tables, illustrative fixed-gripper URDF/MJCF exporter, minimal timed-episode/release validator, rejection tests, MuJoCo engine checks for the example gripper, and CI for both. **Not implemented:** actual training episodes, calibration evidence, image/export adapters, general compiler or trained policy.
 
-Run from the repository root:
+## Quickstart
+
+Core checks need only Python 3 (standard library). Run from the repository root:
 
 ```sh
 python compile_example.py
@@ -16,7 +18,18 @@ python verify_release.py fixtures/episode.json
 python verify_release.py fixtures/release.json
 ```
 
-The fixture is hand-authored to exercise contracts; it is not simulator-generated training data. Its zero asset hash is a sentinel, not a valid asset reference. MuJoCo is unavailable in the authoring environment; engine/physical checks remain unexecuted. Repository licensing for newly authored work remains an owner decision. See `LICENSING.md`.
+Engine checks need MuJoCo (Python 3.12+; CI uses 3.13):
+
+```sh
+python -m venv .venv && . .venv/bin/activate
+pip install -r requirements-sim.txt
+python smoke_sim.py
+REQUIRE_ENGINE=1 python -m unittest tests.test_engine -v
+```
+
+Without MuJoCo, `tests/test_engine.py` is skipped; `REQUIRE_ENGINE=1` turns that skip into a failure, as in CI. The engine tests drive the gripper closed and open at the full ±5 N drive limit and check finite state, both stops reached and respected within 1 mm, jaw coupling within 0.2 mm, sensitivity to halving the timestep, and in-process repeatability. They are L1-style engine evidence for this demonstrator only, not physical validation; no replay or convergence report is published, so the release level remains `synthetic_only`.
+
+The episode fixture is hand-authored to exercise contracts; it is not simulator-generated training data. Its zero asset hash is a sentinel, not a valid asset reference. Repository licensing for newly authored work remains an owner decision. See `LICENSING.md`.
 
 The remainder records the original mechanism research and its limitations. The updated training solution takes precedence for implementation planning.
 
@@ -150,7 +163,7 @@ In an environment with MuJoCo installed:
 python smoke_sim.py
 ```
 
-The supplied optional check attempts two seconds of opening/closing, checks finite state, approximate joint limits and synchronization. It does not demonstrate physical accuracy. MuJoCo was unavailable in the research environment, so this runtime check was **not executed**. XML parsing, generation consistency, numeric geometry and inertia checks were performed.
+The supplied check runs two seconds of full-effort closing/opening, checks finite state, approximate joint limits and synchronization. It does not demonstrate physical accuracy. This check now runs in CI with pinned MuJoCo 3.15.0, alongside `tests/test_engine.py`. With MuJoCo's default 0.02 s limit/equality time constant the jaws passed their stops by about 10 mm at the 5 N limit; the exporter now emits a 0.002 s time constant (`constraint_timeconst_s`, twice the timestep). The jaws still reach about 5 m/s, far above the URDF 0.1 m/s limit, because the MJCF actuator is an ideal force source.
 
 ## Promote a record into a validated asset
 

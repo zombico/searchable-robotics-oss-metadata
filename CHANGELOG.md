@@ -1,5 +1,11 @@
 # Changes
 
+## Unreleased
+
+- First executed MuJoCo runs (3.15.0): `smoke_sim.py` and new `tests/test_engine.py` (full-effort stop/coupling checks, timestep halving, in-process repeatability).
+- Fixed soft joint limits/coupling in the exported MJCF: jaws overshot their stops by ~10 mm at the 5 N limit with MuJoCo defaults; `constraint_timeconst_s` (0.002 s) now bounds this below 1 mm.
+- Added `requirements-sim.txt`, an `engine` CI job (with a regenerate-and-diff check on exported models) and a README quickstart.
+
 ## 0.2.0 — 2026-10-08
 
 - Added 20 training-focused findings from 16 primary sources, in JSON and a searchable table.

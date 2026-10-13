@@ -8,7 +8,7 @@ The initial package catalogs mechanisms and interfaces. Version 0.2 adds an expl
 
 The important correction is to stop treating a successfully loaded robot model, a plausible animation, and a calibrated dynamics model as interchangeable. Each has a different acceptance test. Contact modeling research documents consequential differences between simulator assumptions (R02); measured impact comparisons show limitations that depend on the interaction (R03). Those results do not rank one engine as universally accurate.
 
-**Current implemented scope:** research catalogs, an illustrative box-gripper exporter, metadata contracts, a dependency-free fixture validator, negative contract tests, and a standard-library CI workflow. No actual training episodes, engine-run evidence, calibration measurements, image dataset, trained policy or transfer result is included.
+**Current implemented scope:** research catalogs, an illustrative box-gripper exporter, metadata contracts, a dependency-free fixture validator, negative contract tests, a standard-library CI workflow, and pinned MuJoCo engine checks for the example gripper. No actual training episodes, published replay/convergence reports, calibration measurements, image dataset, trained policy or transfer result is included.
 
 ## Architecture and authoritative state
 

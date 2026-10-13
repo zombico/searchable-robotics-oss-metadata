@@ -6,7 +6,7 @@
   "new_sources": 16,
   "contract_tests": {
     "passed": 13,
-    "engine_tests_run": false
+    "engine_tests_run": true
   },
   "performed": [
     "Python syntax parse",
@@ -14,16 +14,25 @@
     "catalog/source integrity",
     "XML and uniform-box inertia checks",
     "13 contract tests",
-    "fixture CLI checks"
+    "fixture CLI checks",
+    "MuJoCo smoke_sim.py",
+    "5 engine tests"
   ],
   "not_performed": [
     "full JSON Schema validation",
-    "physics engine runtime",
     "calibration experiment",
     "training export round-trip",
     "policy training",
     "sim-to-real evaluation",
-    "remote CI"
+    "remote CI",
+    "engine replay/convergence report for release evidence"
   ],
-  "release_level": "synthetic_only"
+  "release_level": "synthetic_only",
+  "engine_tests": {
+    "engine": "mujoco",
+    "version": "3.15.0",
+    "passed": 5,
+    "scope": "example gripper only: full-effort stops, coupling, timestep halving, in-process repeatability"
+  },
+  "remote_ci_note": "engine CI job added; first remote run pending"
 }
