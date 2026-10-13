@@ -1,0 +1,1686 @@
+{
+  "composer": "pick_gripper_v0",
+  "scope": "Feasible means feasible in MuJoCo under the stated assumptions and catalog values. Release level: synthetic_only.",
+  "assumptions": {
+    "safety_factor": 1.5,
+    "lift_accel_m_s2": 2.0,
+    "rack_pinion_efficiency": 0.9,
+    "pinion_module_mm": 1.0,
+    "pinion_teeth_options": [
+      12,
+      20,
+      30,
+      40
+    ],
+    "min_teeth_without_profile_shift": 17,
+    "max_full_stroke_close_s": 0.6,
+    "rail_voltage_V": 12.0,
+    "supply": "E72",
+    "servo_candidates": [
+      "E01",
+      "E03",
+      "E04"
+    ],
+    "torque_current_model": "current proportional to torque between zero and the published stall point (assumption)",
+    "rotor_inertia_kg_m2_sweep": [
+      1e-08,
+      1e-07
+    ]
+  },
+  "requirements": {
+    "pad_normal_force_N": {
+      "value": 8.8575,
+      "formula": "SF * m_max * (g + a_lift) / (2 * mu_min)",
+      "inputs": {
+        "SF": 1.5,
+        "m_max_kg": 0.3,
+        "g": 9.81,
+        "a_lift_m_s2": 2.0,
+        "mu_min": 0.3
+      }
+    },
+    "jaw_drive_force_N": {
+      "value": 17.715,
+      "formula": "twin racks: total rack force = 2 * pad normal force"
+    },
+    "jaw_opening_m": {
+      "value": 0.049999999999999996,
+      "available": 0.060000000000000005,
+      "formula": "w_max + 2 * 2.5 mm"
+    },
+    "per_jaw_travel_m": {
+      "value": 0.025,
+      "formula": "example.json jaw_travel_mm"
+    },
+    "max_close_time_s": {
+      "value": 0.6,
+      "formula": "proposed requirement"
+    },
+    "z_payload_N": {
+      "value_without_servo": 10.3928,
+      "limit": 30,
+      "formula": "(carriage + gripper + servo + m_max) * (g + a_lift)"
+    }
+  },
+  "screened": [
+    {
+      "name": "baseline_example_drive",
+      "servo": null,
+      "teeth": null,
+      "status": "reference_rejected",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": 5,
+          "required": 17.715,
+          "result": "fail",
+          "detail": "example.json ideal drive (proposed values)",
+          "verification": null
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": 0.25,
+          "required": 0.6,
+          "result": "pass",
+          "detail": "",
+          "verification": null
+        }
+      ],
+      "warnings": [],
+      "drive": {
+        "effort_limit_N": 5,
+        "no_load_speed_m_s": 0.1,
+        "servo_mass_kg": 0.0
+      },
+      "servo_name": "example.json linear drive (5 N, 0.1 m/s)",
+      "bill_of_materials": null
+    },
+    {
+      "name": "E01_z12",
+      "servo": "E01",
+      "teeth": 12,
+      "status": "rejected",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            10.0,
+            14.8
+          ],
+          "required": 12.0,
+          "result": "pass",
+          "detail": "rail 12 V",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": 615.0,
+          "required": 17.715,
+          "result": "pass",
+          "detail": "eta * stall torque at 12 V / pinion radius 6 mm",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": 0.8649725168037791,
+          "required": 0.6,
+          "result": "fail",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "z_payload_N",
+          "value": 11.36122,
+          "required": 30,
+          "result": "pass",
+          "detail": "servo rides on the z carriage",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": 2.3,
+          "required": 5,
+          "result": "pass",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [
+        "12-tooth pinion is below the 17-tooth undercut limit; needs profile shift"
+      ],
+      "drive": {
+        "effort_limit_N": 615.0,
+        "no_load_speed_m_s": 0.028902652413026097,
+        "servo_mass_kg": 0.082,
+        "pinion_radius_m": 0.006,
+        "stall_torque_Nm": 4.1,
+        "stall_current_A": 2.3,
+        "holding_torque_Nm": 0.1181,
+        "holding_current_A_est": 0.06625121951219512,
+        "holding_power_W_est": 0.7950146341463414
+      },
+      "servo_name": "DYNAMIXEL XM430-W350-T",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E01 DYNAMIXEL XM430-W350-T",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 12 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "E20 ROBOTIS U2D2 (USB to TTL/RS-485)",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "E01_z20",
+      "servo": "E01",
+      "teeth": 20,
+      "status": "feasible",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            10.0,
+            14.8
+          ],
+          "required": 12.0,
+          "result": "pass",
+          "detail": "rail 12 V",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": 369.0,
+          "required": 17.715,
+          "result": "pass",
+          "detail": "eta * stall torque at 12 V / pinion radius 10 mm",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": 0.5189835100822674,
+          "required": 0.6,
+          "result": "pass",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "z_payload_N",
+          "value": 11.36122,
+          "required": 30,
+          "result": "pass",
+          "detail": "servo rides on the z carriage",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": 2.3,
+          "required": 5,
+          "result": "pass",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [],
+      "drive": {
+        "effort_limit_N": 369.0,
+        "no_load_speed_m_s": 0.048171087355043496,
+        "servo_mass_kg": 0.082,
+        "pinion_radius_m": 0.01,
+        "stall_torque_Nm": 4.1,
+        "stall_current_A": 2.3,
+        "holding_torque_Nm": 0.19683333333333333,
+        "holding_current_A_est": 0.11041869918699188,
+        "holding_power_W_est": 1.3250243902439025
+      },
+      "servo_name": "DYNAMIXEL XM430-W350-T",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E01 DYNAMIXEL XM430-W350-T",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 20 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "E20 ROBOTIS U2D2 (USB to TTL/RS-485)",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "E01_z30",
+      "servo": "E01",
+      "teeth": 30,
+      "status": "feasible",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            10.0,
+            14.8
+          ],
+          "required": 12.0,
+          "result": "pass",
+          "detail": "rail 12 V",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": 246.0,
+          "required": 17.715,
+          "result": "pass",
+          "detail": "eta * stall torque at 12 V / pinion radius 15 mm",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": 0.34598900672151167,
+          "required": 0.6,
+          "result": "pass",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "z_payload_N",
+          "value": 11.36122,
+          "required": 30,
+          "result": "pass",
+          "detail": "servo rides on the z carriage",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": 2.3,
+          "required": 5,
+          "result": "pass",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [],
+      "drive": {
+        "effort_limit_N": 246.0,
+        "no_load_speed_m_s": 0.07225663103256523,
+        "servo_mass_kg": 0.082,
+        "pinion_radius_m": 0.015,
+        "stall_torque_Nm": 4.1,
+        "stall_current_A": 2.3,
+        "holding_torque_Nm": 0.29524999999999996,
+        "holding_current_A_est": 0.16562804878048779,
+        "holding_power_W_est": 1.9875365853658533
+      },
+      "servo_name": "DYNAMIXEL XM430-W350-T",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E01 DYNAMIXEL XM430-W350-T",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 30 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "E20 ROBOTIS U2D2 (USB to TTL/RS-485)",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "E01_z40",
+      "servo": "E01",
+      "teeth": 40,
+      "status": "feasible",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            10.0,
+            14.8
+          ],
+          "required": 12.0,
+          "result": "pass",
+          "detail": "rail 12 V",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": 184.5,
+          "required": 17.715,
+          "result": "pass",
+          "detail": "eta * stall torque at 12 V / pinion radius 20 mm",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": 0.2594917550411337,
+          "required": 0.6,
+          "result": "pass",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "z_payload_N",
+          "value": 11.36122,
+          "required": 30,
+          "result": "pass",
+          "detail": "servo rides on the z carriage",
+          "verification": [
+            "fetched_primary"
+          ]
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": 2.3,
+          "required": 5,
+          "result": "pass",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [],
+      "drive": {
+        "effort_limit_N": 184.5,
+        "no_load_speed_m_s": 0.09634217471008699,
+        "servo_mass_kg": 0.082,
+        "pinion_radius_m": 0.02,
+        "stall_torque_Nm": 4.1,
+        "stall_current_A": 2.3,
+        "holding_torque_Nm": 0.39366666666666666,
+        "holding_current_A_est": 0.22083739837398375,
+        "holding_power_W_est": 2.650048780487805
+      },
+      "servo_name": "DYNAMIXEL XM430-W350-T",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E01 DYNAMIXEL XM430-W350-T",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 40 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "E20 ROBOTIS U2D2 (USB to TTL/RS-485)",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "E03_z12",
+      "servo": "E03",
+      "teeth": 12,
+      "status": "rejected",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            6,
+            7.4
+          ],
+          "required": 12.0,
+          "result": "fail",
+          "detail": "rail 12 V",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": null,
+          "required": 17.715,
+          "result": "unknown",
+          "detail": "eta * stall torque at 12 V / pinion radius 6 mm",
+          "verification": null
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": null,
+          "required": 0.6,
+          "result": "unknown",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": null
+        },
+        {
+          "check": "z_payload_N",
+          "value": 11.042349999999999,
+          "required": 30,
+          "result": "pass",
+          "detail": "servo rides on the z carriage",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": null,
+          "required": 5,
+          "result": "unknown",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [
+        "12-tooth pinion is below the 17-tooth undercut limit; needs profile shift",
+        "relies on search-snippet values; verify against a datasheet"
+      ],
+      "drive": null,
+      "servo_name": "Feetech STS3215 C001 smart servo (7.4 V, 1/345)",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E03 Feetech STS3215 C001 smart servo (7.4 V, 1/345)",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 12 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "not in catalog: a host adapter for this protocol is still unresearched",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "E03_z20",
+      "servo": "E03",
+      "teeth": 20,
+      "status": "rejected",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            6,
+            7.4
+          ],
+          "required": 12.0,
+          "result": "fail",
+          "detail": "rail 12 V",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": null,
+          "required": 17.715,
+          "result": "unknown",
+          "detail": "eta * stall torque at 12 V / pinion radius 10 mm",
+          "verification": null
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": null,
+          "required": 0.6,
+          "result": "unknown",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": null
+        },
+        {
+          "check": "z_payload_N",
+          "value": 11.042349999999999,
+          "required": 30,
+          "result": "pass",
+          "detail": "servo rides on the z carriage",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": null,
+          "required": 5,
+          "result": "unknown",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [
+        "relies on search-snippet values; verify against a datasheet"
+      ],
+      "drive": null,
+      "servo_name": "Feetech STS3215 C001 smart servo (7.4 V, 1/345)",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E03 Feetech STS3215 C001 smart servo (7.4 V, 1/345)",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 20 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "not in catalog: a host adapter for this protocol is still unresearched",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "E03_z30",
+      "servo": "E03",
+      "teeth": 30,
+      "status": "rejected",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            6,
+            7.4
+          ],
+          "required": 12.0,
+          "result": "fail",
+          "detail": "rail 12 V",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": null,
+          "required": 17.715,
+          "result": "unknown",
+          "detail": "eta * stall torque at 12 V / pinion radius 15 mm",
+          "verification": null
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": null,
+          "required": 0.6,
+          "result": "unknown",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": null
+        },
+        {
+          "check": "z_payload_N",
+          "value": 11.042349999999999,
+          "required": 30,
+          "result": "pass",
+          "detail": "servo rides on the z carriage",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": null,
+          "required": 5,
+          "result": "unknown",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [
+        "relies on search-snippet values; verify against a datasheet"
+      ],
+      "drive": null,
+      "servo_name": "Feetech STS3215 C001 smart servo (7.4 V, 1/345)",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E03 Feetech STS3215 C001 smart servo (7.4 V, 1/345)",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 30 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "not in catalog: a host adapter for this protocol is still unresearched",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "E03_z40",
+      "servo": "E03",
+      "teeth": 40,
+      "status": "rejected",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            6,
+            7.4
+          ],
+          "required": 12.0,
+          "result": "fail",
+          "detail": "rail 12 V",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": null,
+          "required": 17.715,
+          "result": "unknown",
+          "detail": "eta * stall torque at 12 V / pinion radius 20 mm",
+          "verification": null
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": null,
+          "required": 0.6,
+          "result": "unknown",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": null
+        },
+        {
+          "check": "z_payload_N",
+          "value": 11.042349999999999,
+          "required": 30,
+          "result": "pass",
+          "detail": "servo rides on the z carriage",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": null,
+          "required": 5,
+          "result": "unknown",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [
+        "relies on search-snippet values; verify against a datasheet"
+      ],
+      "drive": null,
+      "servo_name": "Feetech STS3215 C001 smart servo (7.4 V, 1/345)",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E03 Feetech STS3215 C001 smart servo (7.4 V, 1/345)",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 40 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "not in catalog: a host adapter for this protocol is still unresearched",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "E04_z12",
+      "servo": "E04",
+      "teeth": 12,
+      "status": "rejected",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            4,
+            14
+          ],
+          "required": 12.0,
+          "result": "pass",
+          "detail": "rail 12 V",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": 441.3,
+          "required": 17.715,
+          "result": "pass",
+          "detail": "eta * stall torque at 12 V / pinion radius 6 mm",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": 0.8833108174708367,
+          "required": 0.6,
+          "result": "fail",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "z_payload_N",
+          "value": null,
+          "required": 30,
+          "result": "unknown",
+          "detail": "servo rides on the z carriage",
+          "verification": null
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": 2.7,
+          "required": 5,
+          "result": "pass",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [
+        "12-tooth pinion is below the 17-tooth undercut limit; needs profile shift",
+        "relies on search-snippet values; verify against a datasheet"
+      ],
+      "drive": {
+        "effort_limit_N": 441.3,
+        "no_load_speed_m_s": 0.028302608216190444,
+        "servo_mass_kg": 0.0,
+        "pinion_radius_m": 0.006,
+        "stall_torque_Nm": 2.942,
+        "stall_current_A": 2.7,
+        "holding_torque_Nm": 0.1181,
+        "holding_current_A_est": 0.10838545207341943,
+        "holding_power_W_est": 1.3006254248810334
+      },
+      "servo_name": "Feetech STS3215 smart servo (12 V)",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E04 Feetech STS3215 smart servo (12 V)",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 12 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "not in catalog: a host adapter for this protocol is still unresearched",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "E04_z20",
+      "servo": "E04",
+      "teeth": 20,
+      "status": "undetermined",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            4,
+            14
+          ],
+          "required": 12.0,
+          "result": "pass",
+          "detail": "rail 12 V",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": 264.78000000000003,
+          "required": 17.715,
+          "result": "pass",
+          "detail": "eta * stall torque at 12 V / pinion radius 10 mm",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": 0.529986490482502,
+          "required": 0.6,
+          "result": "pass",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "z_payload_N",
+          "value": null,
+          "required": 30,
+          "result": "unknown",
+          "detail": "servo rides on the z carriage",
+          "verification": null
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": 2.7,
+          "required": 5,
+          "result": "pass",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [
+        "relies on search-snippet values; verify against a datasheet"
+      ],
+      "drive": {
+        "effort_limit_N": 264.78000000000003,
+        "no_load_speed_m_s": 0.04717101369365074,
+        "servo_mass_kg": 0.0,
+        "pinion_radius_m": 0.01,
+        "stall_torque_Nm": 2.942,
+        "stall_current_A": 2.7,
+        "holding_torque_Nm": 0.19683333333333333,
+        "holding_current_A_est": 0.18064242012236573,
+        "holding_power_W_est": 2.167709041468389
+      },
+      "servo_name": "Feetech STS3215 smart servo (12 V)",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E04 Feetech STS3215 smart servo (12 V)",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 20 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "not in catalog: a host adapter for this protocol is still unresearched",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "E04_z30",
+      "servo": "E04",
+      "teeth": 30,
+      "status": "undetermined",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            4,
+            14
+          ],
+          "required": 12.0,
+          "result": "pass",
+          "detail": "rail 12 V",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": 176.52,
+          "required": 17.715,
+          "result": "pass",
+          "detail": "eta * stall torque at 12 V / pinion radius 15 mm",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": 0.3533243269883347,
+          "required": 0.6,
+          "result": "pass",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "z_payload_N",
+          "value": null,
+          "required": 30,
+          "result": "unknown",
+          "detail": "servo rides on the z carriage",
+          "verification": null
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": 2.7,
+          "required": 5,
+          "result": "pass",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [
+        "relies on search-snippet values; verify against a datasheet"
+      ],
+      "drive": {
+        "effort_limit_N": 176.52,
+        "no_load_speed_m_s": 0.07075652054047611,
+        "servo_mass_kg": 0.0,
+        "pinion_radius_m": 0.015,
+        "stall_torque_Nm": 2.942,
+        "stall_current_A": 2.7,
+        "holding_torque_Nm": 0.29524999999999996,
+        "holding_current_A_est": 0.2709636301835486,
+        "holding_power_W_est": 3.251563562202583
+      },
+      "servo_name": "Feetech STS3215 smart servo (12 V)",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E04 Feetech STS3215 smart servo (12 V)",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 30 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "not in catalog: a host adapter for this protocol is still unresearched",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "E04_z40",
+      "servo": "E04",
+      "teeth": 40,
+      "status": "undetermined",
+      "checks": [
+        {
+          "check": "jaw_opening_m",
+          "value": 0.060000000000000005,
+          "required": 0.049999999999999996,
+          "result": "pass",
+          "detail": "closed gap + 2 * per-jaw travel (example.json)",
+          "verification": null
+        },
+        {
+          "check": "supply_voltage_V",
+          "value": [
+            4,
+            14
+          ],
+          "required": 12.0,
+          "result": "pass",
+          "detail": "rail 12 V",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "jaw_drive_force_N",
+          "value": 132.39000000000001,
+          "required": 17.715,
+          "result": "pass",
+          "detail": "eta * stall torque at 12 V / pinion radius 20 mm",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "full_stroke_close_s",
+          "value": 0.264993245241251,
+          "required": 0.6,
+          "result": "pass",
+          "detail": "per-jaw travel / (no-load speed * pinion radius); no-load is an upper bound",
+          "verification": [
+            "search_snippet"
+          ]
+        },
+        {
+          "check": "z_payload_N",
+          "value": null,
+          "required": 30,
+          "result": "unknown",
+          "detail": "servo rides on the z carriage",
+          "verification": null
+        },
+        {
+          "check": "rail_worst_case_A",
+          "value": 2.7,
+          "required": 5,
+          "result": "pass",
+          "detail": "gripper servo at stall on the supply; carriage drives are not catalog parts and are not counted",
+          "verification": null
+        }
+      ],
+      "warnings": [
+        "relies on search-snippet values; verify against a datasheet"
+      ],
+      "drive": {
+        "effort_limit_N": 132.39000000000001,
+        "no_load_speed_m_s": 0.09434202738730148,
+        "servo_mass_kg": 0.0,
+        "pinion_radius_m": 0.02,
+        "stall_torque_Nm": 2.942,
+        "stall_current_A": 2.7,
+        "holding_torque_Nm": 0.39366666666666666,
+        "holding_current_A_est": 0.36128484024473145,
+        "holding_power_W_est": 4.335418082936778
+      },
+      "servo_name": "Feetech STS3215 smart servo (12 V)",
+      "bill_of_materials": [
+        {
+          "item": "jaw servo",
+          "part": "E04 Feetech STS3215 smart servo (12 V)",
+          "qty": 1
+        },
+        {
+          "item": "pinion",
+          "part": "module 1, 40 teeth, 20 deg (proposed, catalog M05)",
+          "qty": 1
+        },
+        {
+          "item": "racks",
+          "part": "module 1 racks on each jaw carriage (proposed, catalog M05)",
+          "qty": 2
+        },
+        {
+          "item": "jaws and base",
+          "part": "parallel jaws per example.json (proposed, catalog M13)",
+          "qty": 1
+        },
+        {
+          "item": "jaw guides",
+          "part": "linear guide, e.g. MGN-family (catalog C06; size not selected)",
+          "qty": 2
+        },
+        {
+          "item": "bus adapter",
+          "part": "not in catalog: a host adapter for this protocol is still unresearched",
+          "qty": 1
+        },
+        {
+          "item": "supply",
+          "part": "E72 SO-101 12 V supply option (README minimum \"12V 5A+\")",
+          "qty": 1
+        }
+      ]
+    }
+  ],
+  "not_claimed": [
+    "a built or tested gripper",
+    "continuous torque or thermal capacity (unpublished for these servos)",
+    "backlash, rack friction or compliance (not modeled)",
+    "packaging: whether the pinion, racks and servo fit the 100 x 50 mm gripper base (not checked; a 40-tooth module-1 pinion is 40 mm across)",
+    "gentle handling: impact pad forces exceed the grip limit and depend on the unpublished rotor inertia",
+    "electrical behavior of the carriage drives (not catalog parts)",
+    "accuracy of MuJoCo contact for these materials"
+  ],
+  "simulation_seeds": 300,
+  "simulation": {
+    "baseline_example_drive": {
+      "design": "baseline_example_drive",
+      "rotor_inertia_kg_m2": null,
+      "armature_kg": null,
+      "commanded_grip_N": 5,
+      "jaw_actuator": "force-speed drive",
+      "scene": "compose/build/baseline_example_drive.mjcf.xml",
+      "episodes": 300,
+      "outcomes": {
+        "slip": 39,
+        "success": 261
+      },
+      "success_rate": 0.87,
+      "success_rate_by_split": {
+        "train": 0.8643,
+        "validation": 0.697,
+        "test": 0.9706
+      },
+      "mean_success_duration_s": 2.166896551724138,
+      "mean_close_phase_s": 0.3268666666666667,
+      "peak_grip_N_mean": 5.3045947978278685,
+      "peak_grip_N_max": 5.744544659242251
+    },
+    "E01_z20_J1e-08": {
+      "design": "E01_z20",
+      "rotor_inertia_kg_m2": 1e-08,
+      "armature_kg": 12.496225,
+      "commanded_grip_N": 17.715,
+      "jaw_actuator": "velocity, current-limited",
+      "scene": "compose/build/E01_z20_J1e-08.mjcf.xml",
+      "episodes": 300,
+      "outcomes": {
+        "success": 300
+      },
+      "success_rate": 1.0,
+      "success_rate_by_split": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 1.0
+      },
+      "mean_success_duration_s": 2.304133333333333,
+      "mean_close_phase_s": 0.4720666666666666,
+      "peak_grip_N_mean": 46.94556925688495,
+      "peak_grip_N_max": 69.71211107060765
+    },
+    "E01_z20_J1e-07": {
+      "design": "E01_z20",
+      "rotor_inertia_kg_m2": 1e-07,
+      "armature_kg": 124.96225,
+      "commanded_grip_N": 17.715,
+      "jaw_actuator": "velocity, current-limited",
+      "scene": "compose/build/E01_z20_J1e-07.mjcf.xml",
+      "episodes": 300,
+      "outcomes": {
+        "success": 300
+      },
+      "success_rate": 1.0,
+      "success_rate_by_split": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 1.0
+      },
+      "mean_success_duration_s": 2.9358666666666666,
+      "mean_close_phase_s": 1.104,
+      "peak_grip_N_mean": 200.92864822383106,
+      "peak_grip_N_max": 379.75679115576906
+    },
+    "E01_z30_J1e-08": {
+      "design": "E01_z30",
+      "rotor_inertia_kg_m2": 1e-08,
+      "armature_kg": 5.553877777777778,
+      "commanded_grip_N": 17.715,
+      "jaw_actuator": "velocity, current-limited",
+      "scene": "compose/build/E01_z30_J1e-08.mjcf.xml",
+      "episodes": 300,
+      "outcomes": {
+        "success": 300
+      },
+      "success_rate": 1.0,
+      "success_rate_by_split": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 1.0
+      },
+      "mean_success_duration_s": 2.2069333333333336,
+      "mean_close_phase_s": 0.37479999999999997,
+      "peak_grip_N_mean": 37.493546678554594,
+      "peak_grip_N_max": 54.47600193319725
+    },
+    "E01_z30_J1e-07": {
+      "design": "E01_z30",
+      "rotor_inertia_kg_m2": 1e-07,
+      "armature_kg": 55.538777777777774,
+      "commanded_grip_N": 17.715,
+      "jaw_actuator": "velocity, current-limited",
+      "scene": "compose/build/E01_z30_J1e-07.mjcf.xml",
+      "episodes": 300,
+      "outcomes": {
+        "success": 300
+      },
+      "success_rate": 1.0,
+      "success_rate_by_split": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 1.0
+      },
+      "mean_success_duration_s": 2.475466666666667,
+      "mean_close_phase_s": 0.6432666666666668,
+      "peak_grip_N_mean": 187.80331072877627,
+      "peak_grip_N_max": 371.40460950935733
+    },
+    "E01_z40_J1e-08": {
+      "design": "E01_z40",
+      "rotor_inertia_kg_m2": 1e-08,
+      "armature_kg": 3.12405625,
+      "commanded_grip_N": 17.715,
+      "jaw_actuator": "velocity, current-limited",
+      "scene": "compose/build/E01_z40_J1e-08.mjcf.xml",
+      "episodes": 300,
+      "outcomes": {
+        "success": 300
+      },
+      "success_rate": 1.0,
+      "success_rate_by_split": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 1.0
+      },
+      "mean_success_duration_s": 2.1615333333333333,
+      "mean_close_phase_s": 0.32933333333333326,
+      "peak_grip_N_mean": 33.08252103465093,
+      "peak_grip_N_max": 45.03723990483391
+    },
+    "E01_z40_J1e-07": {
+      "design": "E01_z40",
+      "rotor_inertia_kg_m2": 1e-07,
+      "armature_kg": 31.2405625,
+      "commanded_grip_N": 17.715,
+      "jaw_actuator": "velocity, current-limited",
+      "scene": "compose/build/E01_z40_J1e-07.mjcf.xml",
+      "episodes": 300,
+      "outcomes": {
+        "success": 300
+      },
+      "success_rate": 1.0,
+      "success_rate_by_split": {
+        "train": 1.0,
+        "validation": 1.0,
+        "test": 1.0
+      },
+      "mean_success_duration_s": 2.3023333333333333,
+      "mean_close_phase_s": 0.4702666666666666,
+      "peak_grip_N_mean": 163.178610070565,
+      "peak_grip_N_max": 319.273983244047
+    }
+  },
+  "requirement_model_check": {
+    "predicted_slip_and_slipped": 39,
+    "predicted_slip_but_held": 8,
+    "predicted_hold_but_slipped": 0,
+    "predicted_hold_and_held": 253,
+    "agreement": 0.9733333333333334,
+    "episodes": 300,
+    "model": "slip if m*(g + a_lift) > mu * F_drive (two pads, each F_drive/2), a_lift = 2 m/s2, no safety factor"
+  },
+  "robustness": {
+    "E01_z20": {
+      "worst_success_rate": 1.0,
+      "best_success_rate": 1.0,
+      "worst_mean_success_duration_s": 2.9358666666666666,
+      "peak_grip_N_range": [
+        69.71211107060765,
+        379.75679115576906
+      ],
+      "grip_limit_N": 17.715,
+      "success_robust_to_rotor_inertia": true,
+      "impact_force_depends_on_rotor_inertia": true
+    },
+    "E01_z30": {
+      "worst_success_rate": 1.0,
+      "best_success_rate": 1.0,
+      "worst_mean_success_duration_s": 2.475466666666667,
+      "peak_grip_N_range": [
+        54.47600193319725,
+        371.40460950935733
+      ],
+      "grip_limit_N": 17.715,
+      "success_robust_to_rotor_inertia": true,
+      "impact_force_depends_on_rotor_inertia": true
+    },
+    "E01_z40": {
+      "worst_success_rate": 1.0,
+      "best_success_rate": 1.0,
+      "worst_mean_success_duration_s": 2.3023333333333333,
+      "peak_grip_N_range": [
+        45.03723990483391,
+        319.273983244047
+      ],
+      "grip_limit_N": 17.715,
+      "success_robust_to_rotor_inertia": true,
+      "impact_force_depends_on_rotor_inertia": true
+    }
+  },
+  "ranking": [
+    "E01_z40",
+    "E01_z30",
+    "E01_z20"
+  ]
+}

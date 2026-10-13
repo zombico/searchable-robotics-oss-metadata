@@ -6,6 +6,8 @@ Goal: synthetic sensorimotor data from compiled mechanisms, with reproducibility
 
 **Implemented:** research tables, illustrative fixed-gripper URDF/MJCF exporter, minimal timed-episode/release validator, rejection tests, MuJoCo engine checks for the example gripper, and CI for both. **Not implemented:** actual training episodes, calibration evidence, image/export adapters, general compiler or trained policy.
 
+**Composer** ([`compose/`](compose/README.md)): composes a gripper drive from catalog parts for the pick task: derives requirements from the task, screens servo × gear designs against published ratings at the supply voltage, simulates the survivors on 300 paired boxes, and reports a ranking, parts list, holding current and what it could not settle. The example 5 N gripper drops 39/300 heavy boxes; XM430-based designs pick 300/300.
+
 **Pick task** ([`tasks/pick/`](tasks/pick/README.md)): the example gripper on an x/z carriage picks randomized boxes. Gymnasium-style environment, a scripted demonstrator using only policy observations, and a validated dataset generator with outcome labels (success/slip/miss/collision/timeout), privileged diagnostics including mechanical power, quarantine of invalid physics and group-based splits. A 1,000-episode run: 87.5% success, 12.5% friction-limited slips, nothing quarantined.
 
 **Electronics** (drives, servos, sensors, buses, compute, power, e-stop) are a separate concern in [`electronics/`](electronics/README.md): swappable-slot contracts, 34 sourced components, a swap checker (`drop_in` / `retune` / `rewire` / `remount` / `incompatible`) and a static supply-rail budget, with an SO-101 worked example.
@@ -32,6 +34,7 @@ pip install -r requirements-sim.txt
 python smoke_sim.py
 python engine_check.py
 python tasks/pick/generate.py --episodes 100 --out datasets/pick_v0
+python compose/pick_gripper.py
 REQUIRE_ENGINE=1 python -m unittest tests.test_engine tests.test_pick_engine -v
 ```
 
