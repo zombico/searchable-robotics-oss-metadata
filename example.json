@@ -13,5 +13,6 @@
   "damping_N_s_m": 1,
   "joint_friction_N": 0.1,
   "contact_friction": 0.7,
-  "assumption_scope": "All masses, drive forces, damping and friction are demonstration choices. No payload, material, fabrication tolerance, or commercial gripper equivalence claimed."
+  "constraint_timeconst_s": 0.002,
+  "assumption_scope": "All masses, drive forces, damping, friction and constraint stiffness are demonstration choices. No payload, material, fabrication tolerance, or commercial gripper equivalence claimed."
 }

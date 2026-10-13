@@ -11,6 +11,9 @@ def main():
         assert len(a[key])==3 and all(x>0 for x in a[key])
     assert 0 < a['closed_gap_mm'] < a['base_size_mm'][0]
     assert all(a[k]>0 for k in ['jaw_travel_mm','base_mass_kg','jaw_mass_kg','effort_limit_N','velocity_limit_m_s'])
+    # MuJoCo recommends a constraint time constant of at least twice the timestep.
+    timestep=0.001;assert a['constraint_timeconst_s']>=2*timestep
+    solref=vec([a['constraint_timeconst_s'],1])
     b=[v*.001 for v in a['base_size_mm']]; j=[v*.001 for v in a['jaw_size_mm']]
     travel=a['jaw_travel_mm']*.001; offset=(a['closed_gap_mm']*.001+j[0])/2
     height=b[2]+j[2]/2
@@ -35,15 +38,16 @@ def main():
         if side=='right':E.SubElement(joint,'mimic',joint='left_slide',multiplier='1',offset='0')
     # URDF mimic is an importer hint, not a portable enforced physics constraint.
     mj=E.Element('mujoco',model='proposed_parallel_gripper')
-    E.SubElement(mj,'compiler',angle='radian');E.SubElement(mj,'option',timestep='0.001',gravity='0 0 -9.81')
+    E.SubElement(mj,'compiler',angle='radian');E.SubElement(mj,'option',timestep=str(timestep),gravity='0 0 -9.81')
     default=E.SubElement(mj,'default');E.SubElement(default,'geom',friction=vec([a['contact_friction'],0.005,0.0001]),condim='3')
     world=E.SubElement(mj,'worldbody');E.SubElement(world,'geom',name='floor',type='plane',size='1 1 0.1',rgba='0.8 0.8 0.8 1')
     E.SubElement(world,'geom',name='base',type='box',pos=vec([0,0,b[2]/2]),size=vec([x/2 for x in b]),rgba='0.2 0.3 0.5 1')
     for side,sign in [('left',-1),('right',1)]:
         body=E.SubElement(world,'body',name=side,pos=vec([sign*offset,0,height]))
-        E.SubElement(body,'joint',name=side+'_slide',type='slide',axis=vec([sign,0,0]),range=vec([0,travel]),limited='true',damping=str(a['damping_N_s_m']),frictionloss=str(a['joint_friction_N']))
+        E.SubElement(body,'joint',name=side+'_slide',type='slide',axis=vec([sign,0,0]),range=vec([0,travel]),limited='true',damping=str(a['damping_N_s_m']),frictionloss=str(a['joint_friction_N']),solreflimit=solref)
         E.SubElement(body,'geom',type='box',size=vec([x/2 for x in j]),mass=str(a['jaw_mass_kg']),rgba='0.3 0.65 0.9 1')
-    eq=E.SubElement(mj,'equality');E.SubElement(eq,'joint',joint1='right_slide',joint2='left_slide',polycoef='0 1 0 0 0')
+    eq=E.SubElement(mj,'equality');E.SubElement(eq,'joint',joint1='right_slide',joint2='left_slide',polycoef='0 1 0 0 0',solref=solref)
+    # Default limit/equality stiffness (0.02 s) let jaws pass their stops by ~10 mm at the 5 N effort limit.
     act=E.SubElement(mj,'actuator');E.SubElement(act,'motor',name='jaw_drive',joint='left_slide',gear='1',ctrllimited='true',ctrlrange=vec([-a['effort_limit_N'],a['effort_limit_N']]))
     # Joint-space drive force is an assumed ideal actuator, not per-jaw rated grasp force.
     key=E.SubElement(mj,'keyframe');E.SubElement(key,'key',name='open',qpos=vec([travel,travel]))
