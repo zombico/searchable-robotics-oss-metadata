@@ -28,10 +28,11 @@ Engine checks need MuJoCo (Python 3.12+; CI uses 3.13):
 python -m venv .venv && . .venv/bin/activate
 pip install -r requirements-sim.txt
 python smoke_sim.py
+python engine_check.py
 REQUIRE_ENGINE=1 python -m unittest tests.test_engine -v
 ```
 
-Without MuJoCo, `tests/test_engine.py` is skipped; `REQUIRE_ENGINE=1` turns that skip into a failure, as in CI. The engine tests drive the gripper closed and open at the full ±5 N drive limit and check finite state, both stops reached and respected within 1 mm, jaw coupling within 0.2 mm, sensitivity to halving the timestep, and in-process repeatability. They are L1-style engine evidence for this demonstrator only, not physical validation; no replay or convergence report is published, so the release level remains `synthetic_only`.
+Without MuJoCo, `tests/test_engine.py` is skipped; `REQUIRE_ENGINE=1` turns that skip into a failure, as in CI. The engine tests drive the gripper closed and open at the full ±5 N drive limit and check finite state, both stops reached and respected within 1 mm, jaw coupling within 0.2 mm, sensitivity to halving the timestep, and in-process repeatability. `python engine_check.py` turns these checks into hashed evidence in `evidence/example_gripper/`: a forward-simulated episode, engine, replay (action replay and mid-episode state continuation) and convergence (dt, dt/2, dt/4) reports, and a release declaration at `engine_checked`. That label covers this demonstrator in the declared MuJoCo test envelope only; it is not physical validation and makes no accuracy claim. CI regenerates the evidence on its own runner, replays the committed episode there, and fails if the model changes without regenerating the evidence.
 
 The episode fixture is hand-authored to exercise contracts; it is not simulator-generated training data. Its zero asset hash is a sentinel, not a valid asset reference. Repository licensing for newly authored work remains an owner decision. See `LICENSING.md`.
 
@@ -157,7 +158,7 @@ The implemented compiler only handles the proposed parallel gripper in `example.
 python compile_example.py
 ```
 
-Input geometry uses mm; physical outputs use m, kg and seconds. Jaws are 12×20×60 mm and each travels 25 mm, giving a gap from 10 to 60 mm. Jaw masses of 0.04 kg, damping of 1 N·s/m, joint friction of 0.1 N and contact friction 0.7 are assumptions. The ideal generalized drive-force limit is ±5 N; it is not a validated per-jaw gripping force. URDF specifies a proposed 0.1 m/s limit; the MJCF ideal force actuator does not enforce that velocity limit. These exports are therefore not fully equivalent control models.
+Input geometry uses mm; physical outputs use m, kg and seconds. Jaws are 12×20×60 mm and each travels 25 mm, giving a gap from 10 to 60 mm. Jaw masses of 0.04 kg, damping of 1 N·s/m, joint friction of 0.1 N and contact friction 0.7 are assumptions. The drive is a linear force-speed line: the command is force at zero speed, limited to ±5 N, falling to zero at the 0.1 m/s no-load speed (the URDF velocity limit). It is not a validated per-jaw gripping force. URDF records only the force and velocity limits, so the two exports are still not fully equivalent control models.
 
 The MJCF jaw coordinates are coupled with an equality constraint. The URDF uses mimic metadata; importers may ignore it or require control/physics extensions. The MuJoCo model includes a floor and an open keyframe; it contains no grasped object, sensors, real motor, gearbox, fasteners or rail models. Add those before testing a grasping task.
 
@@ -167,7 +168,7 @@ In an environment with MuJoCo installed:
 python smoke_sim.py
 ```
 
-The supplied check runs two seconds of full-effort closing/opening, checks finite state, approximate joint limits and synchronization. It does not demonstrate physical accuracy. This check now runs in CI with pinned MuJoCo 3.15.0, alongside `tests/test_engine.py`. With MuJoCo's default 0.02 s limit/equality time constant the jaws passed their stops by about 10 mm at the 5 N limit; the exporter now emits a 0.002 s time constant (`constraint_timeconst_s`, twice the timestep). The jaws still reach about 5 m/s, far above the URDF 0.1 m/s limit, because the MJCF actuator is an ideal force source.
+The supplied check runs two seconds of full-effort closing/opening, checks finite state, approximate joint limits and synchronization. It does not demonstrate physical accuracy. This check now runs in CI with pinned MuJoCo 3.15.0, alongside `tests/test_engine.py`. With MuJoCo's default 0.02 s limit/equality time constant the jaws passed their stops by about 10 mm at the 5 N limit; the exporter now emits a 0.002 s time constant (`constraint_timeconst_s`, twice the timestep). An ideal force actuator also let the jaws reach 1.34 m/s, 13 times the declared 0.1 m/s; the exporter now emits a force-speed drive and the measured peak is 0.094 m/s.
 
 ## Promote a record into a validated asset
 

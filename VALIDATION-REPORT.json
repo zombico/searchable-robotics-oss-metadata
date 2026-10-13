@@ -16,23 +16,21 @@
     "13 contract tests",
     "fixture CLI checks",
     "MuJoCo smoke_sim.py",
-    "5 engine tests"
+    "5 engine tests",
+    "engine_check.py evidence: episode, engine/replay/convergence reports"
   ],
   "not_performed": [
     "full JSON Schema validation",
     "calibration experiment",
     "training export round-trip",
     "policy training",
-    "sim-to-real evaluation",
-    "remote CI",
-    "engine replay/convergence report for release evidence"
+    "sim-to-real evaluation"
   ],
-  "release_level": "synthetic_only",
+  "release_level": "synthetic_only (repository); engine_checked (evidence/example_gripper only)",
   "engine_tests": {
     "engine": "mujoco",
     "version": "3.15.0",
-    "passed": 5,
+    "passed": 6,
     "scope": "example gripper only: full-effort stops, coupling, timestep halving, in-process repeatability"
-  },
-  "remote_ci_note": "engine CI job added; first remote run pending"
+  }
 }

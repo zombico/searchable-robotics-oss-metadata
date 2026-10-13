@@ -3,7 +3,7 @@
   "files": [
     {
       "path": ".github/workflows/contracts.yml",
-      "sha256": "0c08274cdca04a72ad5b2d839e260e410d1d32d3554a99f1b147f2b38c504503"
+      "sha256": "eca41341c2c6e34f76aecae8be841282bf5a5e21274da4ecbd72836a1470c1f8"
     },
     {
       "path": ".gitignore",
@@ -11,7 +11,7 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "f7910ff89471f8da46bdd0e4888c791ce7ce493cbee354204dffa9f0ca887200"
+      "sha256": "bf4af5a85ca8f6f67d40982b4d696f9d582d1c5ffbbc8e8833439c9cdc3ccc21"
     },
     {
       "path": "LICENSING.md",
@@ -23,15 +23,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "9ab00bf51a5d1483678afd39ced6cd23379c2db95ff79179a5970ca521c0c85c"
+      "sha256": "83f715ad9483bc6631fd648f55d43b7db9a6922de3afff30597b982a78d2a89a"
     },
     {
       "path": "SOLUTION-V2.md",
-      "sha256": "9d14eb7081512f8e6b8dd35f2a8b807d7601bd8d3b09b0dacd4e549a16392dd5"
+      "sha256": "8f1dbf6e7627af35e101265d791c7e0f03e26df16c9c9c9e7cca2100347eb6bb"
     },
     {
       "path": "VALIDATION-REPORT.json",
-      "sha256": "7f06ae2999351eb786ee351ad037cdfd46ff99a88142b3f17d7765ad4faa3403"
+      "sha256": "205f1d7bb289805dfd9140c24190c594561198cc3efbee478f969fbab7ce4ca5"
     },
     {
       "path": "build_training_research.py",
@@ -47,7 +47,7 @@
     },
     {
       "path": "compile_example.py",
-      "sha256": "05961b6e5c5d5a13501b9f7d93fa03af1c6d780e66d7e06d49ce02affe831af5"
+      "sha256": "941902b5065d03ae8c32f8f32c0d903ef0f74c93c81109f101d2cd39e94ac323"
     },
     {
       "path": "contracts/episode.schema.json",
@@ -94,12 +94,36 @@
       "sha256": "5df1dd8da54ba6fe712058f5b11f5321b92034ca27f7bfb0acaecfb44fec9aeb"
     },
     {
+      "path": "engine_check.py",
+      "sha256": "bf0a6d358c027c7d8b6b1c1b375177ba5947307244e3cae6e5e85e3d67cb84f1"
+    },
+    {
+      "path": "evidence/example_gripper/convergence_report.json",
+      "sha256": "dc6f5f1650077f2ebb69d6ee6132e0d75232c44a357dfc53209a4938a4fe6363"
+    },
+    {
+      "path": "evidence/example_gripper/engine_report.json",
+      "sha256": "9596bb33c9cbbade352ba9c4eb790545f09ce6ba0374e01cfd73072ac1f307a3"
+    },
+    {
+      "path": "evidence/example_gripper/episode.json",
+      "sha256": "39c371afb8d1d1ac861d6ceaa67a74cada5cff5420664c3002e264eb6b32a32c"
+    },
+    {
+      "path": "evidence/example_gripper/release.json",
+      "sha256": "d5730c904c6ecd48e16588fdb68f32f68df5cdd74577f046add00ec0fda09c83"
+    },
+    {
+      "path": "evidence/example_gripper/replay_report.json",
+      "sha256": "971a50905d004547aa5f09a230134f05723d92757b1a1e05a231ae8b1210d318"
+    },
+    {
       "path": "example.json",
-      "sha256": "7955290691583285d945d52f7258ce19612f21abd4d123389ab7c847a19a024e"
+      "sha256": "442d1af9960da281f9bca5f38bd5967cdc3c04a34fc6370064ee7ebe8e5af57c"
     },
     {
       "path": "example.mjcf.xml",
-      "sha256": "5c050cd8c31dc51efde13111d69376dc943a160003c083418b9325e59a5a284b"
+      "sha256": "ea05d71f72cd5e1df0e070243ae7bd8e973e3b78764b0570a0dd50db87254e5c"
     },
     {
       "path": "example.urdf",
@@ -135,7 +159,11 @@
     },
     {
       "path": "tests/test_engine.py",
-      "sha256": "86078ca2396ad60eb945c050edeb500652c3a4dbd6745cc4e588a3b2ccf73596"
+      "sha256": "6540dbd220d511844be78a2f0926544617ce8eb427126d083b71f3d547ebb19f"
+    },
+    {
+      "path": "tests/test_evidence.py",
+      "sha256": "17e3822e8703fe6c26ef3f4dc59a1efc0151e0c6328b76c8baeafd81d72fea26"
     },
     {
       "path": "training_findings.html",

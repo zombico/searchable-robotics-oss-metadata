@@ -48,8 +48,11 @@ def main():
         E.SubElement(body,'geom',type='box',size=vec([x/2 for x in j]),mass=str(a['jaw_mass_kg']),rgba='0.3 0.65 0.9 1')
     eq=E.SubElement(mj,'equality');E.SubElement(eq,'joint',joint1='right_slide',joint2='left_slide',polycoef='0 1 0 0 0',solref=solref)
     # Default limit/equality stiffness (0.02 s) let jaws pass their stops by ~10 mm at the 5 N effort limit.
-    act=E.SubElement(mj,'actuator');E.SubElement(act,'motor',name='jaw_drive',joint='left_slide',gear='1',ctrllimited='true',ctrlrange=vec([-a['effort_limit_N'],a['effort_limit_N']]))
-    # Joint-space drive force is an assumed ideal actuator, not per-jaw rated grasp force.
+    # Linear force-speed drive (DC-motor back-EMF form): force = ctrl - (effort/no-load speed)*qvel, clipped to the effort limit.
+    # ctrl is the commanded force at zero speed; velocity_limit_m_s is read as the no-load speed. Not a rated per-jaw grasp force.
+    slope=a['effort_limit_N']/a['velocity_limit_m_s'];limits=vec([-a['effort_limit_N'],a['effort_limit_N']])
+    act=E.SubElement(mj,'actuator');E.SubElement(act,'general',name='jaw_drive',joint='left_slide',gear='1',ctrllimited='true',ctrlrange=limits,
+        forcelimited='true',forcerange=limits,gaintype='fixed',gainprm='1',biastype='affine',biasprm=vec([0,0,-slope]))
     key=E.SubElement(mj,'keyframe');E.SubElement(key,'key',name='open',qpos=vec([travel,travel]))
     outputs={'example.urdf':robot,'example.mjcf.xml':mj}
     for name,root in outputs.items():

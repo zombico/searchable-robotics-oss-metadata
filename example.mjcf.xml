@@ -21,7 +21,7 @@
     <joint joint1="right_slide" joint2="left_slide" polycoef="0 1 0 0 0" solref="0.002 1" />
   </equality>
   <actuator>
-    <motor name="jaw_drive" joint="left_slide" gear="1" ctrllimited="true" ctrlrange="-5 5" />
+    <general name="jaw_drive" joint="left_slide" gear="1" ctrllimited="true" ctrlrange="-5 5" forcelimited="true" forcerange="-5 5" gaintype="fixed" gainprm="1" biastype="affine" biasprm="0 0 -50" />
   </actuator>
   <keyframe>
     <key name="open" qpos="0.025 0.025" />

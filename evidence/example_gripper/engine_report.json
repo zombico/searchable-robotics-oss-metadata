@@ -1,0 +1,25 @@
+{
+  "asset": "example.mjcf.xml",
+  "asset_sha256": "ea05d71f72cd5e1df0e070243ae7bd8e973e3b78764b0570a0dd50db87254e5c",
+  "environment": {
+    "mujoco": "3.15.0",
+    "numpy": "2.5.3",
+    "python": "3.13.16",
+    "machine": "x86_64",
+    "system": "Linux"
+  },
+  "scope": "example gripper demonstrator in MuJoCo only; not physical validation",
+  "kind": "engine_report",
+  "schedule": "100 control steps at 50 Hz: -5 N for 1 s, then +5 N for 1 s",
+  "metrics": {
+    "stop_overshoot_m": 5.452027903279771e-05,
+    "jaw_coupling_m": 2.7799027069619342e-05,
+    "peak_speed_m_s": 0.09353786331201905
+  },
+  "finite_state": true,
+  "thresholds": {
+    "stop_overshoot_m": 0.001,
+    "jaw_coupling_m": 0.0002,
+    "peak_speed_m_s": 0.1
+  }
+}
